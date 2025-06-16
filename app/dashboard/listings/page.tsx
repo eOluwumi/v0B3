@@ -3,6 +3,7 @@
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import { useSupabase } from "@/components/supabase-provider"
+import { useListingsRefresh } from "@/components/listings-provider"
 import DashboardLayout from "@/components/dashboard-layout"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
@@ -36,6 +37,7 @@ type Listing = {
 
 export default function ListingsPage() {
   const { supabase, user, loading: userLoading } = useSupabase()
+  const { refreshTrigger } = useListingsRefresh()
   const router = useRouter()
   const { toast } = useToast()
   const [listings, setListings] = useState<Listing[]>([])
@@ -49,8 +51,16 @@ export default function ListingsPage() {
     }
   }, [user, userLoading, router])
 
+  // Refetch listings when refreshTrigger changes
+  useEffect(() => {
+    if (user && refreshTrigger > 0) {
+      fetchListings()
+    }
+  }, [refreshTrigger, user])
+
   const fetchListings = async () => {
     try {
+      setLoading(true)
       const { data, error } = await supabase
         .from("listings")
         .select("*")
@@ -128,11 +138,17 @@ export default function ListingsPage() {
     <DashboardLayout>
       <div className="flex items-center justify-between mb-6">
         <h1 className="text-2xl font-bold">My Listings</h1>
-        <Link href="/dashboard/listings/new">
-          <Button>
-            <Plus className="mr-2 h-4 w-4" /> New Listing
+        <div className="flex gap-2">
+          <Button variant="outline" onClick={fetchListings} disabled={loading} className="flex items-center gap-2">
+            <RefreshCw className={`h-4 w-4 ${loading ? "animate-spin" : ""}`} />
+            Refresh
           </Button>
-        </Link>
+          <Link href="/dashboard/listings/new">
+            <Button>
+              <Plus className="mr-2 h-4 w-4" /> New Listing
+            </Button>
+          </Link>
+        </div>
       </div>
 
       {loading ? (

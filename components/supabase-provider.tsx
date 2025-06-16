@@ -1,21 +1,162 @@
 "use client"
 
 import type React from "react"
-
 import { createContext, useContext, useEffect, useState } from "react"
-import { createClient } from "@supabase/supabase-js"
 import { useToast } from "@/components/ui/use-toast"
-import type { Database } from "@/types/supabase"
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL!
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+// Mock user type
+type MockUser = {
+  id: string
+  email: string
+  user_metadata: {
+    full_name: string
+  }
+}
 
-// Create a single supabase client for the entire app
-export const supabase = createClient<Database>(supabaseUrl, supabaseAnonKey)
+// Mock Supabase client
+const createMockSupabaseClient = () => ({
+  auth: {
+    signInWithPassword: async ({ email, password }: { email: string; password: string }) => {
+      // Simulate network delay
+      await new Promise((resolve) => setTimeout(resolve, 1000))
+
+      // Mock successful sign in
+      const mockUser: MockUser = {
+        id: "mock-user-id",
+        email,
+        user_metadata: {
+          full_name: "Mock User",
+        },
+      }
+
+      // Store in localStorage for persistence
+      localStorage.setItem("mock-user", JSON.stringify(mockUser))
+
+      return {
+        data: { user: mockUser },
+        error: null,
+      }
+    },
+
+    signUp: async ({ email, password, options }: { email: string; password: string; options?: any }) => {
+      // Simulate network delay
+      await new Promise((resolve) => setTimeout(resolve, 1000))
+
+      const mockUser: MockUser = {
+        id: "mock-user-id",
+        email,
+        user_metadata: {
+          full_name: options?.data?.full_name || "Mock User",
+        },
+      }
+
+      // Store in localStorage for persistence
+      localStorage.setItem("mock-user", JSON.stringify(mockUser))
+
+      return {
+        data: { user: mockUser },
+        error: null,
+      }
+    },
+
+    signOut: async () => {
+      // Simulate network delay
+      await new Promise((resolve) => setTimeout(resolve, 500))
+
+      // Remove from localStorage
+      localStorage.removeItem("mock-user")
+
+      return { error: null }
+    },
+
+    getSession: async () => {
+      const storedUser = localStorage.getItem("mock-user")
+      const user = storedUser ? JSON.parse(storedUser) : null
+
+      return {
+        data: {
+          session: user ? { user } : null,
+        },
+      }
+    },
+
+    onAuthStateChange: (callback: (event: string, session: any) => void) => {
+      // Mock auth state change listener
+      const checkAuth = () => {
+        const storedUser = localStorage.getItem("mock-user")
+        const user = storedUser ? JSON.parse(storedUser) : null
+        callback(user ? "SIGNED_IN" : "SIGNED_OUT", user ? { user } : null)
+      }
+
+      // Check immediately
+      setTimeout(checkAuth, 100)
+
+      // Return the correct structure that matches Supabase
+      return {
+        data: {
+          subscription: {
+            unsubscribe: () => {},
+          },
+        },
+      }
+    },
+  },
+
+  from: (table: string) => ({
+    insert: async (data: any) => {
+      // Simulate network delay
+      await new Promise((resolve) => setTimeout(resolve, 500))
+      return { data, error: null }
+    },
+
+    select: (columns?: string) => ({
+      eq: (column: string, value: any) => ({
+        order: (column: string, options?: any) => ({
+          then: async (resolve: any) => {
+            // Simulate network delay
+            await new Promise((r) => setTimeout(r, 500))
+            resolve({ data: [], error: null })
+          },
+        }),
+      }),
+    }),
+
+    delete: () => ({
+      eq: (column: string, value: any) => ({
+        then: async (resolve: any) => {
+          // Simulate network delay
+          await new Promise((r) => setTimeout(r, 500))
+          resolve({ error: null })
+        },
+      }),
+    }),
+  }),
+
+  storage: {
+    from: (bucket: string) => ({
+      upload: async (path: string, file: File) => {
+        // Simulate network delay
+        await new Promise((resolve) => setTimeout(resolve, 1000))
+        return {
+          data: { path },
+          error: null,
+        }
+      },
+
+      getPublicUrl: (path: string) => ({
+        data: {
+          publicUrl: `/placeholder.svg?height=200&width=200`,
+        },
+      }),
+    }),
+  },
+})
+
+export const supabase = createMockSupabaseClient()
 
 type SupabaseContextType = {
-  supabase: ReturnType<typeof createClient<Database>>
-  user: any | null
+  supabase: typeof supabase
+  user: MockUser | null
   loading: boolean
 }
 
@@ -28,37 +169,36 @@ const SupabaseContext = createContext<SupabaseContextType>({
 export const useSupabase = () => useContext(SupabaseContext)
 
 export function SupabaseProvider({ children }: { children: React.ReactNode }) {
-  const [user, setUser] = useState<any | null>(null)
+  const [user, setUser] = useState<MockUser | null>(null)
   const [loading, setLoading] = useState(true)
   const { toast } = useToast()
 
   useEffect(() => {
-    const { data: authListener } = supabase.auth.onAuthStateChange(async (event, session) => {
+    const authListener = supabase.auth.onAuthStateChange(async (event, session) => {
       setUser(session?.user ?? null)
       setLoading(false)
 
       if (event === "SIGNED_IN") {
         toast({
           title: "Welcome back!",
-          description: "You've successfully signed in.",
+          description: "You've successfully signed in to the demo.",
         })
       }
       if (event === "SIGNED_OUT") {
         toast({
           title: "Signed out",
-          description: "You've been signed out of your account.",
+          description: "You've been signed out of the demo.",
         })
       }
     })
 
-    // Initial session check
     supabase.auth.getSession().then(({ data: { session } }) => {
       setUser(session?.user ?? null)
       setLoading(false)
     })
 
     return () => {
-      authListener.subscription.unsubscribe()
+      authListener.data.subscription.unsubscribe()
     }
   }, [toast])
 

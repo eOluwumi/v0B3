@@ -8,8 +8,9 @@ import { usePathname } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { useSupabase } from "@/components/supabase-provider"
 import { useRouter } from "next/navigation"
-import { LayoutDashboard, ListFilter, MessageSquare, RefreshCw, Settings, LogOut, Menu, X, User } from "lucide-react"
+import { ListFilter, MessageSquare, RefreshCw, Settings, LogOut, Menu, X, User } from "lucide-react"
 import { cn } from "@/lib/utils"
+import Image from "next/image"
 
 interface DashboardLayoutProps {
   children: React.ReactNode
@@ -30,7 +31,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
     {
       name: "Dashboard",
       href: "/dashboard",
-      icon: LayoutDashboard,
+      icon: ListFilter,
     },
     {
       name: "My Listings",
@@ -59,25 +60,58 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
     },
   ]
 
+  const informalNavItems = [
+    {
+      name: "Dashboard",
+      href: "/dashboard",
+      icon: ListFilter,
+    },
+    {
+      name: "My Items",
+      href: "/dashboard/listings",
+      icon: ListFilter,
+    },
+    {
+      name: "My Gist",
+      href: "/dashboard/messages",
+      icon: MessageSquare,
+    },
+    {
+      name: "My Trades",
+      href: "/dashboard/trades",
+      icon: RefreshCw,
+    },
+    {
+      name: "My Profile",
+      href: "/dashboard/profile",
+      icon: User,
+    },
+    {
+      name: "Settings",
+      href: "/dashboard/settings",
+      icon: Settings,
+    },
+  ]
+
   return (
-    <div className="flex min-h-screen bg-gray-50 dark:bg-gray-900">
+    <div className="flex min-h-screen bg-zinc-100 dark:bg-gray-900">
       {/* Sidebar for desktop */}
       <aside className="hidden md:flex flex-col w-64 border-r bg-white dark:bg-gray-950">
         <div className="p-4 border-b">
           <Link href="/" className="flex items-center gap-2">
-            <RefreshCw className="h-6 w-6 text-emerald-600" />
-            <span className="text-xl font-bold">B3</span>
+            <Image src="/b3-logo.png" alt="B3 Logo" width={30} height={30} />
+            <span className="text-xl font-bold text-gray-900 dark:text-white">B3</span>
           </Link>
         </div>
         <nav className="flex-1 p-4 space-y-1">
-          {navItems.map((item) => (
+          {informalNavItems.map((item) => (
             <Link
               key={item.href}
               href={item.href}
               className={cn(
                 "flex items-center gap-3 px-3 py-2 rounded-md text-sm transition-colors",
                 pathname === item.href || pathname?.startsWith(`${item.href}/`)
-                  ? "bg-gray-100 dark:bg-gray-800 text-emerald-600 font-medium"
+                  ? "bg-gray-100 dark:bg-gray-800 text-green-600 font-medium"
                   : "text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800",
               )}
             >
@@ -110,22 +144,22 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
         >
           <div className="p-4 border-b flex items-center justify-between">
             <Link href="/" className="flex items-center gap-2">
-              <RefreshCw className="h-6 w-6 text-emerald-600" />
-              <span className="text-xl font-bold">B3</span>
+              <Image src="/b3-logo.png" alt="B3 Logo" width={30} height={30} />
+              <span className="text-xl font-bold text-gray-900 dark:text-white">B3</span>
             </Link>
             <Button variant="ghost" size="icon" onClick={() => setMobileNavOpen(false)}>
               <X className="h-5 w-5" />
             </Button>
           </div>
           <nav className="flex-1 p-4 space-y-1">
-            {navItems.map((item) => (
+            {informalNavItems.map((item) => (
               <Link
                 key={item.href}
                 href={item.href}
                 className={cn(
                   "flex items-center gap-3 px-3 py-2 rounded-md text-sm transition-colors",
                   pathname === item.href || pathname?.startsWith(`${item.href}/`)
-                    ? "bg-gray-100 dark:bg-gray-800 text-emerald-600 font-medium"
+                    ? "bg-gray-100 dark:bg-gray-800 text-green-600 font-medium"
                     : "text-gray-600 dark:text-gray-400 hover:bg-gray-100 dark:hover:bg-gray-800",
                 )}
                 onClick={() => setMobileNavOpen(false)}
@@ -156,8 +190,8 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
             <Menu className="h-5 w-5" />
           </Button>
           <Link href="/" className="flex items-center gap-2">
-            <RefreshCw className="h-5 w-5 text-emerald-600" />
-            <span className="font-bold">B3</span>
+            <Image src="/b3-logo.png" alt="B3 Logo" width={30} height={30} />
+            <span className="font-bold text-gray-900 dark:text-white">B3</span>
           </Link>
           <div className="w-5" /> {/* Empty div for spacing */}
         </header>

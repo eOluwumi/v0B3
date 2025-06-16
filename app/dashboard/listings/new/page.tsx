@@ -5,6 +5,7 @@ import type React from "react"
 import { useState } from "react"
 import { useRouter } from "next/navigation"
 import { useSupabase } from "@/components/supabase-provider"
+import { useListingsRefresh } from "@/components/listings-provider"
 import DashboardLayout from "@/components/dashboard-layout"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
@@ -31,6 +32,7 @@ const categories = [
 
 export default function NewListingPage() {
   const { supabase, user } = useSupabase()
+  const { triggerRefresh } = useListingsRefresh()
   const router = useRouter()
   const { toast } = useToast()
   const [loading, setLoading] = useState(false)
@@ -112,11 +114,15 @@ export default function NewListingPage() {
         throw error
       }
 
+      // Trigger refresh of listings page
+      triggerRefresh()
+
       toast({
-        title: "Listing created!",
-        description: "Your listing has been successfully created.",
+        title: "Listing created! 🎉",
+        description: "Your listing has been successfully created and is now live in the marketplace.",
       })
 
+      // Navigate back to listings page
       router.push("/dashboard/listings")
     } catch (error: any) {
       toast({
@@ -251,7 +257,7 @@ export default function NewListingPage() {
               <Input
                 id="location"
                 name="location"
-                placeholder="e.g., San Francisco, CA"
+                placeholder="e.g., Lagos, Nigeria"
                 value={formData.location}
                 onChange={handleChange}
                 required

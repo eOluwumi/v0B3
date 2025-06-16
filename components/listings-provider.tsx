@@ -23,7 +23,11 @@ export function ListingsProvider({ children }: { children: React.ReactNode }) {
 export function useListingsRefresh() {
   const context = useContext(ListingsContext)
   if (context === undefined) {
-    throw new Error("useListingsRefresh must be used within a ListingsProvider")
+    // Return a no-op function during SSR or when provider is missing
+    return {
+      refreshTrigger: 0,
+      triggerRefresh: () => {},
+    }
   }
   return context
 }

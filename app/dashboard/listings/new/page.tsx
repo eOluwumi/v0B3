@@ -114,7 +114,7 @@ export default function NewListingPage() {
         throw error
       }
 
-      // Trigger refresh of listings page
+      // Trigger refresh of listings page (safe to call even if provider is missing)
       triggerRefresh()
 
       toast({

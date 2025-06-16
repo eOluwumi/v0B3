@@ -104,11 +104,11 @@ export default function Home() {
             <div className="flex items-center gap-6 text-sm text-gray-500 dark:text-gray-400 justify-center md:justify-start transition-colors duration-300">
               <div className="flex items-center gap-2">
                 <Users className="h-4 w-4 text-green-500" />
-                <span>8,500+ Barter Warriors</span>
+                <span>200+ Barter Warriors</span>
               </div>
               <div className="flex items-center gap-2">
                 <Zap className="h-4 w-4 text-yellow-500" />
-                <span>3,200+ successful swaps</span>
+                <span>150+ successful swaps</span>
               </div>
             </div>
             <div className="bg-gradient-to-r from-green-100 to-yellow-100 dark:from-green-900/20 dark:to-yellow-900/20 p-4 rounded-lg border border-green-200 dark:border-green-800">
@@ -221,12 +221,12 @@ export default function Home() {
             </p>
             <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
               <div className="text-center">
-                <div className="text-4xl font-bold mb-2">8,500+</div>
+                <div className="text-4xl font-bold mb-2">200+</div>
                 <div className="text-green-100 text-lg">Barter Warriors</div>
                 <div className="text-green-200 text-sm mt-1">#BringBackBarter strong!</div>
               </div>
               <div className="text-center">
-                <div className="text-4xl font-bold mb-2">3,200+</div>
+                <div className="text-4xl font-bold mb-2">150+</div>
                 <div className="text-green-100 text-lg">Successful Swaps</div>
                 <div className="text-green-200 text-sm mt-1">Barter is better!</div>
               </div>
@@ -318,7 +318,7 @@ export default function Home() {
               </span>
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 transition-colors duration-300">
-              Join thousands of Naija people who have discovered that the best trades happen without money. Be part of
+              Join hundreds of Naija people who have discovered that the best trades happen without money. Be part of
               the movement that's bringing back the art of true value exchange!
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">

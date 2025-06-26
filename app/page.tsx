@@ -1,7 +1,21 @@
 import { Button } from "@/components/ui/button"
 import { ThemeToggle } from "@/components/theme-toggle"
 import Link from "next/link"
-import { ArrowRight, MessageSquare, RefreshCw, Search, Sparkles, Users, Zap, Heart, TrendingUp } from "lucide-react"
+import {
+  ArrowRight,
+  MessageSquare,
+  RefreshCw,
+  Search,
+  Sparkles,
+  Users,
+  Zap,
+  Heart,
+  Globe,
+  Star,
+  Camera,
+  Shield,
+  Smartphone,
+} from "lucide-react"
 import Image from "next/image"
 
 export default function Home() {
@@ -68,8 +82,8 @@ export default function Home() {
           <div className="flex-1 space-y-8 text-center md:text-left animate-fade-in">
             <div className="space-y-4">
               <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 text-sm font-medium transition-colors duration-300">
-                <TrendingUp className="h-4 w-4" />
-                #BringBackBarter - The Revolution is Here! 🇳🇬
+                <Globe className="h-4 w-4" />
+                From the Heart of Africa - #BringBackBarter 🌍🇳🇬
               </div>
               <h1 className="text-5xl md:text-7xl font-bold tracking-tight">
                 Barter is Back{" "}
@@ -78,8 +92,9 @@ export default function Home() {
                 </span>
               </h1>
               <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-2xl leading-relaxed transition-colors duration-300">
-                The ancient art of trading is back with a modern twist! No cash needed, just pure value exchange between
-                Naija people. Join the #BringBackBarter movement and discover how trading can be better than ever! 💚
+                From the blessed continent of abundance comes a revolution! We're bringing back the ancient African art
+                of trading with modern technology. No cash needed, just pure value exchange between our people. Join the
+                #BringBackBarter movement - because Ubuntu means "I am because we are!" 💚🌍
               </p>
             </div>
             <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
@@ -88,7 +103,7 @@ export default function Home() {
                   size="lg"
                   className="bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
                 >
-                  Join #BringBackBarter <ArrowRight className="ml-2 h-5 w-5" />
+                  Join the African Revolution <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
               <Link href="/how-it-works">
@@ -97,24 +112,24 @@ export default function Home() {
                   size="lg"
                   className="border-2 border-green-200 hover:border-green-300 dark:border-green-800 dark:hover:border-green-700 transition-colors duration-300"
                 >
-                  See how it works
+                  See how Ubuntu works
                 </Button>
               </Link>
             </div>
             <div className="flex items-center gap-6 text-sm text-gray-500 dark:text-gray-400 justify-center md:justify-start transition-colors duration-300">
               <div className="flex items-center gap-2">
                 <Users className="h-4 w-4 text-green-500" />
-                <span>200+ Barter Warriors</span>
+                <span>200+ African Warriors</span>
               </div>
               <div className="flex items-center gap-2">
                 <Zap className="h-4 w-4 text-yellow-500" />
-                <span>150+ successful swaps</span>
+                <span>150+ Ubuntu exchanges</span>
               </div>
             </div>
             <div className="bg-gradient-to-r from-green-100 to-yellow-100 dark:from-green-900/20 dark:to-yellow-900/20 p-4 rounded-lg border border-green-200 dark:border-green-800">
               <p className="text-sm font-medium text-green-800 dark:text-green-300 text-center md:text-left">
-                🔥 <span className="font-bold">#BringBackBarter</span> - Because the best things in life aren't bought,
-                they're traded!
+                🔥 <span className="font-bold">#BringBackBarter</span> - Celebrating African wisdom: "If you want to go
+                fast, go alone. If you want to go far, go together!" 🌍
               </p>
             </div>
           </div>
@@ -123,55 +138,43 @@ export default function Home() {
           <div className="flex-1 relative animate-fade-in">
             <div className="relative w-full h-[400px] md:h-[500px] flex items-center justify-center">
               {/* Background glow effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-green-400/20 to-cyan-400/20 dark:from-green-400/10 dark:to-cyan-400/10 rounded-3xl blur-3xl transition-colors duration-300"></div>
+              <div className="absolute inset-0 bg-gradient-to-r from-green-400/20 to-yellow-400/20 dark:from-green-400/10 dark:to-yellow-400/10 rounded-3xl blur-3xl transition-colors duration-300"></div>
 
               {/* Hands reaching toward each other */}
               <div className="relative w-full h-full flex items-center justify-center">
-                {/* Left hand - more organic/human */}
+                {/* Left hand - African traditional */}
                 <div className="absolute left-0 top-1/2 -translate-y-1/2 w-32 h-32 opacity-60">
-                  <div className="w-full h-full bg-gradient-to-r from-gray-400 to-gray-600 dark:from-gray-600 dark:to-gray-400 rounded-full blur-sm transform rotate-12"></div>
+                  <div className="w-full h-full bg-gradient-to-r from-amber-600 to-orange-600 dark:from-amber-700 dark:to-orange-700 rounded-full blur-sm transform rotate-12"></div>
                   <div className="absolute inset-4 bg-gradient-to-r from-green-200 to-green-300 dark:from-green-800 dark:to-green-700 rounded-full opacity-70"></div>
                 </div>
 
-                {/* Right hand - more digital/tech */}
+                {/* Right hand - modern African tech */}
                 <div className="absolute right-0 top-1/2 -translate-y-1/2 w-32 h-32 opacity-60">
-                  <div className="w-full h-full bg-gradient-to-l from-cyan-400 to-blue-600 dark:from-cyan-600 dark:to-blue-400 rounded-full blur-sm transform -rotate-12"></div>
-                  <div className="absolute inset-4 bg-gradient-to-l from-cyan-200 to-blue-300 dark:from-cyan-800 dark:to-blue-700 rounded-full opacity-70"></div>
-                  {/* Network pattern overlay */}
+                  <div className="w-full h-full bg-gradient-to-l from-green-600 to-yellow-500 dark:from-green-700 dark:to-yellow-600 rounded-full blur-sm transform -rotate-12"></div>
+                  <div className="absolute inset-4 bg-gradient-to-l from-green-200 to-yellow-300 dark:from-green-800 dark:to-yellow-700 rounded-full opacity-70"></div>
+                  {/* African pattern overlay */}
                   <div className="absolute inset-0 opacity-30">
                     <svg className="w-full h-full" viewBox="0 0 100 100">
                       <defs>
-                        <pattern id="network" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-                          <circle cx="10" cy="10" r="1" fill="currentColor" className="text-cyan-400" />
-                          <line
-                            x1="10"
-                            y1="10"
-                            x2="20"
-                            y2="10"
+                        <pattern id="african-pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
+                          <circle cx="10" cy="10" r="1" fill="currentColor" className="text-yellow-500" />
+                          <path
+                            d="M5,5 L15,15 M15,5 L5,15"
                             stroke="currentColor"
                             strokeWidth="0.5"
-                            className="text-cyan-400"
-                          />
-                          <line
-                            x1="10"
-                            y1="10"
-                            x2="10"
-                            y2="20"
-                            stroke="currentColor"
-                            strokeWidth="0.5"
-                            className="text-cyan-400"
+                            className="text-green-500"
                           />
                         </pattern>
                       </defs>
-                      <rect width="100" height="100" fill="url(#network)" />
+                      <rect width="100" height="100" fill="url(#african-pattern)" />
                     </svg>
                   </div>
                 </div>
 
-                {/* Central B3 Logo with glow */}
+                {/* Central B3 Logo with African pride */}
                 <div className="relative z-10 flex flex-col items-center">
                   {/* Glowing background for logo */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-cyan-400 rounded-full blur-xl opacity-60 scale-150"></div>
+                  <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-yellow-400 rounded-full blur-xl opacity-60 scale-150"></div>
 
                   {/* B3 Logo */}
                   <div className="relative bg-white dark:bg-gray-900 rounded-full p-6 shadow-2xl border-4 border-green-200 dark:border-green-800">
@@ -180,10 +183,10 @@ export default function Home() {
 
                   {/* Subtitle */}
                   <div className="mt-4 text-center">
-                    <h3 className="text-2xl font-bold bg-gradient-to-r from-green-600 to-cyan-500 bg-clip-text text-transparent">
+                    <h3 className="text-2xl font-bold bg-gradient-to-r from-green-600 to-yellow-500 bg-clip-text text-transparent">
                       BARTERVERSE
                     </h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-300 font-medium">Universe Of Exchange</p>
+                    <p className="text-sm text-gray-600 dark:text-gray-300 font-medium">Ubuntu Exchange Universe 🌍</p>
                   </div>
                 </div>
 
@@ -195,8 +198,8 @@ export default function Home() {
                 {/* Floating particles */}
                 <div className="absolute inset-0 overflow-hidden">
                   <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-green-400 rounded-full opacity-60 animate-pulse"></div>
-                  <div className="absolute top-3/4 right-1/4 w-1 h-1 bg-cyan-400 rounded-full opacity-80 animate-pulse delay-300"></div>
-                  <div className="absolute top-1/2 left-1/3 w-1.5 h-1.5 bg-yellow-400 rounded-full opacity-70 animate-pulse delay-700"></div>
+                  <div className="absolute top-3/4 right-1/4 w-1 h-1 bg-yellow-400 rounded-full opacity-80 animate-pulse delay-300"></div>
+                  <div className="absolute top-1/2 left-1/3 w-1.5 h-1.5 bg-orange-400 rounded-full opacity-70 animate-pulse delay-700"></div>
                   <div className="absolute bottom-1/4 right-1/3 w-1 h-1 bg-green-300 rounded-full opacity-60 animate-pulse delay-1000"></div>
                 </div>
               </div>
@@ -205,58 +208,187 @@ export default function Home() {
         </div>
       </section>
 
-      {/* Barter Revolution Section */}
-      <section className="py-20 bg-gradient-to-r from-green-600 to-green-500 text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-black/10"></div>
-        <div className="container relative text-center">
-          <div className="max-w-4xl mx-auto space-y-8">
-            <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/20 backdrop-blur-sm text-white text-lg font-medium">
-              <TrendingUp className="h-5 w-5" />
-              #BringBackBarter Movement
-            </div>
-            <h2 className="text-4xl md:text-6xl font-bold">Barter is Back & Better Than Ever!</h2>
-            <p className="text-xl md:text-2xl text-green-100 max-w-3xl mx-auto leading-relaxed">
-              We're bringing back the oldest form of trade with modern technology. No banks, no fees, no wahala - just
-              pure value exchange between people who understand that the best deals happen when everyone wins!
+      {/* Service Showcase Section - NEW! */}
+      <section className="py-16 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm transition-colors duration-300">
+        <div className="container">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl md:text-4xl font-bold mb-4">
+              Experience the{" "}
+              <span className="bg-gradient-to-r from-green-600 to-yellow-500 bg-clip-text text-transparent">
+                Ubuntu Trading
+              </span>{" "}
+              Revolution
+            </h2>
+            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
+              See how our platform brings African wisdom and modern technology together for seamless bartering
+              experiences! 🌍
             </p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-              <div className="text-center">
-                <div className="text-4xl font-bold mb-2">200+</div>
-                <div className="text-green-100 text-lg">Barter Warriors</div>
-                <div className="text-green-200 text-sm mt-1">#BringBackBarter strong!</div>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
+            {/* Listing Creation */}
+            <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 p-6 hover:shadow-xl transition-all duration-300">
+              <div className="absolute top-4 right-4">
+                <Camera className="h-8 w-8 text-green-600 dark:text-green-400" />
               </div>
-              <div className="text-center">
-                <div className="text-4xl font-bold mb-2">150+</div>
-                <div className="text-green-100 text-lg">Successful Swaps</div>
-                <div className="text-green-200 text-sm mt-1">Barter is better!</div>
+              <div className="mb-4">
+                <div className="w-full h-48 bg-gradient-to-br from-green-200 to-green-300 dark:from-green-800 dark:to-green-700 rounded-lg flex items-center justify-center mb-4">
+                  <div className="text-center">
+                    <div className="w-16 h-16 bg-white dark:bg-gray-800 rounded-lg mx-auto mb-2 flex items-center justify-center">
+                      <Camera className="h-8 w-8 text-green-600" />
+                    </div>
+                    <p className="text-sm font-medium text-green-800 dark:text-green-200">Upload Your Treasures</p>
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">List Your African Treasures</h3>
+                <p className="text-gray-600 dark:text-gray-300 text-sm">
+                  Snap beautiful photos, describe your items with love, and specify what Ubuntu treasures you're seeking
+                  in return. Our platform makes listing as easy as WhatsApp! 📱✨
+                </p>
               </div>
-              <div className="text-center">
-                <div className="text-4xl font-bold mb-2">₦0</div>
-                <div className="text-green-100 text-lg">Money Exchanged</div>
-                <div className="text-green-200 text-sm mt-1">Pure value trading!</div>
+              <div className="flex items-center gap-2 text-xs text-green-600 dark:text-green-400 font-medium">
+                <span>Easy • Fast • Beautiful</span>
+              </div>
+            </div>
+
+            {/* Smart Matching */}
+            <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-yellow-50 to-yellow-100 dark:from-yellow-900/20 dark:to-yellow-800/20 p-6 hover:shadow-xl transition-all duration-300">
+              <div className="absolute top-4 right-4">
+                <Search className="h-8 w-8 text-yellow-600 dark:text-yellow-400" />
+              </div>
+              <div className="mb-4">
+                <div className="w-full h-48 bg-gradient-to-br from-yellow-200 to-yellow-300 dark:from-yellow-800 dark:to-yellow-700 rounded-lg flex items-center justify-center mb-4">
+                  <div className="text-center">
+                    <div className="w-16 h-16 bg-white dark:bg-gray-800 rounded-lg mx-auto mb-2 flex items-center justify-center">
+                      <Search className="h-8 w-8 text-yellow-600" />
+                    </div>
+                    <p className="text-sm font-medium text-yellow-800 dark:text-yellow-200">Smart Ubuntu Matching</p>
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Find Perfect Ubuntu Matches</h3>
+                <p className="text-gray-600 dark:text-gray-300 text-sm">
+                  Our intelligent system connects you with Ubuntu warriors who have exactly what you need and want
+                  exactly what you offer. African wisdom meets smart technology! 🧠🌍
+                </p>
+              </div>
+              <div className="flex items-center gap-2 text-xs text-yellow-600 dark:text-yellow-400 font-medium">
+                <span>Smart • Accurate • Ubuntu-Powered</span>
+              </div>
+            </div>
+
+            {/* Secure Communication */}
+            <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-900/20 dark:to-orange-800/20 p-6 hover:shadow-xl transition-all duration-300">
+              <div className="absolute top-4 right-4">
+                <Shield className="h-8 w-8 text-orange-600 dark:text-orange-400" />
+              </div>
+              <div className="mb-4">
+                <div className="w-full h-48 bg-gradient-to-br from-orange-200 to-orange-300 dark:from-orange-800 dark:to-orange-700 rounded-lg flex items-center justify-center mb-4">
+                  <div className="text-center">
+                    <div className="w-16 h-16 bg-white dark:bg-gray-800 rounded-lg mx-auto mb-2 flex items-center justify-center">
+                      <MessageSquare className="h-8 w-8 text-orange-600" />
+                    </div>
+                    <p className="text-sm font-medium text-orange-800 dark:text-orange-200">Secured Ubuntu Chat</p>
+                  </div>
+                </div>
+                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Secured Ubuntu Communication</h3>
+                <p className="text-gray-600 dark:text-gray-300 text-sm">
+                  Chat with love and confidence! Our secured messaging system protects your conversations while you
+                  build Ubuntu relationships and negotiate with African warmth. 🤝💚
+                </p>
+              </div>
+              <div className="flex items-center gap-2 text-xs text-orange-600 dark:text-orange-400 font-medium">
+                <span>Secured • Private • Ubuntu-Safe</span>
+              </div>
+            </div>
+          </div>
+
+          {/* Mobile App Preview */}
+          <div className="bg-gradient-to-r from-green-100 to-yellow-100 dark:from-green-900/20 dark:to-yellow-900/20 rounded-2xl p-8 text-center">
+            <div className="flex items-center justify-center gap-4 mb-6">
+              <Smartphone className="h-12 w-12 text-green-600" />
+              <div>
+                <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Ubuntu Trading in Your Pocket</h3>
+                <p className="text-gray-600 dark:text-gray-300">
+                  Experience the full power of African bartering on your mobile device! 📱
+                </p>
+              </div>
+            </div>
+            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
+              <div className="bg-white/50 dark:bg-gray-800/50 rounded-lg p-3">
+                <div className="font-semibold text-green-600">📸 Easy Listing</div>
+                <div className="text-gray-600 dark:text-gray-300">Snap & Share</div>
+              </div>
+              <div className="bg-white/50 dark:bg-gray-800/50 rounded-lg p-3">
+                <div className="font-semibold text-yellow-600">🔍 Smart Search</div>
+                <div className="text-gray-600 dark:text-gray-300">Find Matches</div>
+              </div>
+              <div className="bg-white/50 dark:bg-gray-800/50 rounded-lg p-3">
+                <div className="font-semibold text-orange-600">💬 Ubuntu Chat</div>
+                <div className="text-gray-600 dark:text-gray-300">Connect Hearts</div>
+              </div>
+              <div className="bg-white/50 dark:bg-gray-800/50 rounded-lg p-3">
+                <div className="font-semibold text-green-600">🤝 Safe Trading</div>
+                <div className="text-gray-600 dark:text-gray-300">Ubuntu Security</div>
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* How It Works */}
+      {/* African Heritage Section */}
+      <section className="py-20 bg-gradient-to-r from-green-600 to-yellow-500 text-white relative overflow-hidden">
+        <div className="absolute inset-0 bg-black/10"></div>
+        <div className="container relative text-center">
+          <div className="max-w-4xl mx-auto space-y-8">
+            <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/20 backdrop-blur-sm text-white text-lg font-medium">
+              <Star className="h-5 w-5" />
+              From the Blessed Continent of Abundance 🌍
+            </div>
+            <h2 className="text-4xl md:text-6xl font-bold">Ubuntu Meets Technology!</h2>
+            <p className="text-xl md:text-2xl text-green-100 max-w-3xl mx-auto leading-relaxed">
+              From the markets of Lagos to the villages of Kano, from the shores of Cape Coast to the highlands of Addis
+              Ababa - we're reviving the African spirit of community trading! No banks, no fees, no wahala - just pure
+              Ubuntu in action. Because when we trade together, we rise together! 🇳🇬🌍
+            </p>
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
+              <div className="text-center">
+                <div className="text-4xl font-bold mb-2">200+</div>
+                <div className="text-green-100 text-lg">Ubuntu Warriors</div>
+                <div className="text-green-200 text-sm mt-1">Naija leading Africa! 🇳🇬</div>
+              </div>
+              <div className="text-center">
+                <div className="text-4xl font-bold mb-2">150+</div>
+                <div className="text-green-100 text-lg">Community Exchanges</div>
+                <div className="text-green-200 text-sm mt-1">Ubuntu in action! 🤝</div>
+              </div>
+              <div className="text-center">
+                <div className="text-4xl font-bold mb-2">₦0</div>
+                <div className="text-green-100 text-lg">Money Exchanged</div>
+                <div className="text-green-200 text-sm mt-1">Pure African wisdom! 🌍</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* How Ubuntu Works */}
       <section className="py-20 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm transition-colors duration-300">
         <div className="container">
           <div className="text-center mb-16">
             <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 text-sm font-medium mb-4">
               <Sparkles className="h-4 w-4" />
-              Barter is Back & Better
+              African Wisdom Meets Modern Tech 🌍
             </div>
             <h2 className="text-4xl md:text-5xl font-bold mb-4">
               How the{" "}
-              <span className="bg-gradient-to-r from-green-600 to-green-500 bg-clip-text text-transparent">
-                Barter Revolution
+              <span className="bg-gradient-to-r from-green-600 to-yellow-500 bg-clip-text text-transparent">
+                Ubuntu Revolution
               </span>{" "}
               Works
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto transition-colors duration-300">
-              Three simple steps to join the #BringBackBarter movement and turn your unused things into treasures
+              Three simple steps rooted in African tradition - join the #BringBackBarter movement and turn your unused
+              treasures into community wealth! 🇳🇬
             </p>
           </div>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
@@ -266,10 +398,11 @@ export default function Home() {
                 <div className="h-16 w-16 rounded-2xl bg-gradient-to-r from-green-500 to-green-600 flex items-center justify-center mb-6 shadow-lg">
                   <Search className="h-8 w-8 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold mb-4">List Your Treasure</h3>
+                <h3 className="text-2xl font-bold mb-4">Share Your Abundance</h3>
                 <p className="text-gray-600 dark:text-gray-300 leading-relaxed transition-colors duration-300">
-                  Snap photo, write wetin you want collect back, and gbam! Your item don join the #BringBackBarter
-                  revolution. Our smart system go find perfect match for you.
+                  Like our ancestors in the great markets of Timbuktu and Benin, showcase your treasures! Snap photos,
+                  describe your offerings, and let the Ubuntu spirit connect you with your community. Africa is blessed
+                  with abundance! 🌍✨
                 </p>
               </div>
             </div>
@@ -279,10 +412,10 @@ export default function Home() {
                 <div className="h-16 w-16 rounded-2xl bg-gradient-to-r from-yellow-500 to-orange-500 flex items-center justify-center mb-6 shadow-lg">
                   <MessageSquare className="h-8 w-8 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold mb-4">Connect & Negotiate</h3>
+                <h3 className="text-2xl font-bold mb-4">Ubuntu Connection</h3>
                 <p className="text-gray-600 dark:text-gray-300 leading-relaxed transition-colors duration-300">
-                  Found your match? Start to dey gist! Talk the matter well, share more pictures. Barter is back &
-                  better when both parties win!
+                  Found your match? Start the conversation with love and respect - the African way! Share stories, build
+                  relationships, negotiate with Ubuntu spirit. Remember: "I am because we are!" 🤝💚
                 </p>
               </div>
             </div>
@@ -292,10 +425,11 @@ export default function Home() {
                 <div className="h-16 w-16 rounded-2xl bg-gradient-to-r from-orange-500 to-red-500 flex items-center justify-center mb-6 shadow-lg">
                   <RefreshCw className="h-8 w-8 text-white" />
                 </div>
-                <h3 className="text-2xl font-bold mb-4">Swap & Celebrate</h3>
+                <h3 className="text-2xl font-bold mb-4">Celebrate Ubuntu</h3>
                 <p className="text-gray-600 dark:text-gray-300 leading-relaxed transition-colors duration-300">
-                  Meet up for safe place, do the exchange, rate each other. Congratulations! You just proved that barter
-                  is back & better! 🎉 #BringBackBarter
+                  Meet in community, exchange with joy, and celebrate another Ubuntu victory! Rate each other with love
+                  and build the African trading network. You've just proven that our ancestors' wisdom still works!
+                  🎉🇳🇬🌍
                 </p>
               </div>
             </div>
@@ -308,26 +442,26 @@ export default function Home() {
         <div className="container text-center">
           <div className="max-w-3xl mx-auto space-y-8">
             <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 text-lg font-medium">
-              <TrendingUp className="h-5 w-5" />
-              Join the #BringBackBarter Revolution
+              <Globe className="h-5 w-5" />
+              Join the African Ubuntu Revolution 🌍
             </div>
             <h2 className="text-4xl md:text-5xl font-bold">
-              Ready to Prove{" "}
-              <span className="bg-gradient-to-r from-green-600 to-green-500 bg-clip-text text-transparent">
-                Barter is Back & Better?
+              Ready to Show the World{" "}
+              <span className="bg-gradient-to-r from-green-600 to-yellow-500 bg-clip-text text-transparent">
+                African Innovation?
               </span>
             </h2>
             <p className="text-xl text-gray-600 dark:text-gray-300 transition-colors duration-300">
-              Join hundreds of Naija people who have discovered that the best trades happen without money. Be part of
-              the movement that's bringing back the art of true value exchange!
+              Join hundreds of proud Africans who are proving that our continent leads in community, innovation, and
+              Ubuntu spirit! From Nigeria to the world - let's show them how we do it! 🇳🇬🌍
             </p>
             <div className="flex flex-col sm:flex-row gap-4 justify-center">
               <Link href="/auth/signup">
                 <Button
                   size="lg"
-                  className="bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
+                  className="bg-gradient-to-r from-green-600 to-yellow-500 hover:from-green-700 hover:to-yellow-600 text-white shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
                 >
-                  Start Your Barter Journey <ArrowRight className="ml-2 h-5 w-5" />
+                  Start Your Ubuntu Journey <ArrowRight className="ml-2 h-5 w-5" />
                 </Button>
               </Link>
               <Link href="/browse">
@@ -336,17 +470,17 @@ export default function Home() {
                   size="lg"
                   className="border-2 border-green-200 hover:border-green-300 dark:border-green-800 dark:hover:border-green-700 transition-colors duration-300"
                 >
-                  Explore the Revolution
+                  Explore African Innovation
                 </Button>
               </Link>
             </div>
             <div className="bg-gradient-to-r from-green-100 to-yellow-100 dark:from-green-900/20 dark:to-yellow-900/20 p-6 rounded-xl border border-green-200 dark:border-green-800">
               <p className="text-lg font-bold text-green-800 dark:text-green-300 mb-2">
-                🚀 #BringBackBarter is trending!
+                🚀 #BringBackBarter is spreading across Africa!
               </p>
               <p className="text-green-700 dark:text-green-400">
-                Join the movement that's proving barter is back & better than ever. No fees, no banks, no wahala - just
-                pure value exchange!
+                From Lagos to Accra, from Cairo to Cape Town - join the movement that's proving Ubuntu and African
+                wisdom can change the world! No fees, no banks, just pure community love! 🌍💚
               </p>
             </div>
           </div>
@@ -363,71 +497,73 @@ export default function Home() {
                 <span className="text-2xl font-bold text-green-800 dark:text-green-400">B3</span>
               </div>
               <p className="text-gray-600 dark:text-gray-300 transition-colors duration-300">
-                Leading the #BringBackBarter revolution. Making trading sweet, simple, and accessible for all Naija
-                people.
+                Leading the #BringBackBarter revolution from the heart of Africa. Celebrating Ubuntu, community spirit,
+                and the blessed abundance of our beautiful continent! 🌍
               </p>
               <div className="flex items-center gap-2 text-sm">
-                <span className="text-2xl">🇳🇬</span>
-                <span className="text-green-600 dark:text-green-400 font-medium">Proudly Nigerian</span>
+                <span className="text-2xl">🇳🇬🌍</span>
+                <span className="text-green-600 dark:text-green-400 font-medium">Proudly African, Born in Nigeria</span>
               </div>
               <div className="bg-green-100 dark:bg-green-900/30 p-2 rounded-lg">
                 <p className="text-xs font-medium text-green-700 dark:text-green-300">
-                  #BringBackBarter - Barter is Back & Better!
+                  #BringBackBarter - Ubuntu in Action! 🤝
                 </p>
               </div>
             </div>
             <div>
               <h3 className="font-semibold mb-4 text-gray-900 dark:text-white transition-colors duration-300">
-                The Revolution
+                The Ubuntu Revolution
               </h3>
               <div className="space-y-2">
                 <Link
                   href="/how-it-works"
                   className="block text-gray-600 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition-colors duration-300"
                 >
-                  How Barter Works
+                  How Ubuntu Works
                 </Link>
                 <Link
                   href="/browse"
                   className="block text-gray-600 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition-colors duration-300"
                 >
-                  Join the Movement
+                  Join the African Movement
                 </Link>
                 <Link
                   href="/categories"
                   className="block text-gray-600 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition-colors duration-300"
                 >
-                  Barter Categories
+                  African Treasures
                 </Link>
               </div>
             </div>
             <div>
               <h3 className="font-semibold mb-4 text-gray-900 dark:text-white transition-colors duration-300">
-                Company
+                Our Community
               </h3>
               <div className="space-y-2">
                 <Link
                   href="/about"
                   className="block text-gray-600 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition-colors duration-300"
                 >
-                  About the Revolution
+                  About Our Mission
                 </Link>
                 <Link
                   href="/contact"
                   className="block text-gray-600 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition-colors duration-300"
                 >
-                  Contact Us
+                  Connect With Us
                 </Link>
                 <Link
                   href="/careers"
                   className="block text-gray-600 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition-colors duration-300"
                 >
-                  Join Our Team
+                  Join Our Ubuntu Team
                 </Link>
               </div>
             </div>
             <div>
-              <h3 className="font-semibold mb-4 text-gray-900 dark:text-white transition-colors duration-300">Legal</h3>
+              <h3 className="font-semibold mb-4 text-gray-900 dark:text-white transition-colors duration-300">
+                Trust & Safety
+              </h3>
               <div className="space-y-2">
                 <Link
                   href="/privacy"
@@ -439,13 +575,13 @@ export default function Home() {
                   href="/terms"
                   className="block text-gray-600 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition-colors duration-300"
                 >
-                  Terms of Service
+                  Community Guidelines
                 </Link>
                 <Link
                   href="/safety"
                   className="block text-gray-600 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition-colors duration-300"
                 >
-                  Barter Safety
+                  Ubuntu Safety
                 </Link>
               </div>
             </div>
@@ -461,7 +597,7 @@ export default function Home() {
               </div>
             </div>
             <div className="text-sm text-gray-500 dark:text-gray-400 transition-colors duration-300">
-              Made with 💚 for the #BringBackBarter revolution
+              Made with 💚 for Africa, by Africans, with Ubuntu spirit 🌍
             </div>
           </div>
         </div>

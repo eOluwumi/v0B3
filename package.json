@@ -1,7 +1,8 @@
 {
-  "name": "my-v0-project",
+  "name": "b3-barterverse",
   "version": "0.1.0",
   "private": true,
+  "description": "B3 (Barterverse) — digital cashless peer-to-peer barter platform prototype (#BringBackBarter)",
   "scripts": {
     "build": "next build",
     "dev": "next dev",

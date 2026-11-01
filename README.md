@@ -1,32 +1,45 @@
-# B3 / Barter Nigeria
+# BarterNaija — Public Prototype
 
-This is a Next.js application originally generated with v0. The backend integration is being restored with Supabase.
+This repository contains the public-facing BarterNaija prototype, built with Next.js.
 
-## Backend setup
+## Release status
 
-1. Create or open the Supabase project you previously started.
-2. In Supabase, open **Project Settings → API** and copy the project URL and publishable/anon key.
-3. Copy `.env.example` to `.env.local`, then set:
-   - `NEXT_PUBLIC_SUPABASE_URL`
-   - `NEXT_PUBLIC_SUPABASE_ANON_KEY`
-4. In Supabase **SQL Editor**, run `supabase/migrations/20261028000000_initial_schema.sql`.
-5. In Supabase **Authentication → URL Configuration**, set the Site URL to your deployed app URL and add your local/deployed redirect URLs.
-6. In Supabase **Authentication → Providers**, enable Email. Choose whether email confirmation is required and configure SMTP before public launch.
-7. In Vercel, add the same two environment variables under the project's Environment Variables, then redeploy.
-8. Install dependencies and test locally with `npm install` and `npm run dev`.
+This release is a **prototype preview**, not a production marketplace. The existing interface is preserved. Some dashboard content, activity figures, listings, conversations, and trade interactions may be illustrative, mocked, or simulated. Do not use this release to complete real exchanges or payments.
 
-## Security notes
+A persistent prototype notice is displayed throughout the application so visitors understand these limitations.
 
-- The browser app must use only the Supabase publishable/anon key. Never expose a service-role key in frontend code or `NEXT_PUBLIC_*` variables.
-- The migration enables Row Level Security on the application tables and creates a private profile model plus listing, trade, message, review, report, and image-storage policies.
-- Public listing images are readable by anyone. Do not upload identity documents or private user information to this bucket.
-- Apply and test the migration in a development Supabase project before using it with production data.
-- The current UI still contains demo/mock data in some dashboard sections. Those sections must be wired to the new tables before they can be treated as production functionality.
-- This migration is a foundation, not a complete launch certification. Test signup, email confirmation, listing CRUD, image upload, access controls, and trade state transitions before public launch.
+## Deploying to Vercel
 
-## Development
+1. Import this repository into Vercel.
+2. Select the `release/public-prototype` branch for the initial preview deployment.
+3. The repository uses pnpm. Its Vercel install command permits lockfile reconciliation during installation while the dependency manifest is being standardised.
+4. Deploy a preview first and verify the homepage, navigation, browse flow, signup/sign-in screens, and responsive layout.
+5. Add `barternaija.com.ng` to the Vercel project only after the preview passes acceptance checks.
+6. Use the exact DNS records Vercel displays. Do not change registrar nameservers or delete existing DNS records until the DNS migration plan is confirmed.
+
+## Environment variables
+
+The Supabase provider is optional for this prototype. If you configure the backend, set:
+
+- `NEXT_PUBLIC_SUPABASE_URL`
+- `NEXT_PUBLIC_SUPABASE_ANON_KEY`
+
+Only use the public/publishable key in browser-exposed variables. Never expose a Supabase service-role key in frontend code or any `NEXT_PUBLIC_*` variable.
+
+## Backend roadmap
+
+The `feat/real-supabase-backend` work is retained as the starting point for a later functional release. It is not certified as production-ready. Before enabling real marketplace transactions, complete and test:
+
+- Supabase schema and application-query alignment
+- Real listing, trade, and messaging workflows
+- Authentication, email confirmation, and recovery
+- Row Level Security and storage policies
+- Abuse prevention, validation, and operational monitoring
+- End-to-end acceptance tests
+
+## Local development
 
 ```bash
-npm install
-npm run dev
+pnpm install
+pnpm dev
 ```

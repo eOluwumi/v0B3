@@ -31,11 +31,11 @@ The platform draws on the African philosophy of *Ubuntu* (“I am because we are
 
 ---
 
-## Tech Stack (observed)
+## Tech Stack
 
 - **Framework**: Next.js (App Router)
 - **UI**: React, Tailwind CSS, shadcn/ui-style components
-- **Backend / Auth / Data**: Supabase integration present
+- **Backend / Auth / Data**: Supabase integration
 - **Deployment**: Vercel (synced from v0.dev)
 - **Language**: TypeScript / TSX
 
@@ -57,9 +57,9 @@ components/             # UI and providers (Supabase, theme, etc.)
 
 ## Important Notes
 
-- This is an **early-stage concept and prototype**. Functionality, matching logic, payment/settlement alternatives, moderation, and production hardening are still under development.
+- This is an **early-stage concept and prototype**. Functionality, matching logic, settlement alternatives, moderation, and production hardening remain under active development.
 - Do not treat any live deployment metrics or “user counts” shown in the UI as verified production figures.
-- The repository was previously reported as private in some metadata; it is now public.
+- The repository is publicly accessible.
 
 ---
 

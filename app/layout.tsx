@@ -4,6 +4,7 @@ import "./globals.css"
 import { Toaster } from "@/components/ui/toaster"
 import { ThemeProvider } from "@/components/theme-provider"
 import { SupabaseProvider } from "@/components/supabase-provider"
+import { PrototypeNotice } from "@/components/prototype-notice"
 
 const inter = Inter({ subsets: ["latin"] })
 
@@ -23,6 +24,7 @@ export default function RootLayout({
       <body className={inter.className}>
         <SupabaseProvider>
           <ThemeProvider attribute="class" defaultTheme="system" enableSystem disableTransitionOnChange>
+            <PrototypeNotice />
             {children}
             <Toaster />
           </ThemeProvider>

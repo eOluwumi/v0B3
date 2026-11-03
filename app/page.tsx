@@ -1,607 +1,278 @@
-import { Button } from "@/components/ui/button"
-import { ThemeToggle } from "@/components/theme-toggle"
 import Link from "next/link"
 import {
   ArrowRight,
-  MessageSquare,
-  RefreshCw,
+  ArrowUpRight,
+  BadgeCheck,
+  BriefcaseBusiness,
+  CarFront,
+  CheckCircle2,
+  ChevronRight,
+  CircleHelp,
+  Laptop,
+  MapPin,
+  Package,
   Search,
-  Sparkles,
-  Users,
-  Zap,
-  Heart,
-  Globe,
-  Star,
-  Camera,
-  Shield,
+  ShieldCheck,
+  Shirt,
   Smartphone,
+  Sofa,
+  Sparkles,
+  Wrench,
 } from "lucide-react"
-import Image from "next/image"
+
+const categories = [
+  { name: "Phones & gadgets", detail: "Phones, laptops and accessories", icon: Smartphone },
+  { name: "Fashion", detail: "Clothing, shoes and accessories", icon: Shirt },
+  { name: "Home & living", detail: "Furniture, appliances and more", icon: Sofa },
+  { name: "Vehicles", detail: "Cars, bikes and auto essentials", icon: CarFront },
+  { name: "Services", detail: "Skills, expertise and professional help", icon: BriefcaseBusiness },
+  { name: "Other valuables", detail: "Find a new use for what you own", icon: Package },
+]
+
+const locations = ["Lagos", "Ibadan", "Abeokuta"]
+
+const steps = [
+  { number: "01", title: "List what you have", description: "Add clear photos, a straight description and what you would like in exchange." },
+  { number: "02", title: "Find what you need", description: "Browse listings and discover people offering items or services that interest you." },
+  { number: "03", title: "Agree on the swap", description: "Chat, compare value and agree on the details—including a cash top-up if both sides want one." },
+  { number: "04", title: "Exchange with care", description: "Confirm the condition, agree on a safe meeting or delivery plan, and complete your exchange." },
+]
 
 export default function Home() {
   return (
-    <div className="flex flex-col min-h-screen bg-gradient-to-br from-green-50 via-white to-green-50 dark:from-gray-950 dark:via-gray-900 dark:to-green-950 transition-colors duration-300">
-      {/* Navigation */}
-      <header className="border-b border-green-200/60 dark:border-green-800/60 backdrop-blur-sm bg-white/80 dark:bg-gray-950/80 sticky top-0 z-50 transition-colors duration-300">
-        <div className="container flex h-16 items-center justify-between">
-          <div className="flex items-center gap-3">
-            <Image src="/b3-logo.png" alt="B3 Logo" width={32} height={32} className="w-8 h-8" />
-            <span className="text-2xl font-bold text-green-800 dark:text-green-400">B3</span>
-            <div className="hidden sm:flex items-center gap-1 text-xs bg-green-100 dark:bg-green-900/30 px-2 py-1 rounded-full">
-              <Heart className="h-3 w-3 text-red-500" />
-              <span className="text-green-700 dark:text-green-300">#BringBackBarter</span>
-            </div>
-          </div>
-          <nav className="hidden md:flex items-center gap-8">
-            <Link
-              href="/how-it-works"
-              className="text-sm font-medium text-gray-600 hover:text-green-600 dark:text-gray-300 dark:hover:text-green-400 transition-colors"
-            >
-              How it works
-            </Link>
-            <Link
-              href="/browse"
-              className="text-sm font-medium text-gray-600 hover:text-green-600 dark:text-gray-300 dark:hover:text-green-400 transition-colors"
-            >
-              Browse Items
-            </Link>
-            <Link
-              href="/about"
-              className="text-sm font-medium text-gray-600 hover:text-green-600 dark:text-gray-300 dark:hover:text-green-400 transition-colors"
-            >
-              About Us
-            </Link>
+    <main className="min-h-screen overflow-hidden bg-[#fbfcfa] text-[#17251e]">
+      <div className="bg-[#073f2d] px-4 py-2 text-center text-xs font-medium tracking-wide text-emerald-50 sm:text-sm">
+        Made for everyday Nigerians. Find value in what you already have.
+      </div>
+
+      <header className="sticky top-0 z-50 border-b border-[#e5ece6] bg-white/95 backdrop-blur">
+        <div className="mx-auto flex h-[76px] max-w-7xl items-center justify-between px-5 lg:px-8">
+          <Link href="/" className="flex items-center gap-2.5" aria-label="BarterNaija home">
+            <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#087a50] text-lg font-black tracking-tight text-white">B</span>
+            <span className="text-[21px] font-extrabold tracking-tight text-[#123b2b]">Barter<span className="text-[#0b9a63]">Naija</span></span>
+          </Link>
+
+          <nav className="hidden items-center gap-8 md:flex" aria-label="Main navigation">
+            <Link href="/browse" className="text-sm font-semibold text-[#43564b] transition hover:text-[#087a50]">Explore items</Link>
+            <Link href="/categories" className="text-sm font-semibold text-[#43564b] transition hover:text-[#087a50]">Categories</Link>
+            <Link href="/how-it-works" className="text-sm font-semibold text-[#43564b] transition hover:text-[#087a50]">How it works</Link>
+            <Link href="/about" className="text-sm font-semibold text-[#43564b] transition hover:text-[#087a50]">About</Link>
           </nav>
-          <div className="flex items-center gap-3">
-            <ThemeToggle />
-            <Link href="/auth/signin">
-              <Button
-                variant="ghost"
-                size="sm"
-                className="text-gray-600 hover:text-green-600 dark:text-gray-300 dark:hover:text-green-400 transition-colors"
-              >
-                Sign In
-              </Button>
-            </Link>
-            <Link href="/auth/signup">
-              <Button
-                size="sm"
-                className="bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105"
-              >
-                Join the Revolution
-              </Button>
+
+          <div className="flex items-center gap-2 sm:gap-3">
+            <Link href="/auth/signin" className="hidden rounded-full px-4 py-2.5 text-sm font-bold text-[#244b38] transition hover:bg-[#f0f6f1] sm:inline-flex">Log in</Link>
+            <Link href="/auth/signup" className="inline-flex items-center gap-2 rounded-full bg-[#087a50] px-4 py-2.5 text-sm font-bold text-white shadow-sm transition hover:bg-[#066642] sm:px-5">
+              Join BarterNaija <ArrowUpRight className="h-4 w-4" />
             </Link>
           </div>
         </div>
       </header>
 
-      {/* Hero Section */}
-      <section className="py-20 md:py-32 relative overflow-hidden">
-        <div className="absolute inset-0 bg-gradient-to-r from-green-600/10 to-green-500/10 dark:from-green-600/5 dark:to-green-500/5 transition-colors duration-300"></div>
-        <div className="container relative flex flex-col md:flex-row items-center gap-12 md:gap-20">
-          <div className="flex-1 space-y-8 text-center md:text-left animate-fade-in">
-            <div className="space-y-4">
-              <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 text-sm font-medium transition-colors duration-300">
-                <Globe className="h-4 w-4" />
-                From the Heart of Africa - #BringBackBarter 🌍🇳🇬
-              </div>
-              <h1 className="text-5xl md:text-7xl font-bold tracking-tight">
-                Barter is Back{" "}
-                <span className="bg-gradient-to-r from-green-600 via-green-500 to-yellow-400 bg-clip-text text-transparent">
-                  & Better
-                </span>
-              </h1>
-              <p className="text-xl md:text-2xl text-gray-600 dark:text-gray-300 max-w-2xl leading-relaxed transition-colors duration-300">
-                From the blessed continent of abundance comes a revolution! We're bringing back the ancient African art
-                of trading with modern technology. No cash needed, just pure value exchange between our people. Join the
-                #BringBackBarter movement - because Ubuntu means "I am because we are!" 💚🌍
-              </p>
+      <section className="relative isolate">
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_78%_18%,rgba(16,185,129,0.12),transparent_34%),linear-gradient(180deg,#f4faf5_0%,#fbfcfa_88%)]" />
+        <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 pb-20 pt-16 md:grid-cols-[1.03fr_0.97fr] md:pb-28 md:pt-24 lg:px-8">
+          <div className="max-w-2xl">
+            <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#cce8d7] bg-white/80 px-4 py-2 text-xs font-bold uppercase tracking-[0.12em] text-[#087a50] shadow-sm">
+              <span className="h-2 w-2 rounded-full bg-[#10a66b]" />
+              The Nigerian way to exchange value
             </div>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center md:justify-start">
-              <Link href="/auth/signup">
-                <Button
-                  size="lg"
-                  className="bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
-                >
-                  Join the African Revolution <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
+            <h1 className="text-[2.8rem] font-black leading-[1.06] tracking-[-0.055em] text-[#123b2b] sm:text-6xl lg:text-[4.45rem]">
+              What you have can get you <span className="text-[#0a9861]">what you need.</span>
+            </h1>
+            <p className="mt-6 max-w-xl text-base leading-8 text-[#586b60] sm:text-lg">
+              That phone you no longer use? The furniture you want to change? The skill you can offer?
+              Put it to work. Swap goods and services with people in Lagos, Ibadan and Abeokuta on BarterNaija.
+            </p>
+
+            <div className="mt-8 flex flex-col gap-3 sm:flex-row">
+              <Link href="/browse" className="inline-flex min-h-14 items-center justify-center gap-3 rounded-full bg-[#087a50] px-7 text-sm font-bold text-white shadow-[0_12px_28px_rgba(8,122,80,0.2)] transition hover:-translate-y-0.5 hover:bg-[#066642]">
+                Explore what’s available <ArrowRight className="h-4 w-4" />
               </Link>
-              <Link href="/how-it-works">
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="border-2 border-green-200 hover:border-green-300 dark:border-green-800 dark:hover:border-green-700 transition-colors duration-300"
-                >
-                  See how Ubuntu works
-                </Button>
+              <Link href="/auth/signup" className="inline-flex min-h-14 items-center justify-center rounded-full border border-[#cbd9cf] bg-white px-7 text-sm font-bold text-[#214b36] transition hover:border-[#087a50] hover:bg-[#f5faf6]">
+                List an item
               </Link>
             </div>
-            <div className="flex items-center gap-6 text-sm text-gray-500 dark:text-gray-400 justify-center md:justify-start transition-colors duration-300">
-              <div className="flex items-center gap-2">
-                <Users className="h-4 w-4 text-green-500" />
-                <span>200+ African Warriors</span>
-              </div>
-              <div className="flex items-center gap-2">
-                <Zap className="h-4 w-4 text-yellow-500" />
-                <span>150+ Ubuntu exchanges</span>
-              </div>
-            </div>
-            <div className="bg-gradient-to-r from-green-100 to-yellow-100 dark:from-green-900/20 dark:to-yellow-900/20 p-4 rounded-lg border border-green-200 dark:border-green-800">
-              <p className="text-sm font-medium text-green-800 dark:text-green-300 text-center md:text-left">
-                🔥 <span className="font-bold">#BringBackBarter</span> - Celebrating African wisdom: "If you want to go
-                fast, go alone. If you want to go far, go together!" 🌍
-              </p>
+
+            <div className="mt-9 flex flex-wrap items-center gap-x-6 gap-y-3 text-sm font-medium text-[#64766b]">
+              <span className="inline-flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-[#0a9861]" /> No need to sell first</span>
+              <span className="inline-flex items-center gap-2"><CheckCircle2 className="h-4 w-4 text-[#0a9861]" /> Agree on fair value</span>
             </div>
           </div>
 
-          {/* Hero Visual - Hands with B3 Logo */}
-          <div className="flex-1 relative animate-fade-in">
-            <div className="relative w-full h-[400px] md:h-[500px] flex items-center justify-center">
-              {/* Background glow effect */}
-              <div className="absolute inset-0 bg-gradient-to-r from-green-400/20 to-yellow-400/20 dark:from-green-400/10 dark:to-yellow-400/10 rounded-3xl blur-3xl transition-colors duration-300"></div>
-
-              {/* Hands reaching toward each other */}
-              <div className="relative w-full h-full flex items-center justify-center">
-                {/* Left hand - African traditional */}
-                <div className="absolute left-0 top-1/2 -translate-y-1/2 w-32 h-32 opacity-60">
-                  <div className="w-full h-full bg-gradient-to-r from-amber-600 to-orange-600 dark:from-amber-700 dark:to-orange-700 rounded-full blur-sm transform rotate-12"></div>
-                  <div className="absolute inset-4 bg-gradient-to-r from-green-200 to-green-300 dark:from-green-800 dark:to-green-700 rounded-full opacity-70"></div>
+          <div className="relative mx-auto w-full max-w-[570px]">
+            <div className="absolute -right-8 -top-8 h-40 w-40 rounded-full bg-[#bcebd0] blur-3xl" />
+            <div className="absolute -bottom-8 -left-8 h-40 w-40 rounded-full bg-[#d8efb8] blur-3xl" />
+            <div className="relative rounded-[2rem] border border-white bg-white p-4 shadow-[0_30px_90px_rgba(22,70,44,0.13)] sm:p-6">
+              <div className="flex items-center justify-between border-b border-[#edf1ed] pb-4">
+                <div>
+                  <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#8a9a8f]">A better kind of marketplace</p>
+                  <p className="mt-1 text-lg font-extrabold text-[#173d2c]">Swap what you have</p>
                 </div>
+                <span className="rounded-full bg-[#e8f7ed] px-3 py-1.5 text-xs font-bold text-[#087a50]">Naija to Naija</span>
+              </div>
 
-                {/* Right hand - modern African tech */}
-                <div className="absolute right-0 top-1/2 -translate-y-1/2 w-32 h-32 opacity-60">
-                  <div className="w-full h-full bg-gradient-to-l from-green-600 to-yellow-500 dark:from-green-700 dark:to-yellow-600 rounded-full blur-sm transform -rotate-12"></div>
-                  <div className="absolute inset-4 bg-gradient-to-l from-green-200 to-yellow-300 dark:from-green-800 dark:to-yellow-700 rounded-full opacity-70"></div>
-                  {/* African pattern overlay */}
-                  <div className="absolute inset-0 opacity-30">
-                    <svg className="w-full h-full" viewBox="0 0 100 100">
-                      <defs>
-                        <pattern id="african-pattern" x="0" y="0" width="20" height="20" patternUnits="userSpaceOnUse">
-                          <circle cx="10" cy="10" r="1" fill="currentColor" className="text-yellow-500" />
-                          <path
-                            d="M5,5 L15,15 M15,5 L5,15"
-                            stroke="currentColor"
-                            strokeWidth="0.5"
-                            className="text-green-500"
-                          />
-                        </pattern>
-                      </defs>
-                      <rect width="100" height="100" fill="url(#african-pattern)" />
-                    </svg>
+              <div className="grid grid-cols-2 gap-3 py-5">
+                <div className="rounded-2xl bg-[#f2f6f1] p-4">
+                  <div className="flex h-32 items-center justify-center rounded-xl bg-gradient-to-br from-[#d9e8dd] to-[#b7d3c0]">
+                    <Laptop className="h-16 w-16 text-[#276747]" strokeWidth={1.3} />
                   </div>
+                  <p className="mt-3 text-sm font-extrabold text-[#203e2d]">Your laptop</p>
+                  <p className="mt-1 text-xs text-[#718176]">Good condition</p>
+                  <span className="mt-3 inline-flex rounded-full bg-white px-2.5 py-1 text-[11px] font-bold text-[#36704d]">What you offer</span>
                 </div>
-
-                {/* Central B3 Logo with African pride */}
-                <div className="relative z-10 flex flex-col items-center">
-                  {/* Glowing background for logo */}
-                  <div className="absolute inset-0 bg-gradient-to-r from-green-400 to-yellow-400 rounded-full blur-xl opacity-60 scale-150"></div>
-
-                  {/* B3 Logo */}
-                  <div className="relative bg-white dark:bg-gray-900 rounded-full p-6 shadow-2xl border-4 border-green-200 dark:border-green-800">
-                    <Image src="/b3-logo.png" alt="B3 Logo" width={80} height={80} className="w-20 h-20" />
+                <div className="rounded-2xl bg-[#f8f5ec] p-4">
+                  <div className="flex h-32 items-center justify-center rounded-xl bg-gradient-to-br from-[#f2e6c9] to-[#e3c990]">
+                    <Smartphone className="h-16 w-16 text-[#8a6530]" strokeWidth={1.3} />
                   </div>
-
-                  {/* Subtitle */}
-                  <div className="mt-4 text-center">
-                    <h3 className="text-2xl font-bold bg-gradient-to-r from-green-600 to-yellow-500 bg-clip-text text-transparent">
-                      BARTERVERSE
-                    </h3>
-                    <p className="text-sm text-gray-600 dark:text-gray-300 font-medium">Ubuntu Exchange Universe 🌍</p>
-                  </div>
-                </div>
-
-                {/* Connection lines */}
-                <div className="absolute inset-0 flex items-center justify-center">
-                  <div className="w-full h-px bg-gradient-to-r from-transparent via-green-400 to-transparent opacity-50"></div>
-                </div>
-
-                {/* Floating particles */}
-                <div className="absolute inset-0 overflow-hidden">
-                  <div className="absolute top-1/4 left-1/4 w-2 h-2 bg-green-400 rounded-full opacity-60 animate-pulse"></div>
-                  <div className="absolute top-3/4 right-1/4 w-1 h-1 bg-yellow-400 rounded-full opacity-80 animate-pulse delay-300"></div>
-                  <div className="absolute top-1/2 left-1/3 w-1.5 h-1.5 bg-orange-400 rounded-full opacity-70 animate-pulse delay-700"></div>
-                  <div className="absolute bottom-1/4 right-1/3 w-1 h-1 bg-green-300 rounded-full opacity-60 animate-pulse delay-1000"></div>
+                  <p className="mt-3 text-sm font-extrabold text-[#453a27]">A newer phone</p>
+                  <p className="mt-1 text-xs text-[#8c806b]">What you want</p>
+                  <span className="mt-3 inline-flex rounded-full bg-white px-2.5 py-1 text-[11px] font-bold text-[#8a6530]">What you need</span>
                 </div>
               </div>
+
+              <div className="flex items-center gap-3 rounded-xl bg-[#073f2d] p-4 text-white">
+                <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/15"><ArrowUpRight className="h-5 w-5" /></div>
+                <div className="min-w-0 flex-1">
+                  <p className="text-sm font-bold">A swap that makes sense.</p>
+                  <p className="mt-1 text-xs text-emerald-100">You can agree on a cash top-up where needed.</p>
+                </div>
+                <span className="text-xl font-black text-[#a8e7bf]">₦</span>
+              </div>
+              <p className="mt-3 text-center text-[10px] text-[#91a096]">Illustrative example — not a live listing.</p>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Service Showcase Section - NEW! */}
-      <section className="py-16 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm transition-colors duration-300">
-        <div className="container">
-          <div className="text-center mb-12">
-            <h2 className="text-3xl md:text-4xl font-bold mb-4">
-              Experience the{" "}
-              <span className="bg-gradient-to-r from-green-600 to-yellow-500 bg-clip-text text-transparent">
-                Ubuntu Trading
-              </span>{" "}
-              Revolution
-            </h2>
-            <p className="text-lg text-gray-600 dark:text-gray-300 max-w-2xl mx-auto">
-              See how our platform brings African wisdom and modern technology together for seamless bartering
-              experiences! 🌍
-            </p>
-          </div>
-
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mb-12">
-            {/* Listing Creation */}
-            <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-green-50 to-green-100 dark:from-green-900/20 dark:to-green-800/20 p-6 hover:shadow-xl transition-all duration-300">
-              <div className="absolute top-4 right-4">
-                <Camera className="h-8 w-8 text-green-600 dark:text-green-400" />
-              </div>
-              <div className="mb-4">
-                <div className="w-full h-48 bg-gradient-to-br from-green-200 to-green-300 dark:from-green-800 dark:to-green-700 rounded-lg flex items-center justify-center mb-4">
-                  <div className="text-center">
-                    <div className="w-16 h-16 bg-white dark:bg-gray-800 rounded-lg mx-auto mb-2 flex items-center justify-center">
-                      <Camera className="h-8 w-8 text-green-600" />
-                    </div>
-                    <p className="text-sm font-medium text-green-800 dark:text-green-200">Upload Your Treasures</p>
-                  </div>
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">List Your African Treasures</h3>
-                <p className="text-gray-600 dark:text-gray-300 text-sm">
-                  Snap beautiful photos, describe your items with love, and specify what Ubuntu treasures you're seeking
-                  in return. Our platform makes listing as easy as WhatsApp! 📱✨
-                </p>
-              </div>
-              <div className="flex items-center gap-2 text-xs text-green-600 dark:text-green-400 font-medium">
-                <span>Easy • Fast • Beautiful</span>
-              </div>
-            </div>
-
-            {/* Smart Matching */}
-            <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-yellow-50 to-yellow-100 dark:from-yellow-900/20 dark:to-yellow-800/20 p-6 hover:shadow-xl transition-all duration-300">
-              <div className="absolute top-4 right-4">
-                <Search className="h-8 w-8 text-yellow-600 dark:text-yellow-400" />
-              </div>
-              <div className="mb-4">
-                <div className="w-full h-48 bg-gradient-to-br from-yellow-200 to-yellow-300 dark:from-yellow-800 dark:to-yellow-700 rounded-lg flex items-center justify-center mb-4">
-                  <div className="text-center">
-                    <div className="w-16 h-16 bg-white dark:bg-gray-800 rounded-lg mx-auto mb-2 flex items-center justify-center">
-                      <Search className="h-8 w-8 text-yellow-600" />
-                    </div>
-                    <p className="text-sm font-medium text-yellow-800 dark:text-yellow-200">Smart Ubuntu Matching</p>
-                  </div>
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Find Perfect Ubuntu Matches</h3>
-                <p className="text-gray-600 dark:text-gray-300 text-sm">
-                  Our intelligent system connects you with Ubuntu warriors who have exactly what you need and want
-                  exactly what you offer. African wisdom meets smart technology! 🧠🌍
-                </p>
-              </div>
-              <div className="flex items-center gap-2 text-xs text-yellow-600 dark:text-yellow-400 font-medium">
-                <span>Smart • Accurate • Ubuntu-Powered</span>
-              </div>
-            </div>
-
-            {/* Secure Communication */}
-            <div className="group relative overflow-hidden rounded-2xl bg-gradient-to-br from-orange-50 to-orange-100 dark:from-orange-900/20 dark:to-orange-800/20 p-6 hover:shadow-xl transition-all duration-300">
-              <div className="absolute top-4 right-4">
-                <Shield className="h-8 w-8 text-orange-600 dark:text-orange-400" />
-              </div>
-              <div className="mb-4">
-                <div className="w-full h-48 bg-gradient-to-br from-orange-200 to-orange-300 dark:from-orange-800 dark:to-orange-700 rounded-lg flex items-center justify-center mb-4">
-                  <div className="text-center">
-                    <div className="w-16 h-16 bg-white dark:bg-gray-800 rounded-lg mx-auto mb-2 flex items-center justify-center">
-                      <MessageSquare className="h-8 w-8 text-orange-600" />
-                    </div>
-                    <p className="text-sm font-medium text-orange-800 dark:text-orange-200">Secured Ubuntu Chat</p>
-                  </div>
-                </div>
-                <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2">Secured Ubuntu Communication</h3>
-                <p className="text-gray-600 dark:text-gray-300 text-sm">
-                  Chat with love and confidence! Our secured messaging system protects your conversations while you
-                  build Ubuntu relationships and negotiate with African warmth. 🤝💚
-                </p>
-              </div>
-              <div className="flex items-center gap-2 text-xs text-orange-600 dark:text-orange-400 font-medium">
-                <span>Secured • Private • Ubuntu-Safe</span>
-              </div>
-            </div>
-          </div>
-
-          {/* Mobile App Preview */}
-          <div className="bg-gradient-to-r from-green-100 to-yellow-100 dark:from-green-900/20 dark:to-yellow-900/20 rounded-2xl p-8 text-center">
-            <div className="flex items-center justify-center gap-4 mb-6">
-              <Smartphone className="h-12 w-12 text-green-600" />
-              <div>
-                <h3 className="text-2xl font-bold text-gray-900 dark:text-white">Ubuntu Trading in Your Pocket</h3>
-                <p className="text-gray-600 dark:text-gray-300">
-                  Experience the full power of African bartering on your mobile device! 📱
-                </p>
-              </div>
-            </div>
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-sm">
-              <div className="bg-white/50 dark:bg-gray-800/50 rounded-lg p-3">
-                <div className="font-semibold text-green-600">📸 Easy Listing</div>
-                <div className="text-gray-600 dark:text-gray-300">Snap & Share</div>
-              </div>
-              <div className="bg-white/50 dark:bg-gray-800/50 rounded-lg p-3">
-                <div className="font-semibold text-yellow-600">🔍 Smart Search</div>
-                <div className="text-gray-600 dark:text-gray-300">Find Matches</div>
-              </div>
-              <div className="bg-white/50 dark:bg-gray-800/50 rounded-lg p-3">
-                <div className="font-semibold text-orange-600">💬 Ubuntu Chat</div>
-                <div className="text-gray-600 dark:text-gray-300">Connect Hearts</div>
-              </div>
-              <div className="bg-white/50 dark:bg-gray-800/50 rounded-lg p-3">
-                <div className="font-semibold text-green-600">🤝 Safe Trading</div>
-                <div className="text-gray-600 dark:text-gray-300">Ubuntu Security</div>
-              </div>
-            </div>
+      <section className="border-y border-[#e9eee9] bg-white py-6">
+        <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-5 md:flex-row lg:px-8">
+          <p className="text-sm font-bold text-[#52665a]">Starting in Southwest Nigeria.</p>
+          <div className="flex flex-wrap justify-center gap-2">
+            {locations.map((location) => <span key={location} className="rounded-full border border-[#e5ece6] bg-[#fbfcfa] px-3 py-1.5 text-xs font-semibold text-[#65766b]">{location}</span>)}
           </div>
         </div>
       </section>
 
-      {/* African Heritage Section */}
-      <section className="py-20 bg-gradient-to-r from-green-600 to-yellow-500 text-white relative overflow-hidden">
-        <div className="absolute inset-0 bg-black/10"></div>
-        <div className="container relative text-center">
-          <div className="max-w-4xl mx-auto space-y-8">
-            <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-white/20 backdrop-blur-sm text-white text-lg font-medium">
-              <Star className="h-5 w-5" />
-              From the Blessed Continent of Abundance 🌍
-            </div>
-            <h2 className="text-4xl md:text-6xl font-bold">Ubuntu Meets Technology!</h2>
-            <p className="text-xl md:text-2xl text-green-100 max-w-3xl mx-auto leading-relaxed">
-              From the markets of Lagos to the villages of Kano, from the shores of Cape Coast to the highlands of Addis
-              Ababa - we're reviving the African spirit of community trading! No banks, no fees, no wahala - just pure
-              Ubuntu in action. Because when we trade together, we rise together! 🇳🇬🌍
-            </p>
-            <div className="grid grid-cols-1 md:grid-cols-3 gap-8 mt-12">
-              <div className="text-center">
-                <div className="text-4xl font-bold mb-2">200+</div>
-                <div className="text-green-100 text-lg">Ubuntu Warriors</div>
-                <div className="text-green-200 text-sm mt-1">Naija leading Africa! 🇳🇬</div>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl font-bold mb-2">150+</div>
-                <div className="text-green-100 text-lg">Community Exchanges</div>
-                <div className="text-green-200 text-sm mt-1">Ubuntu in action! 🤝</div>
-              </div>
-              <div className="text-center">
-                <div className="text-4xl font-bold mb-2">₦0</div>
-                <div className="text-green-100 text-lg">Money Exchanged</div>
-                <div className="text-green-200 text-sm mt-1">Pure African wisdom! 🌍</div>
-              </div>
-            </div>
+      <section className="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-24">
+        <div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
+          <div>
+            <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-[#0a9861]">Find your next exchange</p>
+            <h2 className="mt-3 text-3xl font-black tracking-tight text-[#153c2b] sm:text-4xl">What are you looking to swap?</h2>
+            <p className="mt-3 max-w-xl text-base leading-7 text-[#65766b]">From everyday essentials to professional services, start with a category.</p>
           </div>
+          <Link href="/categories" className="inline-flex items-center gap-2 text-sm font-bold text-[#087a50] hover:text-[#064e37]">See all categories <ArrowUpRight className="h-4 w-4" /></Link>
         </div>
-      </section>
 
-      {/* How Ubuntu Works */}
-      <section className="py-20 bg-white/50 dark:bg-gray-900/50 backdrop-blur-sm transition-colors duration-300">
-        <div className="container">
-          <div className="text-center mb-16">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 text-sm font-medium mb-4">
-              <Sparkles className="h-4 w-4" />
-              African Wisdom Meets Modern Tech 🌍
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold mb-4">
-              How the{" "}
-              <span className="bg-gradient-to-r from-green-600 to-yellow-500 bg-clip-text text-transparent">
-                Ubuntu Revolution
-              </span>{" "}
-              Works
-            </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 max-w-2xl mx-auto transition-colors duration-300">
-              Three simple steps rooted in African tradition - join the #BringBackBarter movement and turn your unused
-              treasures into community wealth! 🇳🇬
-            </p>
-          </div>
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            <div className="group relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-green-500/10 to-yellow-500/10 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
-              <div className="relative flex flex-col items-center text-center p-8 rounded-2xl border border-green-100 dark:border-green-900/30 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                <div className="h-16 w-16 rounded-2xl bg-gradient-to-r from-green-500 to-green-600 flex items-center justify-center mb-6 shadow-lg">
-                  <Search className="h-8 w-8 text-white" />
-                </div>
-                <h3 className="text-2xl font-bold mb-4">Share Your Abundance</h3>
-                <p className="text-gray-600 dark:text-gray-300 leading-relaxed transition-colors duration-300">
-                  Like our ancestors in the great markets of Timbuktu and Benin, showcase your treasures! Snap photos,
-                  describe your offerings, and let the Ubuntu spirit connect you with your community. Africa is blessed
-                  with abundance! 🌍✨
-                </p>
-              </div>
-            </div>
-            <div className="group relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-yellow-500/10 to-orange-500/10 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
-              <div className="relative flex flex-col items-center text-center p-8 rounded-2xl border border-yellow-100 dark:border-yellow-900/30 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                <div className="h-16 w-16 rounded-2xl bg-gradient-to-r from-yellow-500 to-orange-500 flex items-center justify-center mb-6 shadow-lg">
-                  <MessageSquare className="h-8 w-8 text-white" />
-                </div>
-                <h3 className="text-2xl font-bold mb-4">Ubuntu Connection</h3>
-                <p className="text-gray-600 dark:text-gray-300 leading-relaxed transition-colors duration-300">
-                  Found your match? Start the conversation with love and respect - the African way! Share stories, build
-                  relationships, negotiate with Ubuntu spirit. Remember: "I am because we are!" 🤝💚
-                </p>
-              </div>
-            </div>
-            <div className="group relative">
-              <div className="absolute inset-0 bg-gradient-to-r from-orange-500/10 to-red-500/10 rounded-2xl blur-xl group-hover:blur-2xl transition-all duration-300"></div>
-              <div className="relative flex flex-col items-center text-center p-8 rounded-2xl border border-orange-100 dark:border-orange-900/30 bg-white/80 dark:bg-gray-900/80 backdrop-blur-sm hover:shadow-xl transition-all duration-300 transform hover:-translate-y-2">
-                <div className="h-16 w-16 rounded-2xl bg-gradient-to-r from-orange-500 to-red-500 flex items-center justify-center mb-6 shadow-lg">
-                  <RefreshCw className="h-8 w-8 text-white" />
-                </div>
-                <h3 className="text-2xl font-bold mb-4">Celebrate Ubuntu</h3>
-                <p className="text-gray-600 dark:text-gray-300 leading-relaxed transition-colors duration-300">
-                  Meet in community, exchange with joy, and celebrate another Ubuntu victory! Rate each other with love
-                  and build the African trading network. You've just proven that our ancestors' wisdom still works!
-                  🎉🇳🇬🌍
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA Section */}
-      <section className="py-20 bg-gradient-to-br from-green-50 to-yellow-50 dark:from-gray-900 dark:to-green-950 transition-colors duration-300">
-        <div className="container text-center">
-          <div className="max-w-3xl mx-auto space-y-8">
-            <div className="inline-flex items-center gap-2 px-6 py-3 rounded-full bg-green-100 dark:bg-green-900/30 text-green-700 dark:text-green-300 text-lg font-medium">
-              <Globe className="h-5 w-5" />
-              Join the African Ubuntu Revolution 🌍
-            </div>
-            <h2 className="text-4xl md:text-5xl font-bold">
-              Ready to Show the World{" "}
-              <span className="bg-gradient-to-r from-green-600 to-yellow-500 bg-clip-text text-transparent">
-                African Innovation?
+        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
+          {categories.map(({ name, detail, icon: Icon }, index) => (
+            <Link key={name} href="/categories" className="group flex min-h-[154px] items-center gap-5 rounded-2xl border border-[#e7eee8] bg-white p-5 shadow-[0_4px_18px_rgba(20,55,34,0.03)] transition hover:-translate-y-1 hover:border-[#b9ddc5] hover:shadow-[0_16px_34px_rgba(20,55,34,0.08)]">
+              <span className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl ${index % 2 === 0 ? "bg-[#eaf6ed] text-[#087a50]" : "bg-[#f4f2e8] text-[#8b7440]"}`}>
+                <Icon className="h-7 w-7" strokeWidth={1.7} />
               </span>
-            </h2>
-            <p className="text-xl text-gray-600 dark:text-gray-300 transition-colors duration-300">
-              Join hundreds of proud Africans who are proving that our continent leads in community, innovation, and
-              Ubuntu spirit! From Nigeria to the world - let's show them how we do it! 🇳🇬🌍
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <Link href="/auth/signup">
-                <Button
-                  size="lg"
-                  className="bg-gradient-to-r from-green-600 to-yellow-500 hover:from-green-700 hover:to-yellow-600 text-white shadow-xl hover:shadow-2xl transition-all duration-300 transform hover:scale-105"
-                >
-                  Start Your Ubuntu Journey <ArrowRight className="ml-2 h-5 w-5" />
-                </Button>
-              </Link>
-              <Link href="/browse">
-                <Button
-                  variant="outline"
-                  size="lg"
-                  className="border-2 border-green-200 hover:border-green-300 dark:border-green-800 dark:hover:border-green-700 transition-colors duration-300"
-                >
-                  Explore African Innovation
-                </Button>
-              </Link>
-            </div>
-            <div className="bg-gradient-to-r from-green-100 to-yellow-100 dark:from-green-900/20 dark:to-yellow-900/20 p-6 rounded-xl border border-green-200 dark:border-green-800">
-              <p className="text-lg font-bold text-green-800 dark:text-green-300 mb-2">
-                🚀 #BringBackBarter is spreading across Africa!
-              </p>
-              <p className="text-green-700 dark:text-green-400">
-                From Lagos to Accra, from Cairo to Cape Town - join the movement that's proving Ubuntu and African
-                wisdom can change the world! No fees, no banks, just pure community love! 🌍💚
-              </p>
-            </div>
+              <span className="min-w-0 flex-1">
+                <span className="block text-base font-extrabold text-[#203e2d]">{name}</span>
+                <span className="mt-1 block text-sm leading-6 text-[#78877d]">{detail}</span>
+              </span>
+              <ChevronRight className="h-5 w-5 text-[#9aaba0] transition group-hover:translate-x-1 group-hover:text-[#087a50]" />
+            </Link>
+          ))}
+        </div>
+      </section>
+
+      <section className="bg-[#073f2d] py-20 text-white lg:py-24">
+        <div className="mx-auto grid max-w-7xl gap-14 px-5 lg:grid-cols-[0.8fr_1.2fr] lg:px-8">
+          <div className="max-w-lg">
+            <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-[#9ce2b8]">Simple by design</p>
+            <h2 className="mt-4 text-3xl font-black tracking-tight sm:text-4xl">A good exchange starts with a conversation.</h2>
+            <p className="mt-5 leading-8 text-emerald-100/80">BarterNaija gives you a place to discover options and discuss an exchange. You decide what works, what is fair and how to complete it.</p>
+            <Link href="/how-it-works" className="mt-8 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-extrabold text-[#075239] transition hover:bg-[#e8f7ed]">See how it works <ArrowRight className="h-4 w-4" /></Link>
+          </div>
+
+          <div className="grid gap-7 sm:grid-cols-2">
+            {steps.map((step) => (
+              <div key={step.number} className="border-t border-emerald-700/80 pt-5">
+                <span className="text-sm font-black tracking-[0.14em] text-[#8fdbad]">{step.number}</span>
+                <h3 className="mt-3 text-xl font-extrabold">{step.title}</h3>
+                <p className="mt-2 text-sm leading-7 text-emerald-100/75">{step.description}</p>
+              </div>
+            ))}
           </div>
         </div>
       </section>
 
-      {/* Footer */}
-      <footer className="mt-auto py-12 border-t border-green-200 dark:border-green-800 bg-white/80 dark:bg-gray-950/80 backdrop-blur-sm transition-colors duration-300">
-        <div className="container">
-          <div className="grid grid-cols-1 md:grid-cols-4 gap-8 mb-8">
-            <div className="space-y-4">
-              <div className="flex items-center gap-3">
-                <Image src="/b3-logo.png" alt="B3 Logo" width={32} height={32} className="w-8 h-8" />
-                <span className="text-2xl font-bold text-green-800 dark:text-green-400">B3</span>
-              </div>
-              <p className="text-gray-600 dark:text-gray-300 transition-colors duration-300">
-                Leading the #BringBackBarter revolution from the heart of Africa. Celebrating Ubuntu, community spirit,
-                and the blessed abundance of our beautiful continent! 🌍
-              </p>
-              <div className="flex items-center gap-2 text-sm">
-                <span className="text-2xl">🇳🇬🌍</span>
-                <span className="text-green-600 dark:text-green-400 font-medium">Proudly African, Born in Nigeria</span>
-              </div>
-              <div className="bg-green-100 dark:bg-green-900/30 p-2 rounded-lg">
-                <p className="text-xs font-medium text-green-700 dark:text-green-300">
-                  #BringBackBarter - Ubuntu in Action! 🤝
-                </p>
-              </div>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-4 text-gray-900 dark:text-white transition-colors duration-300">
-                The Ubuntu Revolution
-              </h3>
-              <div className="space-y-2">
-                <Link
-                  href="/how-it-works"
-                  className="block text-gray-600 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition-colors duration-300"
-                >
-                  How Ubuntu Works
-                </Link>
-                <Link
-                  href="/browse"
-                  className="block text-gray-600 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition-colors duration-300"
-                >
-                  Join the African Movement
-                </Link>
-                <Link
-                  href="/categories"
-                  className="block text-gray-600 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition-colors duration-300"
-                >
-                  African Treasures
-                </Link>
-              </div>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-4 text-gray-900 dark:text-white transition-colors duration-300">
-                Our Community
-              </h3>
-              <div className="space-y-2">
-                <Link
-                  href="/about"
-                  className="block text-gray-600 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition-colors duration-300"
-                >
-                  About Our Mission
-                </Link>
-                <Link
-                  href="/contact"
-                  className="block text-gray-600 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition-colors duration-300"
-                >
-                  Connect With Us
-                </Link>
-                <Link
-                  href="/careers"
-                  className="block text-gray-600 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition-colors duration-300"
-                >
-                  Join Our Ubuntu Team
-                </Link>
-              </div>
-            </div>
-            <div>
-              <h3 className="font-semibold mb-4 text-gray-900 dark:text-white transition-colors duration-300">
-                Trust & Safety
-              </h3>
-              <div className="space-y-2">
-                <Link
-                  href="/privacy"
-                  className="block text-gray-600 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition-colors duration-300"
-                >
-                  Privacy Policy
-                </Link>
-                <Link
-                  href="/terms"
-                  className="block text-gray-600 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition-colors duration-300"
-                >
-                  Community Guidelines
-                </Link>
-                <Link
-                  href="/safety"
-                  className="block text-gray-600 dark:text-gray-300 hover:text-green-600 dark:hover:text-green-400 transition-colors duration-300"
-                >
-                  Ubuntu Safety
-                </Link>
-              </div>
+      <section className="mx-auto grid max-w-7xl gap-6 px-5 py-20 md:grid-cols-3 lg:px-8">
+        <div className="rounded-2xl bg-[#eef7ef] p-7">
+          <ShieldCheck className="h-8 w-8 text-[#087a50]" />
+          <h3 className="mt-5 text-lg font-extrabold text-[#193e2c]">Trade with your eyes open</h3>
+          <p className="mt-2 text-sm leading-7 text-[#66786c]">Check item condition, ask questions, agree on value and choose a sensible exchange arrangement. Never rush a deal.</p>
+          <Link href="/safety" className="mt-4 inline-flex items-center gap-1 text-sm font-bold text-[#087a50]">Safety tips <ArrowUpRight className="h-4 w-4" /></Link>
+        </div>
+        <div className="rounded-2xl bg-[#f7f4eb] p-7">
+          <Wrench className="h-8 w-8 text-[#987b3f]" />
+          <h3 className="mt-5 text-lg font-extrabold text-[#403a2b]">Goods and services</h3>
+          <p className="mt-2 text-sm leading-7 text-[#77705f]">Exchange more than physical items. Your skills, time and professional services can also bring value to a deal.</p>
+        </div>
+        <div className="rounded-2xl bg-[#f0f4f7] p-7">
+          <CircleHelp className="h-8 w-8 text-[#46647a]" />
+          <h3 className="mt-5 text-lg font-extrabold text-[#263f50]">You stay in control</h3>
+          <p className="mt-2 text-sm leading-7 text-[#687985]">No one decides the value of your item for you. Discuss the terms and proceed only when both parties agree.</p>
+        </div>
+      </section>
+
+      <section className="px-5 pb-20 lg:pb-24">
+        <div className="mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-[#e7f5e9] px-6 py-14 text-center sm:px-12">
+          <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-[#087a50] shadow-sm"><Sparkles className="h-6 w-6" /></div>
+          <h2 className="mx-auto mt-5 max-w-2xl text-3xl font-black tracking-tight text-[#153c2b] sm:text-4xl">That thing you have could be exactly what someone needs.</h2>
+          <p className="mx-auto mt-4 max-w-xl leading-7 text-[#5d7464]">Put it out there. Discover possibilities. Make an exchange that works for you.</p>
+          <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
+            <Link href="/auth/signup" className="inline-flex min-h-13 items-center justify-center gap-2 rounded-full bg-[#087a50] px-7 py-3.5 text-sm font-extrabold text-white transition hover:bg-[#066642]">Get started <ArrowRight className="h-4 w-4" /></Link>
+            <Link href="/browse" className="inline-flex min-h-13 items-center justify-center rounded-full border border-[#b9d8c0] bg-white px-7 py-3.5 text-sm font-extrabold text-[#214b36] transition hover:border-[#087a50]">Browse the marketplace</Link>
+          </div>
+        </div>
+      </section>
+
+      <footer className="border-t border-[#e5ece6] bg-white">
+        <div className="mx-auto grid max-w-7xl gap-10 px-5 py-12 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr] lg:px-8">
+          <div>
+            <Link href="/" className="inline-flex items-center gap-2.5">
+              <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#087a50] font-black text-white">B</span>
+              <span className="text-xl font-extrabold tracking-tight text-[#123b2b]">Barter<span className="text-[#0b9a63]">Naija</span></span>
+            </Link>
+            <p className="mt-4 max-w-xs text-sm leading-7 text-[#718176]">A smarter way to exchange goods and services across Lagos, Ibadan and Abeokuta.</p>
+            <p className="mt-5 text-xs font-semibold text-[#89968d]">Proudly built in Nigeria 🇳🇬</p>
+          </div>
+          <div>
+            <h3 className="text-sm font-extrabold text-[#203e2d]">Marketplace</h3>
+            <div className="mt-4 space-y-3 text-sm text-[#718176]">
+              <Link className="block hover:text-[#087a50]" href="/browse">Explore items</Link>
+              <Link className="block hover:text-[#087a50]" href="/categories">Categories</Link>
+              <Link className="block hover:text-[#087a50]" href="/auth/signup">List an item</Link>
             </div>
           </div>
-          <div className="flex flex-col md:flex-row justify-between items-center pt-8 border-t border-green-200 dark:border-green-800 transition-colors duration-300">
-            <div className="flex items-center gap-4 mb-4 md:mb-0">
-              <span className="text-gray-600 dark:text-gray-300 transition-colors duration-300">
-                © {new Date().getFullYear()} B3. All rights reserved.
-              </span>
-              <div className="flex items-center gap-2 text-sm text-gray-500 dark:text-gray-400 transition-colors duration-300">
-                <Image src="/b9-logo.png" alt="B9Tech Consult" width={16} height={16} className="w-4 h-4" />
-                <span>Powered by B9Tech Consult</span>
-              </div>
+          <div>
+            <h3 className="text-sm font-extrabold text-[#203e2d]">Learn more</h3>
+            <div className="mt-4 space-y-3 text-sm text-[#718176]">
+              <Link className="block hover:text-[#087a50]" href="/how-it-works">How it works</Link>
+              <Link className="block hover:text-[#087a50]" href="/about">About BarterNaija</Link>
+              <Link className="block hover:text-[#087a50]" href="/contact">Contact</Link>
             </div>
-            <div className="text-sm text-gray-500 dark:text-gray-400 transition-colors duration-300">
-              Made with 💚 for Africa, by Africans, with Ubuntu spirit 🌍
+          </div>
+          <div>
+            <h3 className="text-sm font-extrabold text-[#203e2d]">Your safety</h3>
+            <div className="mt-4 space-y-3 text-sm text-[#718176]">
+              <Link className="block hover:text-[#087a50]" href="/safety">Safety tips</Link>
+              <Link className="block hover:text-[#087a50]" href="/privacy">Privacy</Link>
+              <Link className="block hover:text-[#087a50]" href="/terms">Terms</Link>
             </div>
+          </div>
+        </div>
+        <div className="border-t border-[#edf1ed]">
+          <div className="mx-auto flex max-w-7xl flex-col gap-2 px-5 py-5 text-xs text-[#89968d] sm:flex-row sm:items-center sm:justify-between lg:px-8">
+            <span>© {new Date().getFullYear()} BarterNaija. All rights reserved.</span>
+            <span>A B9 Tech Consult product.</span>
           </div>
         </div>
       </footer>
-    </div>
+    </main>
   )
 }

@@ -52,8 +52,8 @@ export default function Home() {
           </Link>
 
           <nav className="hidden items-center gap-8 md:flex" aria-label="Main navigation">
-            <Link href="/browse" className="text-sm font-semibold text-[#43564b] transition hover:text-[#087a50]">Explore items</Link>
-            <Link href="/categories" className="text-sm font-semibold text-[#43564b] transition hover:text-[#087a50]">Categories</Link>
+            <Link href="/#categories" className="text-sm font-semibold text-[#43564b] transition hover:text-[#087a50]">Explore items</Link>
+            <Link href="/#categories" className="text-sm font-semibold text-[#43564b] transition hover:text-[#087a50]">Categories</Link>
             <Link href="/how-it-works" className="text-sm font-semibold text-[#43564b] transition hover:text-[#087a50]">How it works</Link>
             <Link href="/about" className="text-sm font-semibold text-[#43564b] transition hover:text-[#087a50]">About</Link>
           </nav>
@@ -84,7 +84,7 @@ export default function Home() {
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link href="/browse" className="inline-flex min-h-14 items-center justify-center gap-3 rounded-full bg-[#087a50] px-7 text-sm font-bold text-white shadow-[0_12px_28px_rgba(8,122,80,0.2)] transition hover:-translate-y-0.5 hover:bg-[#066642]">
+              <Link href="/#categories" className="inline-flex min-h-14 items-center justify-center gap-3 rounded-full bg-[#087a50] px-7 text-sm font-bold text-white shadow-[0_12px_28px_rgba(8,122,80,0.2)] transition hover:-translate-y-0.5 hover:bg-[#066642]">
                 Explore what’s available <ArrowRight className="h-4 w-4" />
               </Link>
               <Link href="/auth/signup" className="inline-flex min-h-14 items-center justify-center rounded-full border border-[#cbd9cf] bg-white px-7 text-sm font-bold text-[#214b36] transition hover:border-[#087a50] hover:bg-[#f5faf6]">
@@ -152,19 +152,19 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-24">
+      <section id="categories" className="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-24">
         <div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
           <div>
             <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-[#0a9861]">Find your next exchange</p>
             <h2 className="mt-3 text-3xl font-black tracking-tight text-[#153c2b] sm:text-4xl">What are you looking to swap?</h2>
             <p className="mt-3 max-w-xl text-base leading-7 text-[#65766b]">From cars and electronics to furniture and fashion, discover valuables people are ready to exchange.</p>
           </div>
-          <Link href="/categories" className="inline-flex items-center gap-2 text-sm font-bold text-[#087a50] hover:text-[#064e37]">See all categories <ArrowUpRight className="h-4 w-4" /></Link>
+          <Link href="/#categories" className="inline-flex items-center gap-2 text-sm font-bold text-[#087a50] hover:text-[#064e37]">See all categories <ArrowUpRight className="h-4 w-4" /></Link>
         </div>
 
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {categories.map(({ name, detail, icon: Icon }, index) => (
-            <Link key={name} href="/categories" className="group flex min-h-[154px] items-center gap-5 rounded-2xl border border-[#e7eee8] bg-white p-5 shadow-[0_4px_18px_rgba(20,55,34,0.03)] transition hover:-translate-y-1 hover:border-[#b9ddc5] hover:shadow-[0_16px_34px_rgba(20,55,34,0.08)]">
+            <Link key={name} href="/#categories" className="group flex min-h-[154px] items-center gap-5 rounded-2xl border border-[#e7eee8] bg-white p-5 shadow-[0_4px_18px_rgba(20,55,34,0.03)] transition hover:-translate-y-1 hover:border-[#b9ddc5] hover:shadow-[0_16px_34px_rgba(20,55,34,0.08)]">
               <span className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl ${index % 2 === 0 ? "bg-[#eaf6ed] text-[#087a50]" : "bg-[#f4f2e8] text-[#8b7440]"}`}>
                 <Icon className="h-7 w-7" strokeWidth={1.7} />
               </span>
@@ -225,7 +225,7 @@ export default function Home() {
           <p className="mx-auto mt-4 max-w-xl leading-7 text-[#5d7464]">Put it out there. Discover possibilities. Make an exchange that works for you.</p>
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
             <Link href="/auth/signup" className="inline-flex min-h-13 items-center justify-center gap-2 rounded-full bg-[#087a50] px-7 py-3.5 text-sm font-extrabold text-white transition hover:bg-[#066642]">Get started <ArrowRight className="h-4 w-4" /></Link>
-            <Link href="/browse" className="inline-flex min-h-13 items-center justify-center rounded-full border border-[#b9d8c0] bg-white px-7 py-3.5 text-sm font-extrabold text-[#214b36] transition hover:border-[#087a50]">Browse the marketplace</Link>
+            <Link href="/#categories" className="inline-flex min-h-13 items-center justify-center rounded-full border border-[#b9d8c0] bg-white px-7 py-3.5 text-sm font-extrabold text-[#214b36] transition hover:border-[#087a50]">Browse the marketplace</Link>
           </div>
         </div>
       </section>
@@ -243,8 +243,8 @@ export default function Home() {
           <div>
             <h3 className="text-sm font-extrabold text-[#203e2d]">Marketplace</h3>
             <div className="mt-4 space-y-3 text-sm text-[#718176]">
-              <Link className="block hover:text-[#087a50]" href="/browse">Explore items</Link>
-              <Link className="block hover:text-[#087a50]" href="/categories">Categories</Link>
+              <Link className="block hover:text-[#087a50]" href="/#categories">Explore items</Link>
+              <Link className="block hover:text-[#087a50]" href="/#categories">Categories</Link>
               <Link className="block hover:text-[#087a50]" href="/auth/signup">List an item</Link>
             </div>
           </div>
@@ -253,15 +253,15 @@ export default function Home() {
             <div className="mt-4 space-y-3 text-sm text-[#718176]">
               <Link className="block hover:text-[#087a50]" href="/how-it-works">How it works</Link>
               <Link className="block hover:text-[#087a50]" href="/about">About BarterNaija</Link>
-              <Link className="block hover:text-[#087a50]" href="/contact">Contact</Link>
+              <Link className="block hover:text-[#087a50]" href="/about">About BarterNaija</Link>
             </div>
           </div>
           <div>
             <h3 className="text-sm font-extrabold text-[#203e2d]">Your safety</h3>
             <div className="mt-4 space-y-3 text-sm text-[#718176]">
-              <Link className="block hover:text-[#087a50]" href="/safety">Safety tips</Link>
-              <Link className="block hover:text-[#087a50]" href="/privacy">Privacy</Link>
-              <Link className="block hover:text-[#087a50]" href="/terms">Terms</Link>
+              <Link className="block hover:text-[#087a50]" href="/how-it-works#safety">Safety tips</Link>
+              <span className="block">Privacy policy coming soon</span>
+              <span className="block">Terms of use coming soon</span>
             </div>
           </div>
         </div>

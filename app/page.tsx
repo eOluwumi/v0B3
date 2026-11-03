@@ -29,7 +29,7 @@ const categories = [
   { name: "Other valuables", detail: "Find a new use for what you own", icon: Package },
 ]
 
-const locations = ["Lagos", "Abuja", "Port Harcourt", "Ibadan", "Enugu", "Kano"]
+const locations = ["Lagos", "Ibadan", "Abeokuta"]
 
 const steps = [
   { number: "01", title: "List what you have", description: "Add clear photos, a straight description and what you would like in exchange." },
@@ -81,7 +81,7 @@ export default function Home() {
             </h1>
             <p className="mt-6 max-w-xl text-base leading-8 text-[#586b60] sm:text-lg">
               That phone you no longer use? The furniture you want to change? The skill you can offer?
-              Put it to work. Swap goods and services with people across Nigeria on BarterNaija.
+              Put it to work. Swap goods and services with people in Lagos, Ibadan and Abeokuta on BarterNaija.
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -146,7 +146,7 @@ export default function Home() {
 
       <section className="border-y border-[#e9eee9] bg-white py-6">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-5 md:flex-row lg:px-8">
-          <p className="text-sm font-bold text-[#52665a]">Built around how Nigerians actually trade and do business.</p>
+          <p className="text-sm font-bold text-[#52665a]">Starting in Southwest Nigeria.</p>
           <div className="flex flex-wrap justify-center gap-2">
             {locations.map((location) => <span key={location} className="rounded-full border border-[#e5ece6] bg-[#fbfcfa] px-3 py-1.5 text-xs font-semibold text-[#65766b]">{location}</span>)}
           </div>
@@ -238,7 +238,7 @@ export default function Home() {
               <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#087a50] font-black text-white">B</span>
               <span className="text-xl font-extrabold tracking-tight text-[#123b2b]">Barter<span className="text-[#0b9a63]">Naija</span></span>
             </Link>
-            <p className="mt-4 max-w-xs text-sm leading-7 text-[#718176]">A smarter way for Nigerians to exchange goods, services and value.</p>
+            <p className="mt-4 max-w-xs text-sm leading-7 text-[#718176]">A smarter way to exchange goods and services across Lagos, Ibadan and Abeokuta.</p>
             <p className="mt-5 text-xs font-semibold text-[#89968d]">Proudly built in Nigeria 🇳🇬</p>
           </div>
           <div>

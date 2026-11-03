@@ -4,119 +4,94 @@
 
 @layer base {
   :root {
-    --background: 0 0% 100%;
-    --foreground: 222.2 84% 4.9%;
+    --background: 150 20% 99%;
+    --foreground: 150 25% 12%;
     --card: 0 0% 100%;
-    --card-foreground: 222.2 84% 4.9%;
+    --card-foreground: 150 25% 12%;
     --popover: 0 0% 100%;
-    --popover-foreground: 222.2 84% 4.9%;
-    --primary: 142.1 76.2% 36.3%;
-    --primary-foreground: 355.7 100% 97.3%;
-    --secondary: 210 40% 96%;
-    --secondary-foreground: 222.2 84% 4.9%;
-    --muted: 210 40% 96%;
-    --muted-foreground: 215.4 16.3% 46.9%;
-    --accent: 210 40% 96%;
-    --accent-foreground: 222.2 84% 4.9%;
-    --destructive: 0 84.2% 60.2%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 214.3 31.8% 91.4%;
-    --input: 214.3 31.8% 91.4%;
-    --ring: 142.1 76.2% 36.3%;
-    --radius: 0.75rem;
-    --chart-1: 142 76% 36%;
-    --chart-2: 173 58% 39%;
-    --chart-3: 197 37% 24%;
-    --chart-4: 43 74% 66%;
-    --chart-5: 27 87% 67%;
+    --popover-foreground: 150 25% 12%;
+    --primary: 153 87% 25%;
+    --primary-foreground: 0 0% 100%;
+    --secondary: 140 24% 94%;
+    --secondary-foreground: 150 25% 12%;
+    --muted: 140 18% 95%;
+    --muted-foreground: 145 10% 42%;
+    --accent: 140 24% 94%;
+    --accent-foreground: 150 25% 12%;
+    --destructive: 0 72% 51%;
+    --destructive-foreground: 0 0% 100%;
+    --border: 140 16% 89%;
+    --input: 140 16% 89%;
+    --ring: 153 87% 25%;
+    --radius: 0.85rem;
+    --chart-1: 153 87% 25%;
+    --chart-2: 145 60% 42%;
+    --chart-3: 40 45% 52%;
+    --chart-4: 190 30% 42%;
+    --chart-5: 25 55% 55%;
   }
 
   .dark {
-    --background: 222.2 84% 4.9%;
-    --foreground: 210 40% 98%;
-    --card: 222.2 84% 4.9%;
-    --card-foreground: 210 40% 98%;
-    --popover: 222.2 84% 4.9%;
-    --popover-foreground: 210 40% 98%;
-    --primary: 217.2 91.2% 59.8%;
-    --primary-foreground: 222.2 84% 4.9%;
-    --secondary: 217.2 32.6% 17.5%;
-    --secondary-foreground: 210 40% 98%;
-    --muted: 217.2 32.6% 17.5%;
-    --muted-foreground: 215 20.2% 65.1%;
-    --accent: 217.2 32.6% 17.5%;
-    --accent-foreground: 210 40% 98%;
-    --destructive: 0 62.8% 30.6%;
-    --destructive-foreground: 210 40% 98%;
-    --border: 217.2 32.6% 17.5%;
-    --input: 217.2 32.6% 17.5%;
-    --ring: 224.3 76.3% 94.1%;
-    --chart-1: 220 70% 50%;
-    --chart-2: 160 60% 45%;
-    --chart-3: 30 80% 55%;
-    --chart-4: 280 65% 60%;
-    --chart-5: 340 75% 55%;
+    --background: 150 22% 7%;
+    --foreground: 140 18% 94%;
+    --card: 150 22% 9%;
+    --card-foreground: 140 18% 94%;
+    --popover: 150 22% 9%;
+    --popover-foreground: 140 18% 94%;
+    --primary: 151 65% 43%;
+    --primary-foreground: 150 25% 8%;
+    --secondary: 150 15% 16%;
+    --secondary-foreground: 140 18% 94%;
+    --muted: 150 15% 16%;
+    --muted-foreground: 145 10% 65%;
+    --accent: 150 15% 16%;
+    --accent-foreground: 140 18% 94%;
+    --destructive: 0 55% 40%;
+    --destructive-foreground: 0 0% 98%;
+    --border: 150 12% 20%;
+    --input: 150 12% 20%;
+    --ring: 151 65% 43%;
+    --chart-1: 151 65% 43%;
+    --chart-2: 145 55% 55%;
+    --chart-3: 40 55% 60%;
+    --chart-4: 190 40% 55%;
+    --chart-5: 25 60% 60%;
   }
 }
 
 @layer base {
-  * {
-    @apply border-border;
+  * { @apply border-border; }
+  html { scroll-behavior: smooth; }
+  body { @apply bg-background text-foreground antialiased; }
+  a:focus-visible, button:focus-visible, input:focus-visible {
+    @apply outline-none ring-2 ring-emerald-600 ring-offset-2;
   }
-  body {
-    @apply bg-background text-foreground;
-  }
 }
 
-/* Custom scrollbar */
-::-webkit-scrollbar {
-  width: 6px;
-}
+::-webkit-scrollbar { width: 8px; }
+::-webkit-scrollbar-track { @apply bg-slate-100; }
+::-webkit-scrollbar-thumb { @apply rounded-full bg-emerald-700/50; }
+::-webkit-scrollbar-thumb:hover { @apply bg-emerald-700/75; }
 
-::-webkit-scrollbar-track {
-  @apply bg-gray-100 dark:bg-gray-800;
-}
-
-::-webkit-scrollbar-thumb {
-  @apply bg-gray-300 dark:bg-gray-600 rounded-full;
-}
-
-::-webkit-scrollbar-thumb:hover {
-  @apply bg-gray-400 dark:bg-gray-500;
-}
-
-/* Smooth transitions for theme changes */
-* {
-  transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
-}
-
-/* Gradient text utilities */
 .gradient-text {
-  @apply bg-gradient-to-r from-green-600 to-green-500 bg-clip-text text-transparent;
+  @apply bg-gradient-to-r from-emerald-700 to-emerald-500 bg-clip-text text-transparent;
 }
 
-/* Glass morphism effect */
 .glass {
-  @apply backdrop-blur-sm bg-white/80 dark:bg-gray-950/80 border-slate-200/60 dark:border-gray-800/60;
+  @apply border border-white/60 bg-white/90 backdrop-blur-md;
 }
 
-/* Animation utilities */
 @keyframes fadeIn {
-  from {
-    opacity: 0;
-    transform: translateY(10px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
 }
+.animate-fade-in { animation: fadeIn 0.5s ease-out; }
 
-.animate-fade-in {
-  animation: fadeIn 0.5s ease-out;
-}
-
-/* Custom button hover effects */
-.btn-gradient {
-  @apply bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white shadow-lg hover:shadow-xl transition-all duration-200 transform hover:scale-105;
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after {
+    scroll-behavior: auto !important;
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
 }

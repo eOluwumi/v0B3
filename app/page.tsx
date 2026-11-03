@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { ThemeToggle } from "@/components/theme-toggle"
 import {
   ArrowRight,
   ArrowUpRight,
@@ -9,15 +10,12 @@ import {
   ChevronRight,
   CircleHelp,
   Laptop,
-  MapPin,
   Package,
-  Search,
   ShieldCheck,
   Shirt,
   Smartphone,
   Sofa,
   Sparkles,
-  Wrench,
 } from "lucide-react"
 
 const categories = [
@@ -25,8 +23,8 @@ const categories = [
   { name: "Fashion", detail: "Clothing, shoes and accessories", icon: Shirt },
   { name: "Home & living", detail: "Furniture, appliances and more", icon: Sofa },
   { name: "Vehicles", detail: "Cars, bikes and auto essentials", icon: CarFront },
-  { name: "Services", detail: "Skills, expertise and professional help", icon: BriefcaseBusiness },
-  { name: "Other valuables", detail: "Find a new use for what you own", icon: Package },
+  { name: "Collectibles & equipment", detail: "Specialist gear, instruments and collectibles", icon: Package },
+  { name: "Other valuables", detail: "Quality items ready for a new owner", icon: BriefcaseBusiness },
 ]
 
 const locations = ["Lagos", "Ibadan", "Abeokuta"]
@@ -34,7 +32,7 @@ const locations = ["Lagos", "Ibadan", "Abeokuta"]
 const steps = [
   { number: "01", title: "List what you have", description: "Add clear photos, a straight description and what you would like in exchange." },
   { number: "02", title: "Find what you need", description: "Browse listings and discover people offering items or services that interest you." },
-  { number: "03", title: "Agree on the swap", description: "Chat, compare value and agree on the details—including a cash top-up if both sides want one." },
+  { number: "03", title: "Agree on the swap", description: "Chat, compare value and agree on a direct item-for-item exchange. No cash settlement." },
   { number: "04", title: "Exchange with care", description: "Confirm the condition, agree on a safe meeting or delivery plan, and complete your exchange." },
 ]
 
@@ -81,7 +79,7 @@ export default function Home() {
             </h1>
             <p className="mt-6 max-w-xl text-base leading-8 text-[#586b60] sm:text-lg">
               That phone you no longer use? The furniture you want to change? The skill you can offer?
-              Put it to work. Swap goods and services with people in Lagos, Ibadan and Abeokuta on BarterNaija.
+              Put it to work. Swap valuable items with people in Lagos, Ibadan and Abeokuta on BarterNaija. No cash. Just a fair exchange.
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -105,7 +103,7 @@ export default function Home() {
             <div className="relative rounded-[2rem] border border-white bg-white p-4 shadow-[0_30px_90px_rgba(22,70,44,0.13)] sm:p-6">
               <div className="flex items-center justify-between border-b border-[#edf1ed] pb-4">
                 <div>
-                  <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#8a9a8f]">A better kind of marketplace</p>
+                  <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#8a9a8f]">A community built around exchange</p>
                   <p className="mt-1 text-lg font-extrabold text-[#173d2c]">Swap what you have</p>
                 </div>
                 <span className="rounded-full bg-[#e8f7ed] px-3 py-1.5 text-xs font-bold text-[#087a50]">Naija to Naija</span>
@@ -133,10 +131,10 @@ export default function Home() {
               <div className="flex items-center gap-3 rounded-xl bg-[#073f2d] p-4 text-white">
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/15"><ArrowUpRight className="h-5 w-5" /></div>
                 <div className="min-w-0 flex-1">
-                  <p className="text-sm font-bold">A swap that makes sense.</p>
-                  <p className="mt-1 text-xs text-emerald-100">You can agree on a cash top-up where needed.</p>
+                  <p className="text-sm font-bold">A straight-up value exchange.</p>
+                  <p className="mt-1 text-xs text-emerald-100">No cash. Just valuables exchanged by agreement.</p>
                 </div>
-                <span className="text-xl font-black text-[#a8e7bf]">₦</span>
+                <span className="text-xl font-black text-[#a8e7bf]">⇄</span>
               </div>
               <p className="mt-3 text-center text-[10px] text-[#91a096]">Illustrative example — not a live listing.</p>
             </div>
@@ -158,7 +156,7 @@ export default function Home() {
           <div>
             <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-[#0a9861]">Find your next exchange</p>
             <h2 className="mt-3 text-3xl font-black tracking-tight text-[#153c2b] sm:text-4xl">What are you looking to swap?</h2>
-            <p className="mt-3 max-w-xl text-base leading-7 text-[#65766b]">From everyday essentials to professional services, start with a category.</p>
+            <p className="mt-3 max-w-xl text-base leading-7 text-[#65766b]">From cars and electronics to furniture and fashion, discover valuables people are ready to exchange.</p>
           </div>
           <Link href="/categories" className="inline-flex items-center gap-2 text-sm font-bold text-[#087a50] hover:text-[#064e37]">See all categories <ArrowUpRight className="h-4 w-4" /></Link>
         </div>
@@ -209,8 +207,8 @@ export default function Home() {
         </div>
         <div className="rounded-2xl bg-[#f7f4eb] p-7">
           <Wrench className="h-8 w-8 text-[#987b3f]" />
-          <h3 className="mt-5 text-lg font-extrabold text-[#403a2b]">Goods and services</h3>
-          <p className="mt-2 text-sm leading-7 text-[#77705f]">Exchange more than physical items. Your skills, time and professional services can also bring value to a deal.</p>
+          <h3 className="mt-5 text-lg font-extrabold text-[#403a2b]">Valuables, not consumables</h3>
+          <p className="mt-2 text-sm leading-7 text-[#77705f]">List quality items you own and discover valuable things others are ready to exchange. Food and everyday consumables are not part of the marketplace.</p>
         </div>
         <div className="rounded-2xl bg-[#f0f4f7] p-7">
           <CircleHelp className="h-8 w-8 text-[#46647a]" />
@@ -238,7 +236,7 @@ export default function Home() {
               <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#087a50] font-black text-white">B</span>
               <span className="text-xl font-extrabold tracking-tight text-[#123b2b]">Barter<span className="text-[#0b9a63]">Naija</span></span>
             </Link>
-            <p className="mt-4 max-w-xs text-sm leading-7 text-[#718176]">A smarter way to exchange goods and services across Lagos, Ibadan and Abeokuta.</p>
+            <p className="mt-4 max-w-xs text-sm leading-7 text-[#718176]">A community for cashless exchanges of valuable items across Lagos, Ibadan and Abeokuta.</p>
             <p className="mt-5 text-xs font-semibold text-[#89968d]">Proudly built in Nigeria 🇳🇬</p>
           </div>
           <div>
@@ -269,7 +267,7 @@ export default function Home() {
         <div className="border-t border-[#edf1ed]">
           <div className="mx-auto flex max-w-7xl flex-col gap-2 px-5 py-5 text-xs text-[#89968d] sm:flex-row sm:items-center sm:justify-between lg:px-8">
             <span>© {new Date().getFullYear()} BarterNaija. All rights reserved.</span>
-            <span>A B9 Tech Consult product.</span>
+            <span>A B9TECH CONSULTS product.</span>
           </div>
         </div>
       </footer>

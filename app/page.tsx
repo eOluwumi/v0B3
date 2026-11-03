@@ -1,4 +1,5 @@
 import Link from "next/link"
+import { ThemeToggle } from "@/components/theme-toggle"
 import {
   ArrowRight,
   ArrowUpRight,
@@ -9,15 +10,13 @@ import {
   ChevronRight,
   CircleHelp,
   Laptop,
-  MapPin,
   Package,
-  Search,
   ShieldCheck,
   Shirt,
   Smartphone,
   Sofa,
-  Sparkles,
   Wrench,
+  Sparkles,
 } from "lucide-react"
 
 const categories = [
@@ -25,16 +24,16 @@ const categories = [
   { name: "Fashion", detail: "Clothing, shoes and accessories", icon: Shirt },
   { name: "Home & living", detail: "Furniture, appliances and more", icon: Sofa },
   { name: "Vehicles", detail: "Cars, bikes and auto essentials", icon: CarFront },
-  { name: "Services", detail: "Skills, expertise and professional help", icon: BriefcaseBusiness },
-  { name: "Other valuables", detail: "Find a new use for what you own", icon: Package },
+  { name: "Collectibles & equipment", detail: "Specialist gear, instruments and collectibles", icon: Package },
+  { name: "Other valuables", detail: "Quality items ready for a new owner", icon: BriefcaseBusiness },
 ]
 
 const locations = ["Lagos", "Ibadan", "Abeokuta"]
 
 const steps = [
   { number: "01", title: "List what you have", description: "Add clear photos, a straight description and what you would like in exchange." },
-  { number: "02", title: "Find what you need", description: "Browse listings and discover people offering items or services that interest you." },
-  { number: "03", title: "Agree on the swap", description: "Chat, compare value and agree on the details—including a cash top-up if both sides want one." },
+  { number: "02", title: "Find what you need", description: "Browse listings and discover valuable items people are ready to exchange." },
+  { number: "03", title: "Agree on the swap", description: "Chat, compare value and agree on a direct item-for-item exchange. No cash settlement." },
   { number: "04", title: "Exchange with care", description: "Confirm the condition, agree on a safe meeting or delivery plan, and complete your exchange." },
 ]
 
@@ -53,8 +52,8 @@ export default function Home() {
           </Link>
 
           <nav className="hidden items-center gap-8 md:flex" aria-label="Main navigation">
-            <Link href="/browse" className="text-sm font-semibold text-[#43564b] transition hover:text-[#087a50]">Explore items</Link>
-            <Link href="/categories" className="text-sm font-semibold text-[#43564b] transition hover:text-[#087a50]">Categories</Link>
+            <Link href="/#categories" className="text-sm font-semibold text-[#43564b] transition hover:text-[#087a50]">Explore items</Link>
+            <Link href="/#categories" className="text-sm font-semibold text-[#43564b] transition hover:text-[#087a50]">Categories</Link>
             <Link href="/how-it-works" className="text-sm font-semibold text-[#43564b] transition hover:text-[#087a50]">How it works</Link>
             <Link href="/about" className="text-sm font-semibold text-[#43564b] transition hover:text-[#087a50]">About</Link>
           </nav>
@@ -81,11 +80,11 @@ export default function Home() {
             </h1>
             <p className="mt-6 max-w-xl text-base leading-8 text-[#586b60] sm:text-lg">
               That phone you no longer use? The furniture you want to change? The skill you can offer?
-              Put it to work. Swap goods and services with people in Lagos, Ibadan and Abeokuta on BarterNaija.
+              Put it to work. Swap valuable items with people in Lagos, Ibadan and Abeokuta on BarterNaija. No cash. Just a fair exchange.
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link href="/browse" className="inline-flex min-h-14 items-center justify-center gap-3 rounded-full bg-[#087a50] px-7 text-sm font-bold text-white shadow-[0_12px_28px_rgba(8,122,80,0.2)] transition hover:-translate-y-0.5 hover:bg-[#066642]">
+              <Link href="/#categories" className="inline-flex min-h-14 items-center justify-center gap-3 rounded-full bg-[#087a50] px-7 text-sm font-bold text-white shadow-[0_12px_28px_rgba(8,122,80,0.2)] transition hover:-translate-y-0.5 hover:bg-[#066642]">
                 Explore what’s available <ArrowRight className="h-4 w-4" />
               </Link>
               <Link href="/auth/signup" className="inline-flex min-h-14 items-center justify-center rounded-full border border-[#cbd9cf] bg-white px-7 text-sm font-bold text-[#214b36] transition hover:border-[#087a50] hover:bg-[#f5faf6]">
@@ -105,7 +104,7 @@ export default function Home() {
             <div className="relative rounded-[2rem] border border-white bg-white p-4 shadow-[0_30px_90px_rgba(22,70,44,0.13)] sm:p-6">
               <div className="flex items-center justify-between border-b border-[#edf1ed] pb-4">
                 <div>
-                  <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#8a9a8f]">A better kind of marketplace</p>
+                  <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#8a9a8f]">A community built around exchange</p>
                   <p className="mt-1 text-lg font-extrabold text-[#173d2c]">Swap what you have</p>
                 </div>
                 <span className="rounded-full bg-[#e8f7ed] px-3 py-1.5 text-xs font-bold text-[#087a50]">Naija to Naija</span>
@@ -133,10 +132,10 @@ export default function Home() {
               <div className="flex items-center gap-3 rounded-xl bg-[#073f2d] p-4 text-white">
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/15"><ArrowUpRight className="h-5 w-5" /></div>
                 <div className="min-w-0 flex-1">
-                  <p className="text-sm font-bold">A swap that makes sense.</p>
-                  <p className="mt-1 text-xs text-emerald-100">You can agree on a cash top-up where needed.</p>
+                  <p className="text-sm font-bold">A straight-up value exchange.</p>
+                  <p className="mt-1 text-xs text-emerald-100">No cash. Just valuables exchanged by agreement.</p>
                 </div>
-                <span className="text-xl font-black text-[#a8e7bf]">₦</span>
+                <span className="text-xl font-black text-[#a8e7bf]">⇄</span>
               </div>
               <p className="mt-3 text-center text-[10px] text-[#91a096]">Illustrative example — not a live listing.</p>
             </div>
@@ -153,19 +152,19 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-24">
+      <section id="categories" className="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-24">
         <div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
           <div>
             <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-[#0a9861]">Find your next exchange</p>
             <h2 className="mt-3 text-3xl font-black tracking-tight text-[#153c2b] sm:text-4xl">What are you looking to swap?</h2>
-            <p className="mt-3 max-w-xl text-base leading-7 text-[#65766b]">From everyday essentials to professional services, start with a category.</p>
+            <p className="mt-3 max-w-xl text-base leading-7 text-[#65766b]">From cars and electronics to furniture and fashion, discover valuables people are ready to exchange.</p>
           </div>
-          <Link href="/categories" className="inline-flex items-center gap-2 text-sm font-bold text-[#087a50] hover:text-[#064e37]">See all categories <ArrowUpRight className="h-4 w-4" /></Link>
+          <Link href="/#categories" className="inline-flex items-center gap-2 text-sm font-bold text-[#087a50] hover:text-[#064e37]">See all categories <ArrowUpRight className="h-4 w-4" /></Link>
         </div>
 
         <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-3">
           {categories.map(({ name, detail, icon: Icon }, index) => (
-            <Link key={name} href="/categories" className="group flex min-h-[154px] items-center gap-5 rounded-2xl border border-[#e7eee8] bg-white p-5 shadow-[0_4px_18px_rgba(20,55,34,0.03)] transition hover:-translate-y-1 hover:border-[#b9ddc5] hover:shadow-[0_16px_34px_rgba(20,55,34,0.08)]">
+            <Link key={name} href="/#categories" className="group flex min-h-[154px] items-center gap-5 rounded-2xl border border-[#e7eee8] bg-white p-5 shadow-[0_4px_18px_rgba(20,55,34,0.03)] transition hover:-translate-y-1 hover:border-[#b9ddc5] hover:shadow-[0_16px_34px_rgba(20,55,34,0.08)]">
               <span className={`flex h-14 w-14 shrink-0 items-center justify-center rounded-2xl ${index % 2 === 0 ? "bg-[#eaf6ed] text-[#087a50]" : "bg-[#f4f2e8] text-[#8b7440]"}`}>
                 <Icon className="h-7 w-7" strokeWidth={1.7} />
               </span>
@@ -209,8 +208,8 @@ export default function Home() {
         </div>
         <div className="rounded-2xl bg-[#f7f4eb] p-7">
           <Wrench className="h-8 w-8 text-[#987b3f]" />
-          <h3 className="mt-5 text-lg font-extrabold text-[#403a2b]">Goods and services</h3>
-          <p className="mt-2 text-sm leading-7 text-[#77705f]">Exchange more than physical items. Your skills, time and professional services can also bring value to a deal.</p>
+          <h3 className="mt-5 text-lg font-extrabold text-[#403a2b]">Valuables, not consumables</h3>
+          <p className="mt-2 text-sm leading-7 text-[#77705f]">List quality items you own and discover valuable things others are ready to exchange. Food and everyday consumables are not part of the marketplace.</p>
         </div>
         <div className="rounded-2xl bg-[#f0f4f7] p-7">
           <CircleHelp className="h-8 w-8 text-[#46647a]" />
@@ -226,7 +225,7 @@ export default function Home() {
           <p className="mx-auto mt-4 max-w-xl leading-7 text-[#5d7464]">Put it out there. Discover possibilities. Make an exchange that works for you.</p>
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
             <Link href="/auth/signup" className="inline-flex min-h-13 items-center justify-center gap-2 rounded-full bg-[#087a50] px-7 py-3.5 text-sm font-extrabold text-white transition hover:bg-[#066642]">Get started <ArrowRight className="h-4 w-4" /></Link>
-            <Link href="/browse" className="inline-flex min-h-13 items-center justify-center rounded-full border border-[#b9d8c0] bg-white px-7 py-3.5 text-sm font-extrabold text-[#214b36] transition hover:border-[#087a50]">Browse the marketplace</Link>
+            <Link href="/#categories" className="inline-flex min-h-13 items-center justify-center rounded-full border border-[#b9d8c0] bg-white px-7 py-3.5 text-sm font-extrabold text-[#214b36] transition hover:border-[#087a50]">Browse the marketplace</Link>
           </div>
         </div>
       </section>
@@ -238,14 +237,14 @@ export default function Home() {
               <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#087a50] font-black text-white">B</span>
               <span className="text-xl font-extrabold tracking-tight text-[#123b2b]">Barter<span className="text-[#0b9a63]">Naija</span></span>
             </Link>
-            <p className="mt-4 max-w-xs text-sm leading-7 text-[#718176]">A smarter way to exchange goods and services across Lagos, Ibadan and Abeokuta.</p>
+            <p className="mt-4 max-w-xs text-sm leading-7 text-[#718176]">A community for cashless exchanges of valuable items across Lagos, Ibadan and Abeokuta.</p>
             <p className="mt-5 text-xs font-semibold text-[#89968d]">Proudly built in Nigeria 🇳🇬</p>
           </div>
           <div>
             <h3 className="text-sm font-extrabold text-[#203e2d]">Marketplace</h3>
             <div className="mt-4 space-y-3 text-sm text-[#718176]">
-              <Link className="block hover:text-[#087a50]" href="/browse">Explore items</Link>
-              <Link className="block hover:text-[#087a50]" href="/categories">Categories</Link>
+              <Link className="block hover:text-[#087a50]" href="/#categories">Explore items</Link>
+              <Link className="block hover:text-[#087a50]" href="/#categories">Categories</Link>
               <Link className="block hover:text-[#087a50]" href="/auth/signup">List an item</Link>
             </div>
           </div>
@@ -254,22 +253,22 @@ export default function Home() {
             <div className="mt-4 space-y-3 text-sm text-[#718176]">
               <Link className="block hover:text-[#087a50]" href="/how-it-works">How it works</Link>
               <Link className="block hover:text-[#087a50]" href="/about">About BarterNaija</Link>
-              <Link className="block hover:text-[#087a50]" href="/contact">Contact</Link>
+              <Link className="block hover:text-[#087a50]" href="/about">About BarterNaija</Link>
             </div>
           </div>
           <div>
             <h3 className="text-sm font-extrabold text-[#203e2d]">Your safety</h3>
             <div className="mt-4 space-y-3 text-sm text-[#718176]">
-              <Link className="block hover:text-[#087a50]" href="/safety">Safety tips</Link>
-              <Link className="block hover:text-[#087a50]" href="/privacy">Privacy</Link>
-              <Link className="block hover:text-[#087a50]" href="/terms">Terms</Link>
+              <Link className="block hover:text-[#087a50]" href="/how-it-works#safety">Safety tips</Link>
+              <span className="block">Privacy policy coming soon</span>
+              <span className="block">Terms of use coming soon</span>
             </div>
           </div>
         </div>
         <div className="border-t border-[#edf1ed]">
           <div className="mx-auto flex max-w-7xl flex-col gap-2 px-5 py-5 text-xs text-[#89968d] sm:flex-row sm:items-center sm:justify-between lg:px-8">
             <span>© {new Date().getFullYear()} BarterNaija. All rights reserved.</span>
-            <span>A B9 Tech Consult product.</span>
+            <span>A product by <a href="https://b9tech.barternaija.com.ng" target="_blank" rel="noopener noreferrer" className="font-bold underline-offset-4 hover:underline">B9TECH CONSULTS</a>.</span>
           </div>
         </div>
       </footer>

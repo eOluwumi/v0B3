@@ -11,6 +11,7 @@ export default function AboutPage() {
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5">
           <Link href="/" className="text-xl font-black tracking-tight text-[#123b2b] dark:text-white" aria-label="BarterNaija home">Barter<span className="text-[#0b9a63]">Naija</span></Link>
           <div className="flex items-center gap-4"><a href="https://b9tech.barternaija.com.ng" target="_blank" rel="noopener noreferrer" aria-label="Visit B9TECH CONSULTS"><Image src="/b9-logo.png" alt="B9TECH CONSULTS" width={104} height={34} className="h-8 w-auto object-contain" /></a><Link href="/" className="inline-flex items-center gap-2 text-sm font-semibold text-[#52665a] hover:text-[#087a50] dark:text-gray-300"><ArrowLeft className="h-4 w-4" /> Back to BarterNaija</Link>
+          </div>
         </div>
       </header>
 

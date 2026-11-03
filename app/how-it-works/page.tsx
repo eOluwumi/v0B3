@@ -1,6 +1,5 @@
 import Link from "next/link"
 import Image from "next/image"
-import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { ArrowLeft, ArrowRight, Camera, Search, MessageCircle, Handshake, MapPin, ShieldCheck } from "lucide-react"
@@ -23,6 +22,7 @@ export default function HowItWorksPage() {
           <div className="flex items-center gap-4"><a href="https://b9tech.barternaija.com.ng" target="_blank" rel="noopener noreferrer" aria-label="Visit B9TECH CONSULTS"><Image src="/b9-logo.png" alt="B9TECH CONSULTS" width={104} height={34} className="h-8 w-auto object-contain" /></a><Link href="/" className="inline-flex items-center gap-2 text-sm font-semibold text-[#52665a] hover:text-[#087a50] dark:text-gray-300">
             <ArrowLeft className="h-4 w-4" /> Back to BarterNaija
           </Link>
+          </div>
         </div>
       </header>
 

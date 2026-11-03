@@ -31,7 +31,7 @@ const locations = ["Lagos", "Ibadan", "Abeokuta"]
 
 const steps = [
   { number: "01", title: "List what you have", description: "Add clear photos, a straight description and what you would like in exchange." },
-  { number: "02", title: "Find what you need", description: "Browse listings and discover people offering items or services that interest you." },
+  { number: "02", title: "Find what you need", description: "Browse listings and discover valuable items people are ready to exchange." },
   { number: "03", title: "Agree on the swap", description: "Chat, compare value and agree on a direct item-for-item exchange. No cash settlement." },
   { number: "04", title: "Exchange with care", description: "Confirm the condition, agree on a safe meeting or delivery plan, and complete your exchange." },
 ]

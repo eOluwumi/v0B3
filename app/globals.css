@@ -95,3 +95,48 @@
     transition-duration: 0.01ms !important;
   }
 }
+
+
+/* BarterNaija landing page dark theme */
+html.dark main {
+  background-color: #0b1710 !important;
+  color: #e8f1ea !important;
+}
+html.dark main header,
+html.dark main footer,
+html.dark main .bg-white,
+html.dark main [class*="bg-white/"] {
+  background-color: #122219 !important;
+}
+html.dark main [class*="bg-[#fbfcfa]"],
+html.dark main [class*="bg-[#f4faf5]"],
+html.dark main [class*="bg-[#eef7ef]"],
+html.dark main [class*="bg-[#e7f5e9]"],
+html.dark main [class*="bg-[#f2f6f1]"] {
+  background-color: #17291e !important;
+}
+html.dark main [class*="bg-[#f8f5ec]"],
+html.dark main [class*="bg-[#f7f4eb]"],
+html.dark main [class*="bg-[#f0f4f7]"] {
+  background-color: #20271f !important;
+}
+html.dark main [class*="border-[#e"],
+html.dark main [class*="border-[#c"],
+html.dark main [class*="border-[#b"] {
+  border-color: #294334 !important;
+}
+html.dark main [class*="text-[#"] {
+  color: #dce9df !important;
+}
+html.dark main [class*="text-[#0a9861]"],
+html.dark main [class*="text-[#087a50]"],
+html.dark main [class*="text-[#0b9a63]"] {
+  color: #72d69b !important;
+}
+html.dark main section > div[class*="bg-[radial-gradient"] {
+  background: radial-gradient(ellipse at 78% 18%, rgba(16,185,129,0.08), transparent 34%), linear-gradient(180deg,#102218 0%,#0b1710 88%) !important;
+}
+html.dark main input,
+html.dark main textarea {
+  color-scheme: dark;
+}

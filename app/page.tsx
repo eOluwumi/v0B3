@@ -267,7 +267,7 @@ export default function Home() {
         <div className="border-t border-[#edf1ed]">
           <div className="mx-auto flex max-w-7xl flex-col gap-2 px-5 py-5 text-xs text-[#89968d] sm:flex-row sm:items-center sm:justify-between lg:px-8">
             <span>© {new Date().getFullYear()} BarterNaija. All rights reserved.</span>
-            <span>A B9TECH CONSULTS product.</span>
+            <span>A product by <a href="https://b9tech.barternaija.com.ng" target="_blank" rel="noopener noreferrer" className="font-bold underline-offset-4 hover:underline">B9TECH CONSULTS</a>.</span>
           </div>
         </div>
       </footer>

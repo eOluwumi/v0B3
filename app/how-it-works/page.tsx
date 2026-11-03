@@ -1,5 +1,6 @@
 import Link from "next/link"
 import Image from "next/image"
+import Image from "next/image"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { ArrowLeft, ArrowRight, Camera, Search, MessageCircle, Handshake, MapPin, ShieldCheck } from "lucide-react"
@@ -19,7 +20,7 @@ export default function HowItWorksPage() {
           <Link href="/" className="text-xl font-black tracking-tight text-[#123b2b] dark:text-white" aria-label="BarterNaija home">
             Barter<span className="text-[#0b9a63]">Naija</span>
           </Link>
-          <Link href="/" className="inline-flex items-center gap-2 text-sm font-semibold text-[#52665a] hover:text-[#087a50] dark:text-gray-300">
+          <div className="flex items-center gap-4"><a href="https://b9tech.barternaija.com.ng" target="_blank" rel="noopener noreferrer" aria-label="Visit B9TECH CONSULTS"><Image src="/b9-logo.png" alt="B9TECH CONSULTS" width={104} height={34} className="h-8 w-auto object-contain" /></a><Link href="/" className="inline-flex items-center gap-2 text-sm font-semibold text-[#52665a] hover:text-[#087a50] dark:text-gray-300">
             <ArrowLeft className="h-4 w-4" /> Back to BarterNaija
           </Link>
         </div>
@@ -56,7 +57,7 @@ export default function HowItWorksPage() {
           })}
         </section>
 
-        <section className="mt-10 grid gap-5 rounded-3xl bg-[#073f2d] p-7 text-white sm:grid-cols-[1fr_auto] sm:items-center sm:p-10">
+        <section id="safety" className="mt-10 grid gap-5 rounded-3xl bg-[#073f2d] p-7 text-white sm:grid-cols-[1fr_auto] sm:items-center sm:p-10">
           <div>
             <div className="flex items-center gap-2 text-sm font-bold text-emerald-200"><ShieldCheck className="h-5 w-5" /> Make every exchange carefully</div>
             <h2 className="mt-3 text-2xl font-black">Inspect first. Agree clearly. Meet safely.</h2>

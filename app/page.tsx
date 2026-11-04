@@ -63,6 +63,7 @@ export default function Home() {
             <Link href="/auth/signup" className="inline-flex items-center gap-2 rounded-full bg-[#087a50] px-4 py-2.5 text-sm font-bold text-white shadow-sm transition hover:bg-[#066642] sm:px-5">
               Join BarterNaija <ArrowUpRight className="h-4 w-4" />
             </Link>
+            <ThemeToggle />
           </div>
         </div>
       </header>

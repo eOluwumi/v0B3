@@ -9,6 +9,7 @@ import { Button } from "@/components/ui/button"
 import { useSupabase } from "@/components/supabase-provider"
 import { ListFilter, MessageSquare, RefreshCw, LogOut, Menu, X } from "lucide-react"
 import { cn } from "@/lib/utils"
+import { ThemeToggle } from "@/components/theme-toggle"
 
 interface DashboardLayoutProps { children: React.ReactNode }
 
@@ -57,7 +58,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
       <aside className="hidden w-64 flex-col border-r bg-white dark:border-gray-800 dark:bg-gray-950 md:flex">
         <div className="flex items-center justify-between border-b p-4 dark:border-gray-800">
           <Link href="/" aria-label="BarterNaija home" className="text-lg font-black text-[#123b2b] dark:text-white">Barter<span className="text-emerald-600">Naija</span></Link>
-          <B9BrandLink compact />
+          <div className="flex items-center gap-2"><ThemeToggle /><B9BrandLink compact /></div>
         </div>
         {nav()}
         <div className="border-t p-4 dark:border-gray-800">
@@ -81,7 +82,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
         <header className="flex items-center justify-between border-b bg-white p-4 dark:border-gray-800 dark:bg-gray-950 md:hidden">
           <Button variant="ghost" size="icon" aria-label="Open menu" onClick={() => setMobileNavOpen(true)}><Menu className="h-5 w-5" /></Button>
           <Link href="/" className="font-bold text-[#123b2b] dark:text-white">Barter<span className="text-emerald-600">Naija</span></Link>
-          <B9BrandLink compact />
+          <div className="flex items-center gap-1"><ThemeToggle /><B9BrandLink compact /></div>
         </header>
         <main className="p-4 sm:p-6">{children}</main>
       </div>

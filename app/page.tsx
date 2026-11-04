@@ -43,6 +43,7 @@ export default function Home() {
       <div className="bg-[#0b6848] px-4 py-2 text-center text-xs font-semibold tracking-wide text-white sm:text-sm">
         Naija, how far? Good things deserve a second life.
       </div>
+      <div aria-hidden="true" className="h-1.5 bg-[linear-gradient(90deg,#087a50_0_25%,#f2a900_25%_50%,#d94832_50%_75%,#087a50_75%_100%)]" />
 
       <header className="sticky top-0 z-50 border-b border-[#e5ece6] bg-white/95 backdrop-blur">
         <div className="mx-auto flex h-[76px] max-w-7xl items-center justify-between px-5 lg:px-8">
@@ -79,8 +80,7 @@ export default function Home() {
               Wetin you get fit be <span className="text-[#d97706]">wetin somebody need.</span>
             </h1>
             <p className="mt-6 max-w-xl text-base leading-8 text-[#586b60] sm:text-lg">
-              That phone you no longer use? The furniture you want to change? The skill you can offer?
-              Put it to work. Swap valuable items with people in Lagos, Ibadan and Abeokuta on BarterNaija. No cash. Just a fair exchange.
+              That phone wey you no dey use again? That fine furniture you wan change? No let better things waste. Connect with people for Lagos, Ibadan and Abeokuta, and exchange valuable items — no cash, just fair value.
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">

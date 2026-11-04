@@ -59,7 +59,7 @@ export default function Home() {
           </nav>
 
           <div className="flex items-center gap-2 sm:gap-3">
-            <Link href="/auth/signin" className="hidden rounded-full px-4 py-2.5 text-sm font-bold text-[#244b38] transition hover:bg-[#f0f6f1] sm:inline-flex">Log in</Link>
+            <ThemeToggle />\n            <Link href="/auth/signin" className="hidden rounded-full px-4 py-2.5 text-sm font-bold text-[#244b38] transition hover:bg-[#f0f6f1] sm:inline-flex">Log in</Link>
             <Link href="/auth/signup" className="inline-flex items-center gap-2 rounded-full bg-[#087a50] px-4 py-2.5 text-sm font-bold text-white shadow-sm transition hover:bg-[#066642] sm:px-5">
               Join BarterNaija <ArrowUpRight className="h-4 w-4" />
             </Link>
@@ -100,7 +100,7 @@ export default function Home() {
 
           <div className="relative mx-auto w-full max-w-[570px]">
             <div className="absolute -right-8 -top-8 h-40 w-40 rounded-full bg-[#bcebd0] blur-3xl" />
-            <div className="absolute -bottom-8 -left-8 h-40 w-40 rounded-full bg-[#d8efb8] blur-3xl" />
+            <div className="absolute -bottom-8 -left-8 h-40 w-40 rounded-full bg-[#ffd7a8] blur-3xl" />
             <div className="relative rounded-[2rem] border border-white bg-white p-4 shadow-[0_30px_90px_rgba(22,70,44,0.13)] sm:p-6">
               <div className="flex items-center justify-between border-b border-[#edf1ed] pb-4">
                 <div>
@@ -112,7 +112,7 @@ export default function Home() {
 
               <div className="grid grid-cols-2 gap-3 py-5">
                 <div className="rounded-2xl bg-[#e9f5ed] p-4">
-                  <div className="flex h-32 items-center justify-center rounded-xl bg-gradient-to-br from-[#d9e8dd] to-[#b7d3c0]">
+                  <div className="flex h-32 items-center justify-center rounded-xl bg-gradient-to-br from-[#c9ead5] to-[#87c9a0]">
                     <Laptop className="h-16 w-16 text-[#276747]" strokeWidth={1.3} />
                   </div>
                   <p className="mt-3 text-sm font-extrabold text-[#203e2d]">Your laptop</p>
@@ -120,7 +120,7 @@ export default function Home() {
                   <span className="mt-3 inline-flex rounded-full bg-white px-2.5 py-1 text-[11px] font-bold text-[#36704d]">What you offer</span>
                 </div>
                 <div className="rounded-2xl bg-[#fff1dc] p-4">
-                  <div className="flex h-32 items-center justify-center rounded-xl bg-gradient-to-br from-[#f2e6c9] to-[#e3c990]">
+                  <div className="flex h-32 items-center justify-center rounded-xl bg-gradient-to-br from-[#ffe4b8] to-[#f4b96e]">
                     <Smartphone className="h-16 w-16 text-[#8a6530]" strokeWidth={1.3} />
                   </div>
                   <p className="mt-3 text-sm font-extrabold text-[#453a27]">A newer phone</p>
@@ -178,7 +178,7 @@ export default function Home() {
         </div>
       </section>
 
-      <section className="bg-[#073f2d] py-20 text-white lg:py-24">
+      <section className="bg-[#07583f] py-20 text-white lg:py-24">
         <div className="mx-auto grid max-w-7xl gap-14 px-5 lg:grid-cols-[0.8fr_1.2fr] lg:px-8">
           <div className="max-w-lg">
             <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-[#9ce2b8]">Straightforward, the Naija way</p>
@@ -219,7 +219,7 @@ export default function Home() {
       </section>
 
       <section className="px-5 pb-20 lg:pb-24">
-        <div className="mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-[#e7f5e9] px-6 py-14 text-center sm:px-12">
+        <div className="mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-[linear-gradient(115deg,#e2f3e8_0%,#fff0d9_55%,#fce2d8_100%)] px-6 py-14 text-center sm:px-12">
           <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-[#087a50] shadow-sm"><Sparkles className="h-6 w-6" /></div>
           <h2 className="mx-auto mt-5 max-w-2xl text-3xl font-black tracking-tight text-[#153c2b] sm:text-4xl">Your better thing fit be another person’s next big find.</h2>
           <p className="mx-auto mt-4 max-w-xl leading-7 text-[#5d7464]">Bring am out. See wetin dey. Find a swap wey make sense.</p>

@@ -24,7 +24,7 @@ const categories = [
   { name: "Fashion", detail: "Clothing, shoes and accessories", icon: Shirt },
   { name: "Home & living", detail: "Furniture, appliances and more", icon: Sofa },
   { name: "Vehicles", detail: "Cars, bikes and auto essentials", icon: CarFront },
-  { name: "Collectibles & equipment", detail: "Specialist gear, instruments and collectibles", icon: Package },
+  { name: "Collectibles & equipment", detail: "Tools, equipment and collectibles", icon: Package },
   { name: "Other valuables", detail: "Quality items ready for a new owner", icon: BriefcaseBusiness },
 ]
 
@@ -40,8 +40,8 @@ const steps = [
 export default function Home() {
   return (
     <main className="min-h-screen overflow-hidden bg-[#fbfcfa] text-[#17251e]">
-      <div className="bg-[#073f2d] px-4 py-2 text-center text-xs font-medium tracking-wide text-emerald-50 sm:text-sm">
-        Made for everyday Nigerians. Find value in what you already have.
+      <div className="bg-[#0b6848] px-4 py-2 text-center text-xs font-semibold tracking-wide text-white sm:text-sm">
+        Naija, how far? Good things deserve a second life.
       </div>
 
       <header className="sticky top-0 z-50 border-b border-[#e5ece6] bg-white/95 backdrop-blur">
@@ -68,15 +68,15 @@ export default function Home() {
       </header>
 
       <section className="relative isolate">
-        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_78%_18%,rgba(16,185,129,0.12),transparent_34%),linear-gradient(180deg,#f4faf5_0%,#fbfcfa_88%)]" />
+        <div className="absolute inset-0 -z-10 bg-[radial-gradient(ellipse_at_12%_12%,rgba(249,115,22,0.13),transparent_28%),radial-gradient(ellipse_at_88%_22%,rgba(16,185,129,0.16),transparent_32%),linear-gradient(180deg,#fff8ed_0%,#fbfcfa_88%)]" />
         <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 pb-20 pt-16 md:grid-cols-[1.03fr_0.97fr] md:pb-28 md:pt-24 lg:px-8">
           <div className="max-w-2xl">
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#cce8d7] bg-white/80 px-4 py-2 text-xs font-bold uppercase tracking-[0.12em] text-[#087a50] shadow-sm">
               <span className="h-2 w-2 rounded-full bg-[#10a66b]" />
-              The Nigerian way to exchange value
+              OYA, LET’S SWAP — THE NAIJA WAY
             </div>
             <h1 className="text-[2.8rem] font-black leading-[1.06] tracking-[-0.055em] text-[#123b2b] sm:text-6xl lg:text-[4.45rem]">
-              What you have can get you <span className="text-[#0a9861]">what you need.</span>
+              Wetin you get fit be <span className="text-[#d97706]">wetin somebody need.</span>
             </h1>
             <p className="mt-6 max-w-xl text-base leading-8 text-[#586b60] sm:text-lg">
               That phone you no longer use? The furniture you want to change? The skill you can offer?
@@ -85,10 +85,10 @@ export default function Home() {
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
               <Link href="/#categories" className="inline-flex min-h-14 items-center justify-center gap-3 rounded-full bg-[#087a50] px-7 text-sm font-bold text-white shadow-[0_12px_28px_rgba(8,122,80,0.2)] transition hover:-translate-y-0.5 hover:bg-[#066642]">
-                Explore what’s available <ArrowRight className="h-4 w-4" />
+                Abeg, show me wetin dey <ArrowRight className="h-4 w-4" />
               </Link>
               <Link href="/auth/signup" className="inline-flex min-h-14 items-center justify-center rounded-full border border-[#cbd9cf] bg-white px-7 text-sm font-bold text-[#214b36] transition hover:border-[#087a50] hover:bg-[#f5faf6]">
-                List an item
+                Put my item up
               </Link>
             </div>
 
@@ -104,14 +104,14 @@ export default function Home() {
             <div className="relative rounded-[2rem] border border-white bg-white p-4 shadow-[0_30px_90px_rgba(22,70,44,0.13)] sm:p-6">
               <div className="flex items-center justify-between border-b border-[#edf1ed] pb-4">
                 <div>
-                  <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#8a9a8f]">A community built around exchange</p>
-                  <p className="mt-1 text-lg font-extrabold text-[#173d2c]">Swap what you have</p>
+                  <p className="text-xs font-bold uppercase tracking-[0.14em] text-[#8a9a8f]">NAIJA PEOPLE, REAL VALUE</p>
+                  <p className="mt-1 text-lg font-extrabold text-[#173d2c]">Wetin you get?</p>
                 </div>
                 <span className="rounded-full bg-[#e8f7ed] px-3 py-1.5 text-xs font-bold text-[#087a50]">Naija to Naija</span>
               </div>
 
               <div className="grid grid-cols-2 gap-3 py-5">
-                <div className="rounded-2xl bg-[#f2f6f1] p-4">
+                <div className="rounded-2xl bg-[#e9f5ed] p-4">
                   <div className="flex h-32 items-center justify-center rounded-xl bg-gradient-to-br from-[#d9e8dd] to-[#b7d3c0]">
                     <Laptop className="h-16 w-16 text-[#276747]" strokeWidth={1.3} />
                   </div>
@@ -119,7 +119,7 @@ export default function Home() {
                   <p className="mt-1 text-xs text-[#718176]">Good condition</p>
                   <span className="mt-3 inline-flex rounded-full bg-white px-2.5 py-1 text-[11px] font-bold text-[#36704d]">What you offer</span>
                 </div>
-                <div className="rounded-2xl bg-[#f8f5ec] p-4">
+                <div className="rounded-2xl bg-[#fff1dc] p-4">
                   <div className="flex h-32 items-center justify-center rounded-xl bg-gradient-to-br from-[#f2e6c9] to-[#e3c990]">
                     <Smartphone className="h-16 w-16 text-[#8a6530]" strokeWidth={1.3} />
                   </div>
@@ -129,11 +129,11 @@ export default function Home() {
                 </div>
               </div>
 
-              <div className="flex items-center gap-3 rounded-xl bg-[#073f2d] p-4 text-white">
+              <div className="flex items-center gap-3 rounded-xl bg-[#0b6848] p-4 text-white">
                 <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-full bg-white/15"><ArrowUpRight className="h-5 w-5" /></div>
                 <div className="min-w-0 flex-1">
-                  <p className="text-sm font-bold">A straight-up value exchange.</p>
-                  <p className="mt-1 text-xs text-emerald-100">No cash. Just valuables exchanged by agreement.</p>
+                  <p className="text-sm font-bold">No wahala. Just fair exchange.</p>
+                  <p className="mt-1 text-xs text-emerald-100">No cash settlement. Na valuable items we dey exchange.</p>
                 </div>
                 <span className="text-xl font-black text-[#a8e7bf]">⇄</span>
               </div>
@@ -145,7 +145,7 @@ export default function Home() {
 
       <section className="border-y border-[#e9eee9] bg-white py-6">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-5 md:flex-row lg:px-8">
-          <p className="text-sm font-bold text-[#52665a]">Starting in Southwest Nigeria.</p>
+          <p className="text-sm font-bold text-[#52665a]">We dey start from the Southwest.</p>
           <div className="flex flex-wrap justify-center gap-2">
             {locations.map((location) => <span key={location} className="rounded-full border border-[#e5ece6] bg-[#fbfcfa] px-3 py-1.5 text-xs font-semibold text-[#65766b]">{location}</span>)}
           </div>
@@ -155,9 +155,9 @@ export default function Home() {
       <section id="categories" className="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-24">
         <div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
           <div>
-            <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-[#0a9861]">Find your next exchange</p>
-            <h2 className="mt-3 text-3xl font-black tracking-tight text-[#153c2b] sm:text-4xl">What are you looking to swap?</h2>
-            <p className="mt-3 max-w-xl text-base leading-7 text-[#65766b]">From cars and electronics to furniture and fashion, discover valuables people are ready to exchange.</p>
+            <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-[#0a9861]">Make your next good find</p>
+            <h2 className="mt-3 text-3xl font-black tracking-tight text-[#153c2b] sm:text-4xl">Wetin you wan exchange?</h2>
+            <p className="mt-3 max-w-xl text-base leading-7 text-[#65766b]">From phones and laptops to furniture, cars and fashion — see valuable items people are ready to swap.</p>
           </div>
           <Link href="/#categories" className="inline-flex items-center gap-2 text-sm font-bold text-[#087a50] hover:text-[#064e37]">See all categories <ArrowUpRight className="h-4 w-4" /></Link>
         </div>
@@ -181,9 +181,9 @@ export default function Home() {
       <section className="bg-[#073f2d] py-20 text-white lg:py-24">
         <div className="mx-auto grid max-w-7xl gap-14 px-5 lg:grid-cols-[0.8fr_1.2fr] lg:px-8">
           <div className="max-w-lg">
-            <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-[#9ce2b8]">Simple by design</p>
-            <h2 className="mt-4 text-3xl font-black tracking-tight sm:text-4xl">A good exchange starts with a conversation.</h2>
-            <p className="mt-5 leading-8 text-emerald-100/80">BarterNaija gives you a place to discover options and discuss an exchange. You decide what works, what is fair and how to complete it.</p>
+            <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-[#9ce2b8]">Straightforward, the Naija way</p>
+            <h2 className="mt-4 text-3xl font-black tracking-tight sm:text-4xl">Every better swap starts with “How far?”</h2>
+            <p className="mt-5 leading-8 text-emerald-100/80">Find something wey catch your eye. Start a conversation, agree on fair value and plan your exchange safely. Na you and the other person get the final say.</p>
             <Link href="/how-it-works" className="mt-8 inline-flex items-center gap-2 rounded-full bg-white px-6 py-3.5 text-sm font-extrabold text-[#075239] transition hover:bg-[#e8f7ed]">See how it works <ArrowRight className="h-4 w-4" /></Link>
           </div>
 
@@ -202,9 +202,9 @@ export default function Home() {
       <section className="mx-auto grid max-w-7xl gap-6 px-5 py-20 md:grid-cols-3 lg:px-8">
         <div className="rounded-2xl bg-[#eef7ef] p-7">
           <ShieldCheck className="h-8 w-8 text-[#087a50]" />
-          <h3 className="mt-5 text-lg font-extrabold text-[#193e2c]">Trade with your eyes open</h3>
+          <h3 className="mt-5 text-lg font-extrabold text-[#193e2c]">No rush am — check well</h3>
           <p className="mt-2 text-sm leading-7 text-[#66786c]">Check item condition, ask questions, agree on value and choose a sensible exchange arrangement. Never rush a deal.</p>
-          <Link href="/safety" className="mt-4 inline-flex items-center gap-1 text-sm font-bold text-[#087a50]">Safety tips <ArrowUpRight className="h-4 w-4" /></Link>
+          <Link href="/how-it-works#safety" className="mt-4 inline-flex items-center gap-1 text-sm font-bold text-[#087a50]">Safety tips <ArrowUpRight className="h-4 w-4" /></Link>
         </div>
         <div className="rounded-2xl bg-[#f7f4eb] p-7">
           <Wrench className="h-8 w-8 text-[#987b3f]" />
@@ -213,7 +213,7 @@ export default function Home() {
         </div>
         <div className="rounded-2xl bg-[#f0f4f7] p-7">
           <CircleHelp className="h-8 w-8 text-[#46647a]" />
-          <h3 className="mt-5 text-lg font-extrabold text-[#263f50]">You stay in control</h3>
+          <h3 className="mt-5 text-lg font-extrabold text-[#263f50]">Na you get the final say</h3>
           <p className="mt-2 text-sm leading-7 text-[#687985]">No one decides the value of your item for you. Discuss the terms and proceed only when both parties agree.</p>
         </div>
       </section>
@@ -221,8 +221,8 @@ export default function Home() {
       <section className="px-5 pb-20 lg:pb-24">
         <div className="mx-auto max-w-7xl overflow-hidden rounded-[2rem] bg-[#e7f5e9] px-6 py-14 text-center sm:px-12">
           <div className="mx-auto flex h-12 w-12 items-center justify-center rounded-2xl bg-white text-[#087a50] shadow-sm"><Sparkles className="h-6 w-6" /></div>
-          <h2 className="mx-auto mt-5 max-w-2xl text-3xl font-black tracking-tight text-[#153c2b] sm:text-4xl">That thing you have could be exactly what someone needs.</h2>
-          <p className="mx-auto mt-4 max-w-xl leading-7 text-[#5d7464]">Put it out there. Discover possibilities. Make an exchange that works for you.</p>
+          <h2 className="mx-auto mt-5 max-w-2xl text-3xl font-black tracking-tight text-[#153c2b] sm:text-4xl">Your better thing fit be another person’s next big find.</h2>
+          <p className="mx-auto mt-4 max-w-xl leading-7 text-[#5d7464]">Bring am out. See wetin dey. Find a swap wey make sense.</p>
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
             <Link href="/auth/signup" className="inline-flex min-h-13 items-center justify-center gap-2 rounded-full bg-[#087a50] px-7 py-3.5 text-sm font-extrabold text-white transition hover:bg-[#066642]">Get started <ArrowRight className="h-4 w-4" /></Link>
             <Link href="/#categories" className="inline-flex min-h-13 items-center justify-center rounded-full border border-[#b9d8c0] bg-white px-7 py-3.5 text-sm font-extrabold text-[#214b36] transition hover:border-[#087a50]">Browse the marketplace</Link>
@@ -238,7 +238,7 @@ export default function Home() {
               <span className="text-xl font-extrabold tracking-tight text-[#123b2b]">Barter<span className="text-[#0b9a63]">Naija</span></span>
             </Link>
             <p className="mt-4 max-w-xs text-sm leading-7 text-[#718176]">A community for cashless exchanges of valuable items across Lagos, Ibadan and Abeokuta.</p>
-            <p className="mt-5 text-xs font-semibold text-[#89968d]">Proudly built in Nigeria 🇳🇬</p>
+            <p className="mt-5 text-xs font-semibold text-[#89968d]">Naija roots. Community spirit. 🇳🇬</p>
           </div>
           <div>
             <h3 className="text-sm font-extrabold text-[#203e2d]">Marketplace</h3>
@@ -252,8 +252,7 @@ export default function Home() {
             <h3 className="text-sm font-extrabold text-[#203e2d]">Learn more</h3>
             <div className="mt-4 space-y-3 text-sm text-[#718176]">
               <Link className="block hover:text-[#087a50]" href="/how-it-works">How it works</Link>
-              <Link className="block hover:text-[#087a50]" href="/about">About BarterNaija</Link>
-              <Link className="block hover:text-[#087a50]" href="/about">About BarterNaija</Link>
+              <Link className="block hover:text-[#087a50]" href="/about">Our story</Link>
             </div>
           </div>
           <div>

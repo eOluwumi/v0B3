@@ -16,12 +16,21 @@ export default function SignInPage() {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const [loading, setLoading] = useState(false)
-  const { supabase } = useSupabase()
+  const { supabase, configured } = useSupabase()
   const { toast } = useToast()
   const router = useRouter()
 
   const handleSignIn = async (e: React.FormEvent) => {
     e.preventDefault()
+    if (!configured) {
+      toast({
+        title: "Backend setup required",
+        description: "Barter Nigeria is not connected to Supabase yet. Configure the Supabase environment variables before signing in.",
+        variant: "destructive",
+      })
+      return
+    }
+
     setLoading(true)
 
     try {

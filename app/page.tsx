@@ -52,7 +52,7 @@ export default function Home() {
           </Link>
 
           <nav className="hidden items-center gap-8 md:flex" aria-label="Main navigation">
-            <Link href="/#categories" className="text-sm font-semibold text-[#43564b] transition hover:text-[#087a50]">Explore items</Link>
+            <Link href="/browse" className="text-sm font-semibold text-[#43564b] transition hover:text-[#087a50]">Explore items</Link>
             <Link href="/#categories" className="text-sm font-semibold text-[#43564b] transition hover:text-[#087a50]">Categories</Link>
             <Link href="/how-it-works" className="text-sm font-semibold text-[#43564b] transition hover:text-[#087a50]">How it works</Link>
             <Link href="/about" className="text-sm font-semibold text-[#43564b] transition hover:text-[#087a50]">About</Link>
@@ -85,7 +85,7 @@ export default function Home() {
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-              <Link href="/#categories" className="inline-flex min-h-14 items-center justify-center gap-3 rounded-full bg-[#087a50] px-7 text-sm font-bold text-white shadow-[0_12px_28px_rgba(8,122,80,0.2)] transition hover:-translate-y-0.5 hover:bg-[#066642]">
+              <Link href="/browse" className="inline-flex min-h-14 items-center justify-center gap-3 rounded-full bg-[#087a50] px-7 text-sm font-bold text-white shadow-[0_12px_28px_rgba(8,122,80,0.2)] transition hover:-translate-y-0.5 hover:bg-[#066642]">
                 Explore what’s available <ArrowRight className="h-4 w-4" />
               </Link>
               <Link href="/auth/signup" className="inline-flex min-h-14 items-center justify-center rounded-full border border-[#cbd9cf] bg-white px-7 text-sm font-bold text-[#214b36] transition hover:border-[#087a50] hover:bg-[#f5faf6]">

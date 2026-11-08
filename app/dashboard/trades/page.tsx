@@ -11,7 +11,7 @@ import { Card, CardContent, CardHeader, CardTitle, CardDescription } from "@/com
 import { Badge } from "@/components/ui/badge"
 import { useToast } from "@/components/ui/use-toast"
 
-type Trade = { id: string; proposer_id: string; recipient_id: string; offering_listing_id: string; requested_listing_id: string; status: string; created_at: string }
+type Trade = { id: string; proposer_id: string; recipient_id: string; offering_listing_id: string; requested_listing_id: string; status: string; created_at: string; proposer_confirmed_at: string | null; recipient_confirmed_at: string | null }
 type Listing = { id: string; title: string; image_url: string | null }
 
 export default function TradesPage() {
@@ -58,6 +58,17 @@ export default function TradesPage() {
     loadTrades()
   }
 
+  const confirmCompletion = async (trade: Trade) => {
+    if (!user) return
+    const field = trade.proposer_id === user.id ? "proposer_confirmed_at" : "recipient_confirmed_at"
+    const { error } = await supabase.from("trades").update({ [field]: new Date().toISOString() }).eq("id", trade.id)
+    if (error) {
+      toast({ title: "Confirmation not recorded", description: error.message, variant: "destructive" })
+      return
+    }
+    toast({ title: "Exchange confirmation recorded", description: "The swap will be marked complete after both members confirm." })
+    loadTrades()
+  }
   if (userLoading || loading) return <div className="flex min-h-screen items-center justify-center"><RefreshCw className="h-7 w-7 animate-spin text-emerald-700" /></div>
   if (!user) return null
 
@@ -71,7 +82,7 @@ export default function TradesPage() {
         const outgoing = trade.proposer_id === user.id
         const offered = listings[trade.offering_listing_id]
         const requested = listings[trade.requested_listing_id]
-        return <Card key={trade.id}><CardHeader className="flex flex-row items-start justify-between gap-3"><div><CardTitle className="text-base">{outgoing ? "You proposed this swap" : "Incoming swap proposal"}</CardTitle><CardDescription>{new Intl.DateTimeFormat("en-NG", { dateStyle: "medium" }).format(new Date(trade.created_at))}</CardDescription></div><Badge variant={trade.status === "accepted" ? "default" : trade.status === "rejected" || trade.status === "cancelled" ? "destructive" : "secondary"}>{trade.status}</Badge></CardHeader><CardContent><div className="grid gap-3 sm:grid-cols-[1fr_auto_1fr] sm:items-center"><div className="rounded-lg bg-muted p-3"><p className="text-[11px] font-bold uppercase text-muted-foreground">{outgoing ? "You offer" : "They offer"}</p><p className="mt-1 font-semibold">{offered?.title ?? "Listing unavailable"}</p></div><ArrowLeftRight className="mx-auto h-5 w-5 text-emerald-700" /><div className="rounded-lg bg-muted p-3"><p className="text-[11px] font-bold uppercase text-muted-foreground">{outgoing ? "You requested" : "Your item"}</p><p className="mt-1 font-semibold">{requested?.title ?? "Listing unavailable"}</p></div></div>{trade.status === "pending" && <div className="mt-4 flex flex-wrap gap-2">{outgoing ? <Button variant="outline" size="sm" onClick={() => updateStatus(trade,"cancelled")}>Withdraw proposal</Button> : <><Button size="sm" onClick={() => updateStatus(trade,"accepted")}>Accept swap</Button><Button size="sm" variant="outline" onClick={() => updateStatus(trade,"rejected")}>Decline</Button></>}</div>}</CardContent></Card>
+        return <Card key={trade.id}><CardHeader className="flex flex-row items-start justify-between gap-3"><div><CardTitle className="text-base">{outgoing ? "You proposed this swap" : "Incoming swap proposal"}</CardTitle><CardDescription>{new Intl.DateTimeFormat("en-NG", { dateStyle: "medium" }).format(new Date(trade.created_at))}</CardDescription></div><Badge variant={trade.status === "accepted" ? "default" : trade.status === "rejected" || trade.status === "cancelled" ? "destructive" : "secondary"}>{trade.status}</Badge></CardHeader><CardContent><div className="grid gap-3 sm:grid-cols-[1fr_auto_1fr] sm:items-center"><div className="rounded-lg bg-muted p-3"><p className="text-[11px] font-bold uppercase text-muted-foreground">{outgoing ? "You offer" : "They offer"}</p><p className="mt-1 font-semibold">{offered?.title ?? "Listing unavailable"}</p></div><ArrowLeftRight className="mx-auto h-5 w-5 text-emerald-700" /><div className="rounded-lg bg-muted p-3"><p className="text-[11px] font-bold uppercase text-muted-foreground">{outgoing ? "You requested" : "Your item"}</p><p className="mt-1 font-semibold">{requested?.title ?? "Listing unavailable"}</p></div></div>{trade.status === "pending" && <div className="mt-4 flex flex-wrap gap-2">{outgoing ? <Button variant="outline" size="sm" onClick={() => updateStatus(trade,"cancelled")}>Withdraw proposal</Button> : <><Button size="sm" onClick={() => updateStatus(trade,"accepted")}>Accept swap</Button><Button size="sm" variant="outline" onClick={() => updateStatus(trade,"rejected")}>Decline</Button></>}</div>}{trade.status === "accepted" && <div className="mt-4">{(outgoing ? trade.proposer_confirmed_at : trade.recipient_confirmed_at) ? <p className="text-sm text-muted-foreground">You confirmed the exchange. Waiting for the other member.</p> : <Button size="sm" onClick={() => confirmCompletion(trade)}>Confirm exchange completed</Button>}</div>}</CardContent></Card>
       })}</div>}
     </DashboardLayout>
   )

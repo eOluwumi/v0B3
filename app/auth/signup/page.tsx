@@ -21,7 +21,7 @@ export default function SignUpPage() {
   const [loading, setLoading] = useState(false)
   const [captchaVerified, setCaptchaVerified] = useState(false)
   const [emailSent, setEmailSent] = useState(false)
-  const { supabase } = useSupabase()
+  const { supabase, configured } = useSupabase()
   const { toast } = useToast()
   const router = useRouter()
 
@@ -37,17 +37,25 @@ export default function SignUpPage() {
       return
     }
 
+    if (!configured) {
+      toast({
+        title: "Backend setup required",
+        description: "Barter Nigeria is not connected to Supabase yet. Configure the Supabase environment variables before creating accounts.",
+        variant: "destructive",
+      })
+      return
+    }
+
     setLoading(true)
 
     try {
-      // Step 1: Create user with Mock Supabase Auth
+      // Create a real Supabase Auth account
       const { data: authData, error: authError } = await supabase.auth.signUp({
         email,
         password,
         options: {
-          data: {
-            full_name: fullName,
-          },
+          data: { full_name: fullName.trim() },
+          emailRedirectTo: window.location.origin + "/auth/signin",
         },
       })
 
@@ -55,36 +63,23 @@ export default function SignUpPage() {
         throw authError
       }
 
-      if (authData.user) {
-        // For demo purposes, we'll simulate the profile creation
-        const { error: profileError } = await supabase.from("profiles").insert([
-          {
-            id: authData.user.id,
-            full_name: fullName,
-            email: email,
-            password_hash: "demo-hash", // Mock hash for demo
-          },
-        ])
-
-        // Simulate email sending
-        await new Promise((resolve) => setTimeout(resolve, 1500))
-        setEmailSent(true)
-
-        toast({
-          title: "Account created! 🎉",
-          description: "Please check your email to verify your account before signing in.",
-        })
-
-        // Don't redirect immediately - show email verification message
+      if (!authData.user) {
+        throw new Error("Supabase did not return a user. Please try again.")
       }
-    } catch (error: any) {
-      // For demo purposes, still show success
-      await new Promise((resolve) => setTimeout(resolve, 1500))
-      setEmailSent(true)
 
+      setEmailSent(true)
       toast({
-        title: "Demo Account Created! 🎉",
-        description: "In a real app, you'd receive a verification email. For demo purposes, you can now sign in.",
+        title: "Registration started",
+        description: authData.session
+          ? "Your account has been created. You can now sign in."
+          : "Check your inbox for the verification email from Supabase.",
+      })
+    } catch (error: unknown) {
+      const message = error instanceof Error ? error.message : "Registration failed. Please try again."
+      toast({
+        title: "Unable to create account",
+        description: message,
+        variant: "destructive",
       })
     } finally {
       setLoading(false)

@@ -118,8 +118,8 @@ export default function SignUpPage() {
       <div className="w-full max-w-md">
         <div className="flex justify-center mb-6">
           <Link href="/" className="flex items-center gap-2">
-            <Image src="/b3-logo.png" alt="B3 Logo" width={40} height={40} className="w-10 h-10" />
-            <span className="text-xl font-bold text-gray-900 dark:text-white">B3</span>
+            <Image src="/b3-logo.png" alt="BarterNaija" width={40} height={40} className="w-10 h-10" />
+            <span className="text-xl font-bold text-gray-900 dark:text-white">BarterNaija</span>
           </Link>
         </div>
         <Card className="backdrop-blur-sm bg-white/90 dark:bg-gray-950/90 border-slate-200/60 dark:border-gray-800/60 shadow-2xl">

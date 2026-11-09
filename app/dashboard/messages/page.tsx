@@ -16,6 +16,8 @@ type Trade = {
   status: string
   created_at: string
   requested_listing: { title: string } | null
+  proposer: { full_name: string } | null
+  recipient: { full_name: string } | null
   latest_message?: { body: string; created_at: string } | null
 }
 
@@ -37,7 +39,7 @@ export default function MessagesPage() {
       setLoading(true)
       const { data: tradeRows, error } = await supabase
         .from("trades")
-        .select("id, proposer_id, recipient_id, status, created_at, requested_listing:listings!trades_requested_listing_id_fkey(title)")
+        .select("id, proposer_id, recipient_id, status, created_at, requested_listing:listings!trades_requested_listing_id_fkey(title),proposer:profiles!trades_proposer_id_fkey(full_name),recipient:profiles!trades_recipient_id_fkey(full_name)")
         .order("created_at", { ascending: false })
 
       if (error) {
@@ -110,14 +112,14 @@ export default function MessagesPage() {
       ) : (
         <div className="overflow-hidden rounded-lg border bg-white dark:bg-gray-950">
           {filteredTrades.map((trade, index) => {
-            const otherParty = trade.proposer_id === user.id ? trade.recipient_id : trade.proposer_id
+            const otherParty = trade.proposer_id === user.id ? trade.recipient?.full_name : trade.proposer?.full_name
             return (
               <Link key={trade.id} href={`/dashboard/messages/${trade.id}`} className={`block p-4 transition-colors hover:bg-gray-50 dark:hover:bg-gray-900 ${index < filteredTrades.length - 1 ? "border-b" : ""}`}>
                 <div className="flex items-start justify-between gap-3">
                   <div className="min-w-0">
                     <p className="font-semibold">{trade.requested_listing?.title || "Barter discussion"}</p>
                     <p className="mt-1 truncate text-sm text-muted-foreground">{trade.latest_message?.body || "Open conversation with your trade partner"}</p>
-                    <p className="mt-1 text-xs text-muted-foreground">Trade partner · {otherParty.slice(0, 8)} · {trade.status}</p>
+                    <p className="mt-1 text-xs text-muted-foreground">Trade partner · {otherParty || "BarterNaija member"} · {trade.status}</p>
                   </div>
                   <span className="shrink-0 text-xs text-muted-foreground">{new Date(trade.latest_message?.created_at || trade.created_at).toLocaleDateString()}</span>
                 </div>

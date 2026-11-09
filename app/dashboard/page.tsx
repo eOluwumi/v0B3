@@ -18,6 +18,8 @@ type RecentTrade = {
   created_at: string
   offering_listing: { title: string } | null
   requested_listing: { title: string } | null
+  proposer: { full_name: string } | null
+  recipient: { full_name: string } | null
 }
 
 export default function DashboardPage() {
@@ -36,7 +38,7 @@ export default function DashboardPage() {
     const [listingCount, tradesResult, reviewsResult] = await Promise.all([
       supabase.from("listings").select("id", { count: "exact", head: true }).eq("user_id", user.id).eq("status", "active"),
       supabase.from("trades")
-        .select("id,status,proposer_id,recipient_id,created_at,offering_listing:listings!trades_offering_listing_id_fkey(title),requested_listing:listings!trades_requested_listing_id_fkey(title)")
+        .select("id,status,proposer_id,recipient_id,created_at,offering_listing:listings!trades_offering_listing_id_fkey(title),requested_listing:listings!trades_requested_listing_id_fkey(title),proposer:profiles!trades_proposer_id_fkey(full_name),recipient:profiles!trades_recipient_id_fkey(full_name)")
         .order("created_at", { ascending: false }),
       supabase.from("reviews").select("rating").eq("reviewee_id", user.id),
     ])
@@ -103,7 +105,7 @@ export default function DashboardPage() {
             <div className="divide-y">
               {recentTrades.map((trade) => (
                 <Link key={trade.id} href={`/dashboard/messages/${trade.id}`} className="flex flex-wrap items-center justify-between gap-3 py-4 first:pt-0 last:pb-0">
-                  <div><p className="font-medium">{trade.offering_listing?.title || "Your item"} <span className="text-muted-foreground">⇄</span> {trade.requested_listing?.title || "Requested item"}</p><p className="mt-1 text-xs text-muted-foreground">{trade.proposer_id === user.id ? "Outgoing proposal" : "Incoming proposal"} · {new Date(trade.created_at).toLocaleDateString()}</p></div>
+                  <div><p className="font-medium">{trade.offering_listing?.title || "Your item"} <span className="text-muted-foreground">⇄</span> {trade.requested_listing?.title || "Requested item"}</p><p className="mt-1 text-xs text-muted-foreground">{(trade.proposer_id === user.id ? "Outgoing to " + (trade.recipient?.full_name || "member") : "Incoming from " + (trade.proposer?.full_name || "member"))} · {new Date(trade.created_at).toLocaleDateString()}</p></div>
                   <Badge variant={trade.status === "accepted" ? "default" : "outline"}>{trade.status}</Badge>
                 </Link>
               ))}

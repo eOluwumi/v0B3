@@ -18,6 +18,7 @@ type Listing = {
   location: string
   image_url: string | null
   created_at: string
+  owner: { full_name: string } | null
 }
 
 const locations = ["All locations", "Lagos", "Ibadan", "Abeokuta"]
@@ -33,7 +34,7 @@ export default function BrowsePage() {
   useEffect(() => {
     let active = true
     supabase.from("listings")
-      .select("id,title,description,offering_category,seeking_category,location,image_url,created_at")
+      .select("id,title,description,offering_category,seeking_category,location,image_url,created_at,owner:profiles!listings_user_id_fkey(full_name)")
       .eq("status", "active")
       .order("created_at", { ascending: false })
       .then(({ data, error }) => {
@@ -93,6 +94,7 @@ export default function BrowsePage() {
                       <div className="mb-2 flex items-center justify-between gap-2"><Badge variant="outline">{item.offering_category}</Badge><span className="flex items-center gap-1 text-xs text-muted-foreground"><MapPin className="h-3 w-3" />{item.location}</span></div>
                       <h2 className="text-lg font-bold text-[#173d2c]">{item.title}</h2>
                       <p className="mt-2 line-clamp-3 min-h-[4.5rem] text-sm leading-6 text-[#64766b]">{item.description}</p>
+                      <p className="mt-2 text-xs text-muted-foreground">Listed by {item.owner?.full_name || "BarterNaija member"}</p>
                       <div className="mt-4 rounded-lg bg-[#f4f8f4] p-3"><p className="text-[11px] font-bold uppercase tracking-wide text-[#738579]">Looking for</p><p className="mt-1 text-sm font-semibold text-[#214b36]">{item.seeking_category}</p></div>
                       <Link href={`/dashboard/trades/new?listing=${item.id}`} className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#087a50] px-4 py-3 text-sm font-bold text-white hover:bg-[#066642]">Propose an exchange <ArrowRight className="h-4 w-4" /></Link>
                     </div>

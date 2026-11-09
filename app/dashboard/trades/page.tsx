@@ -20,6 +20,8 @@ type Trade = {
   created_at: string
   offering_listing: { title: string } | null
   requested_listing: { title: string } | null
+  proposer: { full_name: string } | null
+  recipient: { full_name: string } | null
 }
 
 export default function TradesPage() {
@@ -33,7 +35,7 @@ export default function TradesPage() {
   const fetchTrades = useCallback(async () => {
     if (!user) return
     const { data, error } = await supabase.from("trades")
-      .select("id,proposer_id,recipient_id,offering_listing_id,requested_listing_id,status,created_at,offering_listing:listings!trades_offering_listing_id_fkey(title),requested_listing:listings!trades_requested_listing_id_fkey(title)")
+      .select("id,proposer_id,recipient_id,offering_listing_id,requested_listing_id,status,created_at,offering_listing:listings!trades_offering_listing_id_fkey(title),requested_listing:listings!trades_requested_listing_id_fkey(title),proposer:profiles!trades_proposer_id_fkey(full_name),recipient:profiles!trades_recipient_id_fkey(full_name)")
       .order("created_at", { ascending: false })
     if (error) {
       toast({ title: "Could not load barter proposals", description: error.message, variant: "destructive" })
@@ -87,7 +89,7 @@ export default function TradesPage() {
         <div className="space-y-4">
           {trades.map((trade) => {
             const incoming = trade.recipient_id === user.id
-            const partner = incoming ? trade.proposer_id : trade.recipient_id
+            const partner = incoming ? trade.proposer?.full_name : trade.recipient?.full_name
             const badge = trade.status === "accepted" ? "default" : trade.status === "completed" ? "secondary" : "outline"
             return (
               <div key={trade.id} className="rounded-xl border bg-white p-4 dark:bg-gray-950">
@@ -95,7 +97,7 @@ export default function TradesPage() {
                   <div>
                     <p className="text-xs font-semibold uppercase tracking-wide text-muted-foreground">{incoming ? "Incoming proposal" : "You proposed"}</p>
                     <h2 className="mt-1 font-semibold">{trade.offering_listing?.title || "Your item"} <span className="text-muted-foreground">⇄</span> {trade.requested_listing?.title || "Requested item"}</h2>
-                    <p className="mt-1 text-xs text-muted-foreground">Trade partner · {partner.slice(0, 8)} · {new Date(trade.created_at).toLocaleDateString()}</p>
+                    <p className="mt-1 text-xs text-muted-foreground">Trade partner · {partner || "BarterNaija member"} · {new Date(trade.created_at).toLocaleDateString()}</p>
                   </div>
                   <Badge variant={badge as any}>{trade.status}</Badge>
                 </div>

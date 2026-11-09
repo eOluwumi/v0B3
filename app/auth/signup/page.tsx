@@ -7,7 +7,6 @@ import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle }
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useToast } from "@/components/ui/use-toast"
-import { useRouter } from "next/navigation"
 import { useSupabase } from "@/components/supabase-provider"
 import { Captcha } from "@/components/captcha"
 import Link from "next/link"
@@ -23,7 +22,6 @@ export default function SignUpPage() {
   const [emailSent, setEmailSent] = useState(false)
   const { supabase } = useSupabase()
   const { toast } = useToast()
-  const router = useRouter()
 
   const handleSignUp = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -40,51 +38,30 @@ export default function SignUpPage() {
     setLoading(true)
 
     try {
-      // Step 1: Create user with Mock Supabase Auth
-      const { data: authData, error: authError } = await supabase.auth.signUp({
-        email,
+      const { data, error } = await supabase.auth.signUp({
+        email: email.trim().toLowerCase(),
         password,
         options: {
-          data: {
-            full_name: fullName,
-          },
+          data: { full_name: fullName.trim() },
+          emailRedirectTo: window.location.origin + "/auth/verify",
         },
       })
 
-      if (authError) {
-        throw authError
-      }
+      if (error) throw error
+      if (!data.user) throw new Error("Supabase did not return a user. Please try again.")
 
-      if (authData.user) {
-        // For demo purposes, we'll simulate the profile creation
-        const { error: profileError } = await supabase.from("profiles").insert([
-          {
-            id: authData.user.id,
-            full_name: fullName,
-            email: email,
-            password_hash: "demo-hash", // Mock hash for demo
-          },
-        ])
-
-        // Simulate email sending
-        await new Promise((resolve) => setTimeout(resolve, 1500))
-        setEmailSent(true)
-
-        toast({
-          title: "Account created! 🎉",
-          description: "Please check your email to verify your account before signing in.",
-        })
-
-        // Don't redirect immediately - show email verification message
-      }
-    } catch (error: any) {
-      // For demo purposes, still show success
-      await new Promise((resolve) => setTimeout(resolve, 1500))
       setEmailSent(true)
-
       toast({
-        title: "Demo Account Created! 🎉",
-        description: "In a real app, you'd receive a verification email. For demo purposes, you can now sign in.",
+        title: "Account created",
+        description: data.session
+          ? "Your account is ready. You can continue to sign in."
+          : "Check your inbox for the verification link before signing in.",
+      })
+    } catch (error: any) {
+      toast({
+        title: "Could not create your account",
+        description: error?.message || "Please check your details and try again.",
+        variant: "destructive",
       })
     } finally {
       setLoading(false)

@@ -1,5 +1,6 @@
 "use client"
 
+import type React from "react"
 import { useEffect, useState } from "react"
 import { useRouter } from "next/navigation"
 import { useSupabase } from "@/components/supabase-provider"
@@ -55,6 +56,8 @@ export default function NewTradePage() {
       } else {
         setMyListings(mine.data || [])
         setOtherListings(others.data || [])
+        const preselected = new URLSearchParams(window.location.search).get("listing")
+        if (preselected && (others.data || []).some((item) => item.id === preselected)) setRequestedListingId(preselected)
       }
       setLoading(false)
     }

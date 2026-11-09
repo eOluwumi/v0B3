@@ -3,6 +3,7 @@
 import type React from "react"
 import { createContext, useContext, useEffect, useMemo, useState } from "react"
 import { createClient, type SupabaseClient, type User } from "@supabase/supabase-js"
+import type { Database } from "@/types/supabase"
 import { useToast } from "@/components/ui/use-toast"
 
 const supabaseUrl =
@@ -23,7 +24,7 @@ export const isSupabaseConfigured =
       process.env.SUPABASE_ANON_KEY,
   )
 
-export const supabase: SupabaseClient = createClient(supabaseUrl, supabaseKey, {
+export const supabase: SupabaseClient<Database> = createClient<Database>(supabaseUrl, supabaseKey, {
   auth: {
     autoRefreshToken: true,
     persistSession: true,
@@ -32,7 +33,7 @@ export const supabase: SupabaseClient = createClient(supabaseUrl, supabaseKey, {
 })
 
 type SupabaseContextType = {
-  supabase: SupabaseClient
+  supabase: SupabaseClient<Database>
   user: User | null
   loading: boolean
   configured: boolean

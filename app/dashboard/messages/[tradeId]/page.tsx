@@ -16,6 +16,8 @@ type Trade = {
   recipient_id: string
   status: string
   requested_listing: { title: string } | null
+  proposer: { full_name: string } | null
+  recipient: { full_name: string } | null
 }
 type Message = { id: string; sender_id: string; recipient_id: string; body: string; created_at: string }
 
@@ -45,7 +47,7 @@ export default function TradeConversationPage() {
 
   const loadTrade = useCallback(async () => {
     const { data, error } = await supabase.from("trades")
-      .select("id, proposer_id, recipient_id, status, requested_listing:listings!trades_requested_listing_id_fkey(title)")
+      .select("id, proposer_id, recipient_id, status, requested_listing:listings!trades_requested_listing_id_fkey(title),proposer:profiles!trades_proposer_id_fkey(full_name),recipient:profiles!trades_recipient_id_fkey(full_name)")
       .eq("id", tradeId).single()
     if (error) {
       toast({ title: "Unable to load barter conversation", description: error.message, variant: "destructive" })
@@ -105,7 +107,7 @@ export default function TradeConversationPage() {
   if (!user || !trade) return null
   const isRecipient = trade.recipient_id === user.id
   const isProposer = trade.proposer_id === user.id
-  const partnerId = isProposer ? trade.recipient_id : trade.proposer_id
+  const partnerName = isProposer ? trade.recipient?.full_name : trade.proposer?.full_name
 
   return (
     <DashboardLayout>
@@ -114,7 +116,7 @@ export default function TradeConversationPage() {
           <Link href="/dashboard/messages"><Button variant="ghost" size="icon" aria-label="Back to messages"><ArrowLeft className="h-4 w-4" /></Button></Link>
           <div className="min-w-0">
             <h1 className="truncate text-xl font-bold">{trade.requested_listing?.title || "Barter conversation"}</h1>
-            <p className="text-sm text-muted-foreground">Trade partner · {partnerId.slice(0, 8)} · {trade.status}</p>
+            <p className="text-sm text-muted-foreground">Trade partner · {partnerName || "BarterNaija member"} · {trade.status}</p>
           </div>
         </div>
         {trade.status === "pending" && isRecipient && (

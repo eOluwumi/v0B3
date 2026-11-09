@@ -2,13 +2,13 @@
 
 import type React from "react"
 import { useState } from "react"
+import { useRouter } from "next/navigation"
 import { Button } from "@/components/ui/button"
 import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card"
 import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useToast } from "@/components/ui/use-toast"
 import { useSupabase } from "@/components/supabase-provider"
-import { Captcha } from "@/components/captcha"
 import Link from "next/link"
 import Image from "next/image"
 import { Mail, CheckCircle } from "lucide-react"
@@ -18,22 +18,13 @@ export default function SignUpPage() {
   const [password, setPassword] = useState("")
   const [fullName, setFullName] = useState("")
   const [loading, setLoading] = useState(false)
-  const [captchaVerified, setCaptchaVerified] = useState(false)
   const [emailSent, setEmailSent] = useState(false)
   const { supabase } = useSupabase()
+  const router = useRouter()
   const { toast } = useToast()
 
   const handleSignUp = async (e: React.FormEvent) => {
     e.preventDefault()
-
-    if (!captchaVerified) {
-      toast({
-        title: "Verification Required",
-        description: "Please complete the CAPTCHA to verify you're human.",
-        variant: "destructive",
-      })
-      return
-    }
 
     setLoading(true)
 
@@ -49,6 +40,11 @@ export default function SignUpPage() {
 
       if (error) throw error
       if (!data.user) throw new Error("Supabase did not return a user. Please try again.")
+
+      if (data.session) {
+        router.replace("/dashboard")
+        return
+      }
 
       setEmailSent(true)
       toast({
@@ -74,8 +70,8 @@ export default function SignUpPage() {
         <div className="w-full max-w-md">
           <div className="flex justify-center mb-6">
             <Link href="/" className="flex items-center gap-2">
-              <Image src="/b3-logo.png" alt="B3 Logo" width={40} height={40} className="w-10 h-10" />
-              <span className="text-xl font-bold text-gray-900 dark:text-white">B3</span>
+              <Image src="/b3-logo.png" alt="BarterNaija" width={40} height={40} className="w-10 h-10" />
+              <span className="text-xl font-bold text-gray-900 dark:text-white">BarterNaija</span>
             </Link>
           </div>
           <Card className="backdrop-blur-sm bg-white/90 dark:bg-gray-950/90 border-slate-200/60 dark:border-gray-800/60 shadow-2xl">
@@ -128,7 +124,7 @@ export default function SignUpPage() {
         </div>
         <Card className="backdrop-blur-sm bg-white/90 dark:bg-gray-950/90 border-slate-200/60 dark:border-gray-800/60 shadow-2xl">
           <CardHeader>
-            <CardTitle className="text-2xl">Join the #BringBackBarter Revolution!</CardTitle>
+            <CardTitle className="text-2xl">Create your BarterNaija account</CardTitle>
             <CardDescription>
               Ready to prove that barter is back & better? Join thousands of Naija people who are revolutionizing trade!
               🇳🇬
@@ -171,15 +167,14 @@ export default function SignUpPage() {
                 <p className="text-xs text-gray-500">Must be at least 8 characters long</p>
               </div>
 
-              <Captcha onVerify={setCaptchaVerified} isVerified={captchaVerified} />
             </CardContent>
             <CardFooter className="flex flex-col">
               <Button
                 type="submit"
                 className="w-full bg-gradient-to-r from-green-600 to-green-500 hover:from-green-700 hover:to-green-600 text-white shadow-lg hover:shadow-xl transition-all duration-200"
-                disabled={loading || !captchaVerified}
+                disabled={loading}
               >
-                {loading ? "Creating account..." : "Join #BringBackBarter"}
+                {loading ? "Creating account..." : "Create account"}
               </Button>
               <div className="mt-4 text-center text-sm">
                 Already have an account?{" "}

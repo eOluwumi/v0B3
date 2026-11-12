@@ -42,14 +42,14 @@ export default function Home() {
   return (
     <main className="min-h-screen overflow-hidden bg-[#fbfaf5] text-[#17251e]">
       <div className="bg-[#073f2d] px-4 py-2.5 text-center text-xs font-semibold tracking-wide text-[#f7f3e8] sm:text-sm">
-        Good things deserve a second home. Exchange value, the BarterNaija way.
+        Good things deserve a second home. Join the B3 Revolution.
       </div>
 
       <header className="sticky top-0 z-50 border-b border-[#e8e9df] bg-[#fffefa]/95 backdrop-blur">
         <div className="mx-auto flex h-[74px] max-w-7xl items-center justify-between px-5 lg:px-8">
-          <Link href="/" className="flex items-center gap-2.5" aria-label="BarterNaija home">
-            <span className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#087a50] text-lg font-black tracking-tight text-white shadow-sm">B</span>
-            <span className="text-[21px] font-extrabold tracking-tight text-[#123b2b]">Barter<span className="text-[#0b9a63]">Naija</span></span>
+          <Link href="/" className="flex items-center gap-2.5" aria-label="B3: Bring Back Barter home">
+            <Image src="/b3-logo.png" alt="B3" width={42} height={42} className="h-10 w-10 rounded-xl object-contain" />
+            <span className="flex flex-col leading-tight"><span className="text-[21px] font-black tracking-tight text-[#123b2b]">B3</span><span className="text-[10px] font-bold uppercase tracking-[0.12em] text-[#0b9a63]">Bring Back Barter</span></span>
           </Link>
 
           <nav className="hidden items-center gap-8 md:flex" aria-label="Main navigation">
@@ -116,7 +116,7 @@ export default function Home() {
               <div className="relative">
                 <div className="flex items-center justify-between border-b border-white/15 pb-5">
                   <div>
-                    <p className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-[#b9d9c2]">The BarterNaija idea</p>
+                    <p className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-[#b9d9c2]">The B3 idea</p>
                     <p className="mt-1 text-xl font-black text-white sm:text-2xl">One good thing for another.</p>
                   </div>
                   <span className="rounded-full border border-[#d6bd79]/40 bg-[#d6bd79]/15 px-3 py-1.5 text-[10px] font-extrabold uppercase tracking-wider text-[#f3d995]">No cash swap</span>
@@ -211,7 +211,7 @@ export default function Home() {
           <div className="max-w-lg">
             <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-[#d6bd79]">Straightforward, by design</p>
             <h2 className="mt-4 text-3xl font-black tracking-tight sm:text-4xl">No need to sell before you can get what you need.</h2>
-            <p className="mt-5 leading-8 text-emerald-100/80">Find someone whose needs meet yours. Have a proper conversation, agree on the items and arrange the exchange yourselves. BarterNaija is here to make that connection easier.</p>
+            <p className="mt-5 leading-8 text-emerald-100/80">Find someone whose needs meet yours. Have a proper conversation, agree on the items and arrange the exchange yourselves. B3 is here to make that connection easier.</p>
             <Link href="/how-it-works" className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#f4e7c6] px-6 py-3.5 text-sm font-extrabold text-[#075239] transition hover:bg-white">See how it works <ArrowRight className="h-4 w-4" /></Link>
           </div>
 
@@ -252,7 +252,7 @@ export default function Home() {
           <h2 className="mx-auto mt-5 max-w-2xl text-3xl font-black tracking-tight text-[#153c2b] sm:text-4xl">That item you’re not using might be just what someone needs.</h2>
           <p className="mx-auto mt-4 max-w-xl leading-7 text-[#5d7464]">Give it another purpose. Find a fair swap. Keep good things moving.</p>
           <div className="mt-8 flex flex-col justify-center gap-3 sm:flex-row">
-            <Link href="/auth/signup" className="inline-flex min-h-13 items-center justify-center gap-2 rounded-full bg-[#087a50] px-7 py-3.5 text-sm font-extrabold text-white transition hover:bg-[#066642]">Join BarterNaija <ArrowRight className="h-4 w-4" /></Link>
+            <Link href="/auth/signup" className="inline-flex min-h-13 items-center justify-center gap-2 rounded-full bg-[#087a50] px-7 py-3.5 text-sm font-extrabold text-white transition hover:bg-[#066642]">Join the B3 Revolution <ArrowRight className="h-4 w-4" /></Link>
             <Link href="/browse" className="inline-flex min-h-13 items-center justify-center rounded-full border border-[#b9d8c0] bg-[#fffefa] px-7 py-3.5 text-sm font-extrabold text-[#214b36] transition hover:border-[#087a50]">Browse items</Link>
           </div>
         </div>
@@ -283,7 +283,7 @@ export default function Home() {
             <h3 className="text-sm font-extrabold text-[#203e2d]">Learn more</h3>
             <div className="mt-4 space-y-3 text-sm text-[#718176]">
               <Link className="block hover:text-[#087a50]" href="/how-it-works">How it works</Link>
-              <Link className="block hover:text-[#087a50]" href="/about">About BarterNaija</Link>
+              <Link className="block hover:text-[#087a50]" href="/about">About B3</Link>
             </div>
           </div>
           <div>
@@ -297,7 +297,7 @@ export default function Home() {
         </div>
         <div className="border-t border-[#edf1ed]">
           <div className="mx-auto flex max-w-7xl flex-col gap-2 px-5 py-5 text-xs text-[#89968d] sm:flex-row sm:items-center sm:justify-between lg:px-8">
-            <span>© {new Date().getFullYear()} BarterNaija. All rights reserved.</span>
+            <span>© {new Date().getFullYear()} B3: Bring Back Barter. All rights reserved.</span>
             <span>A product of <a href="https://b9tech.barternaija.com.ng" target="_blank" rel="noopener noreferrer" className="font-bold text-[#315c43] underline-offset-4 hover:underline">B9 TECH CONSULT LTD</a>.</span>
           </div>
         </div>

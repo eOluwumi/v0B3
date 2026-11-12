@@ -34,7 +34,7 @@ export default function SignUpPage() {
         password,
         options: {
           data: { full_name: fullName.trim() },
-          emailRedirectTo: window.location.origin + "/auth/verify",
+          emailRedirectTo: `${(process.env.NEXT_PUBLIC_SITE_URL || window.location.origin).replace(/\\/$/, "")}/auth/verify`,
         },
       })
 

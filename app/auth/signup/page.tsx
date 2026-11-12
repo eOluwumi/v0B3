@@ -9,6 +9,7 @@ import { Input } from "@/components/ui/input"
 import { Label } from "@/components/ui/label"
 import { useToast } from "@/components/ui/use-toast"
 import { useSupabase } from "@/components/supabase-provider"
+import { GoogleSignInButton } from "@/components/auth/google-sign-in-button"
 import Link from "next/link"
 import Image from "next/image"
 import { Mail, CheckCircle } from "lucide-react"
@@ -34,7 +35,7 @@ export default function SignUpPage() {
         password,
         options: {
           data: { full_name: fullName.trim() },
-          emailRedirectTo: window.location.origin + "/auth/verify",
+          emailRedirectTo: `${(process.env.NEXT_PUBLIC_SITE_URL || window.location.origin).replace(/\/$/, "")}/auth/verify`,
         },
       })
 
@@ -166,7 +167,11 @@ export default function SignUpPage() {
                 />
                 <p className="text-xs text-gray-500">Must be at least 8 characters long</p>
               </div>
-
+              <div className="relative py-2">
+                <div className="absolute inset-0 flex items-center"><span className="w-full border-t border-slate-200 dark:border-gray-700" /></div>
+                <div className="relative flex justify-center"><span className="bg-white px-3 text-xs uppercase tracking-wide text-gray-500 dark:bg-gray-950">Or sign up with</span></div>
+              </div>
+              <GoogleSignInButton label="Sign up with Google" />
             </CardContent>
             <CardFooter className="flex flex-col">
               <Button

@@ -9,6 +9,7 @@ import { Label } from "@/components/ui/label"
 import { useToast } from "@/components/ui/use-toast"
 import { useRouter } from "next/navigation"
 import { useSupabase } from "@/components/supabase-provider"
+import { GoogleSignInButton } from "@/components/auth/google-sign-in-button"
 import Link from "next/link"
 import Image from "next/image"
 
@@ -97,6 +98,11 @@ export default function SignInPage() {
                   Forgot password?
                 </Link>
               </div>
+              <div className="relative py-2">
+                <div className="absolute inset-0 flex items-center"><span className="w-full border-t border-slate-200 dark:border-gray-700" /></div>
+                <div className="relative flex justify-center"><span className="bg-white px-3 text-xs uppercase tracking-wide text-gray-500 dark:bg-gray-950">Or continue with</span></div>
+              </div>
+              <GoogleSignInButton />
             </CardContent>
             <CardFooter className="flex flex-col">
               <Button

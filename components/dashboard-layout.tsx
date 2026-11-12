@@ -58,8 +58,8 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
     <div className="flex min-h-screen bg-zinc-100 dark:bg-gray-900">
       <aside className="hidden w-64 flex-col border-r bg-white dark:border-gray-800 dark:bg-gray-950 md:flex">
         <div className="flex items-center justify-between border-b p-4 dark:border-gray-800">
-          <Link href="/" aria-label="BarterNaija home" className="text-lg font-black text-[#123b2b] dark:text-white">B3</Link>
-          <div className="flex items-center gap-2"><ThemeToggle /><B3BrandLink compact /></div>
+          <B3BrandLink />
+          <ThemeToggle />
         </div>
         {nav()}
         <div className="border-t p-4 dark:border-gray-800">
@@ -82,8 +82,8 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
       <div className="min-w-0 flex-1">
         <header className="flex items-center justify-between border-b bg-white p-4 dark:border-gray-800 dark:bg-gray-950 md:hidden">
           <Button variant="ghost" size="icon" aria-label="Open menu" onClick={() => setMobileNavOpen(true)}><Menu className="h-5 w-5" /></Button>
-          <Link href="/" className="font-bold text-[#123b2b] dark:text-white">B3</Link>
-          <div className="flex items-center gap-1"><ThemeToggle /><B3BrandLink compact /></div>
+          <B3BrandLink compact />
+          <ThemeToggle />
         </header>
         <main className="p-4 sm:p-6">{children}</main>
       </div>

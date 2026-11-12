@@ -42,7 +42,7 @@ export default function Home() {
   return (
     <main className="min-h-screen overflow-hidden bg-[#fbfaf5] text-[#17251e]">
       <div className="bg-[#073f2d] px-4 py-2.5 text-center text-xs font-semibold tracking-wide text-[#f7f3e8] sm:text-sm">
-        Good things deserve a second home. Join the B3 Revolution.
+        Ẹ káàbọ̀ — welcome to B3. Good things deserve a second home.
       </div>
 
       <header className="sticky top-0 z-50 border-b border-[#e8e9df] bg-[#fffefa]/95 backdrop-blur">
@@ -69,19 +69,19 @@ export default function Home() {
         </div>
       </header>
 
-      <section className="relative isolate overflow-hidden bg-[#f4f1e7]">
-        <div className="absolute inset-0 -z-10 opacity-60" style={{ backgroundImage: "radial-gradient(circle at 12% 18%, rgba(203,151,83,.18), transparent 24%), radial-gradient(circle at 82% 70%, rgba(8,122,80,.13), transparent 28%)" }} />
+      <section className="relative isolate overflow-hidden bg-[#f3ead8]">
+        <div className="absolute inset-0 -z-10 opacity-80" style={{ backgroundImage: "radial-gradient(circle at 12% 18%, rgba(183,105,67,.18), transparent 24%), radial-gradient(circle at 82% 70%, rgba(8,75,57,.13), transparent 28%), repeating-linear-gradient(135deg, rgba(38,54,91,.035) 0 2px, transparent 2px 14px)" }} />
         <div className="mx-auto grid max-w-7xl items-center gap-12 px-5 pb-16 pt-14 md:grid-cols-[1fr_0.94fr] md:pb-24 md:pt-20 lg:px-8">
           <div className="max-w-2xl">
             <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-[#d8d8c6] bg-[#fffefa]/80 px-4 py-2 text-xs font-extrabold uppercase tracking-[0.12em] text-[#087a50] shadow-sm">
               <MapPin className="h-3.5 w-3.5" /> Lagos · Ibadan · Abeokuta
             </div>
             <h1 className="text-[2.85rem] font-black leading-[1.04] tracking-[-0.055em] text-[#123b2b] sm:text-6xl lg:text-[4.55rem]">
-              That thing you have? It could be <span className="text-[#0a9861]">someone else’s next favourite.</span>
+              In Nigeria, value has always found a way to move. <span className="text-[#a64f37]">Let’s bring that spirit back.</span>
             </h1>
             <p className="mt-6 max-w-xl text-base leading-8 text-[#58675d] sm:text-lg">
-              The spare phone in your drawer. The chair you’re ready to replace. The gadget you no longer use.
-              Put it up for exchange and find something you actually need—with people in your city.
+              From the standing fan that still works perfectly to the phone you’ve outgrown, good things should not gather dust.
+              Exchange what you have for what you need—with people in your city. No cash top-ups. Just value for value.
             </p>
 
             <div className="mt-8 flex flex-col gap-3 sm:flex-row">
@@ -116,8 +116,8 @@ export default function Home() {
               <div className="relative">
                 <div className="flex items-center justify-between border-b border-white/15 pb-5">
                   <div>
-                    <p className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-[#b9d9c2]">The B3 idea</p>
-                    <p className="mt-1 text-xl font-black text-white sm:text-2xl">One good thing for another.</p>
+                    <p className="text-[10px] font-extrabold uppercase tracking-[0.2em] text-[#e7c98c]">A familiar Nigerian idea, made new</p>
+                    <p className="mt-1 text-xl font-black text-white sm:text-2xl">You get value. They get value.</p>
                   </div>
                   <span className="rounded-full border border-[#d6bd79]/40 bg-[#d6bd79]/15 px-3 py-1.5 text-[10px] font-extrabold uppercase tracking-wider text-[#f3d995]">No cash swap</span>
                 </div>
@@ -164,6 +164,8 @@ export default function Home() {
         </div>
       </section>
 
+      <div aria-hidden="true" className="h-3 w-full" style={{ backgroundImage: "repeating-linear-gradient(135deg, #183b35 0 8px, #c58a4a 8px 12px, #f0d9a4 12px 16px, #6d3340 16px 20px, #24375b 20px 28px)" }} />
+
       <section className="border-y border-[#e8e9df] bg-[#fffefa] py-6">
         <div className="mx-auto flex max-w-7xl flex-col items-center justify-between gap-4 px-5 md:flex-row lg:px-8">
           <p className="text-sm font-extrabold text-[#52665a]">Starting close to home.</p>
@@ -181,9 +183,9 @@ export default function Home() {
       <section id="categories" className="mx-auto max-w-7xl px-5 py-20 lg:px-8 lg:py-24">
         <div className="flex flex-col justify-between gap-5 sm:flex-row sm:items-end">
           <div>
-            <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-[#0a9861]">Plenty to exchange</p>
-            <h2 className="mt-3 text-3xl font-black tracking-tight text-[#153c2b] sm:text-4xl">What have you got in mind?</h2>
-            <p className="mt-3 max-w-xl text-base leading-7 text-[#65766b]">Browse durable, useful items—from everyday gadgets to furniture and vehicles. Good condition and honest descriptions matter.</p>
+            <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-[#a64f37]">Good things, moving around</p>
+            <h2 className="mt-3 font-serif text-3xl font-black tracking-tight text-[#153c2b] sm:text-4xl">What’s in your corner of the house?</h2>
+            <p className="mt-3 max-w-xl text-base leading-7 text-[#65766b]">That extra phone. The generator you no longer need. Furniture, tools and other useful valuables. List it honestly; find a fair exchange.</p>
           </div>
           <Link href="/browse" className="inline-flex items-center gap-2 text-sm font-extrabold text-[#087a50] hover:text-[#064e37]">Explore the marketplace <ArrowUpRight className="h-4 w-4" /></Link>
         </div>
@@ -209,9 +211,9 @@ export default function Home() {
       <section className="bg-[#073f2d] py-20 text-white lg:py-24">
         <div className="mx-auto grid max-w-7xl gap-14 px-5 lg:grid-cols-[0.8fr_1.2fr] lg:px-8">
           <div className="max-w-lg">
-            <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-[#d6bd79]">Straightforward, by design</p>
-            <h2 className="mt-4 text-3xl font-black tracking-tight sm:text-4xl">No need to sell before you can get what you need.</h2>
-            <p className="mt-5 leading-8 text-emerald-100/80">Find someone whose needs meet yours. Have a proper conversation, agree on the items and arrange the exchange yourselves. B3 is here to make that connection easier.</p>
+            <p className="text-xs font-extrabold uppercase tracking-[0.16em] text-[#e7c98c]">The old wisdom. A better way to connect.</p>
+            <h2 className="mt-4 font-serif text-3xl font-black tracking-tight sm:text-4xl">Before money changed hands, people exchanged value.</h2>
+            <p className="mt-5 leading-8 text-emerald-100/80">There is a practical wisdom in making use of what you already have. B3 brings that spirit into a trusted digital community: find a match, talk it through, inspect the items and agree on a fair swap.</p>
             <Link href="/how-it-works" className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#f4e7c6] px-6 py-3.5 text-sm font-extrabold text-[#075239] transition hover:bg-white">See how it works <ArrowRight className="h-4 w-4" /></Link>
           </div>
 
@@ -270,7 +272,7 @@ export default function Home() {
             </Link>
             <p className="mt-4 max-w-xs text-sm font-semibold leading-6 text-[#315c43]">Barter is back & better. Join the B3 Revolution.</p>
             <p className="mt-2 max-w-xs text-sm leading-7 text-[#718176]">A community for cashless exchanges of valuable items across Lagos, Ibadan and Abeokuta.</p>
-            <p className="mt-5 text-xs font-semibold text-[#89968d]">Proudly built in Nigeria.</p>
+            <p className="mt-5 text-xs font-semibold text-[#89968d]">Made with Nigerian communities in mind.</p>
           </div>
           <div>
             <h3 className="text-sm font-extrabold text-[#203e2d]">Marketplace</h3>

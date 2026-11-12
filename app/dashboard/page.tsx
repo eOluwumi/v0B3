@@ -80,7 +80,7 @@ export default function DashboardPage() {
   return (
     <DashboardLayout>
       <div className="mb-6">
-        <h1 className="text-2xl font-bold">Welcome, {displayName}</h1>
+        <h1 className="text-2xl font-bold">Welcome back, Barter Warrior!</h1><p className="mt-1 text-xs text-muted-foreground">Signed in as {displayName}</p>
         <p className="mt-1 text-sm text-muted-foreground">You're part of the B3 Revolution. Barter is back & better.</p>
       </div>
       <div className="mb-6 grid grid-cols-2 gap-3 md:grid-cols-4">

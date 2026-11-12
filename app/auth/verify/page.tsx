@@ -22,9 +22,9 @@ export default function VerifyPage() {
             <CardTitle className="text-2xl">{loading ? "Checking your account…" : user ? "Your email is verified" : "Check your email"}</CardTitle>
             <CardDescription>
               {loading
-                ? "We are confirming your BarterNaija session."
+                ? "We are confirming your B3 session."
                 : user
-                  ? "Your BarterNaija account is active. You can now list items and arrange cashless exchanges."
+                  ? "Your B3 account is active. You can now list items and arrange cashless exchanges."
                   : "We have sent a verification link if email confirmation is enabled. Open it on this device to activate your account."}
             </CardDescription>
           </CardHeader>

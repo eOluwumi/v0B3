@@ -70,8 +70,8 @@ export default function SignUpPage() {
         <div className="w-full max-w-md">
           <div className="flex justify-center mb-6">
             <Link href="/" className="flex items-center gap-2">
-              <Image src="/b3-logo.png" alt="BarterNaija" width={40} height={40} className="w-10 h-10" />
-              <span className="text-xl font-bold text-gray-900 dark:text-white">BarterNaija</span>
+              <Image src="/b3-logo.png" alt="B3: Bring Back Barter" width={40} height={40} className="w-10 h-10" />
+              <span className="flex flex-col leading-tight text-gray-900 dark:text-white"><strong className="text-xl">B3</strong><span className="text-[10px] font-bold uppercase tracking-wider text-emerald-700">Bring Back Barter</span></span>
             </Link>
           </div>
           <Card className="backdrop-blur-sm bg-white/90 dark:bg-gray-950/90 border-slate-200/60 dark:border-gray-800/60 shadow-2xl">
@@ -81,7 +81,7 @@ export default function SignUpPage() {
               </div>
               <CardTitle className="text-2xl">Check Your Email!</CardTitle>
               <CardDescription>
-                We've sent a verification link to <strong>{email}</strong>
+                We've requested a verification link for <strong>{email}</strong>
               </CardDescription>
             </CardHeader>
             <CardContent className="space-y-4 text-center">
@@ -118,15 +118,15 @@ export default function SignUpPage() {
       <div className="w-full max-w-md">
         <div className="flex justify-center mb-6">
           <Link href="/" className="flex items-center gap-2">
-            <Image src="/b3-logo.png" alt="BarterNaija" width={40} height={40} className="w-10 h-10" />
-            <span className="text-xl font-bold text-gray-900 dark:text-white">BarterNaija</span>
+            <Image src="/b3-logo.png" alt="B3: Bring Back Barter" width={40} height={40} className="w-10 h-10" />
+            <span className="flex flex-col leading-tight text-gray-900 dark:text-white"><strong className="text-xl">B3</strong><span className="text-[10px] font-bold uppercase tracking-wider text-emerald-700">Bring Back Barter</span></span>
           </Link>
         </div>
         <Card className="backdrop-blur-sm bg-white/90 dark:bg-gray-950/90 border-slate-200/60 dark:border-gray-800/60 shadow-2xl">
           <CardHeader>
-            <CardTitle className="text-2xl">Create your BarterNaija account</CardTitle>
+            <CardTitle className="text-2xl">Join the B3 Revolution</CardTitle>
             <CardDescription>
-              Ready to prove that barter is back & better? Join thousands of Naija people who are revolutionizing trade!
+              Barter is back & better. Create your account to list useful items and arrange cashless exchanges.
               🇳🇬
             </CardDescription>
           </CardHeader>

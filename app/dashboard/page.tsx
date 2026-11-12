@@ -80,8 +80,8 @@ export default function DashboardPage() {
   return (
     <DashboardLayout>
       <div className="mb-6">
-        <h1 className="text-2xl font-bold">Welcome, {displayName}</h1>
-        <p className="mt-1 text-sm text-muted-foreground">Your BarterNaija activity, listings and exchanges in one place.</p>
+        <h1 className="text-2xl font-bold">Welcome back, Barter Warrior!</h1><p className="mt-1 text-xs text-muted-foreground">Signed in as {displayName}</p>
+        <p className="mt-1 text-sm text-muted-foreground">You're part of the B3 Revolution. Barter is back & better.</p>
       </div>
       <div className="mb-6 grid grid-cols-2 gap-3 md:grid-cols-4">
         <Card><CardHeader className="flex flex-row items-center justify-between p-4"><CardTitle className="text-sm font-medium">Active listings</CardTitle><Plus className="h-4 w-4 text-emerald-600" /></CardHeader><CardContent className="px-4 pb-4 pt-0"><p className="text-2xl font-bold">{activeListings ?? "—"}</p></CardContent></Card>

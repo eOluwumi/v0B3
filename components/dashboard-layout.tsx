@@ -20,11 +20,12 @@ const navItems = [
   { name: "My Trades", href: "/dashboard/trades", icon: RefreshCw },
 ]
 
-function B9BrandLink({ compact = false }: { compact?: boolean }) {
+function B3BrandLink({ compact = false }: { compact?: boolean }) {
   return (
-    <a href="https://b9tech.barternaija.com.ng" target="_blank" rel="noopener noreferrer" aria-label="Visit B9TECH CONSULTS" className="inline-flex items-center">
-      <Image src="/b9-logo.png" alt="B9TECH CONSULTS" width={compact ? 104 : 120} height={40} className={compact ? "h-8 w-auto object-contain" : "h-10 w-auto object-contain"} />
-    </a>
+    <Link href="/" aria-label="B3: Bring Back Barter home" className="inline-flex items-center gap-2">
+      <Image src="/b3-logo.png" alt="B3" width={compact ? 32 : 40} height={40} className={compact ? "h-8 w-8 object-contain" : "h-10 w-10 object-contain"} />
+      <span className="flex flex-col leading-tight"><strong className="text-base font-black">B3</strong><span className="text-[9px] font-bold uppercase tracking-wider text-emerald-700">Bring Back Barter</span></span>
+    </Link>
   )
 }
 
@@ -57,8 +58,8 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
     <div className="flex min-h-screen bg-zinc-100 dark:bg-gray-900">
       <aside className="hidden w-64 flex-col border-r bg-white dark:border-gray-800 dark:bg-gray-950 md:flex">
         <div className="flex items-center justify-between border-b p-4 dark:border-gray-800">
-          <Link href="/" aria-label="BarterNaija home" className="text-lg font-black text-[#123b2b] dark:text-white">Barter<span className="text-emerald-600">Naija</span></Link>
-          <div className="flex items-center gap-2"><ThemeToggle /><B9BrandLink compact /></div>
+          <B3BrandLink />
+          <ThemeToggle />
         </div>
         {nav()}
         <div className="border-t p-4 dark:border-gray-800">
@@ -71,7 +72,7 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
       {mobileNavOpen && <button type="button" aria-label="Close navigation overlay" className="fixed inset-0 z-40 bg-black/50 md:hidden" onClick={() => setMobileNavOpen(false)} />}
       <div className={cn("fixed inset-y-0 left-0 z-50 flex w-72 flex-col border-r bg-white transition-transform dark:border-gray-800 dark:bg-gray-950 md:hidden", mobileNavOpen ? "translate-x-0" : "-translate-x-full")}>
         <div className="flex items-center justify-between border-b p-4 dark:border-gray-800">
-          <Link href="/" onClick={() => setMobileNavOpen(false)} className="text-lg font-black text-[#123b2b] dark:text-white">Barter<span className="text-emerald-600">Naija</span></Link>
+          <Link href="/" onClick={() => setMobileNavOpen(false)} className="text-lg font-black text-[#123b2b] dark:text-white">B3</Link>
           <Button variant="ghost" size="icon" aria-label="Close menu" onClick={() => setMobileNavOpen(false)}><X className="h-5 w-5" /></Button>
         </div>
         {nav(true)}
@@ -81,8 +82,8 @@ export default function DashboardLayout({ children }: DashboardLayoutProps) {
       <div className="min-w-0 flex-1">
         <header className="flex items-center justify-between border-b bg-white p-4 dark:border-gray-800 dark:bg-gray-950 md:hidden">
           <Button variant="ghost" size="icon" aria-label="Open menu" onClick={() => setMobileNavOpen(true)}><Menu className="h-5 w-5" /></Button>
-          <Link href="/" className="font-bold text-[#123b2b] dark:text-white">Barter<span className="text-emerald-600">Naija</span></Link>
-          <div className="flex items-center gap-1"><ThemeToggle /><B9BrandLink compact /></div>
+          <B3BrandLink compact />
+          <ThemeToggle />
         </header>
         <main className="p-4 sm:p-6">{children}</main>
       </div>

@@ -10,8 +10,8 @@ export default function AboutPage() {
     <div className="min-h-screen bg-[#fbfcfa] text-[#17251e] dark:bg-gray-950 dark:text-white">
       <header className="sticky top-0 z-50 border-b border-[#e5ece6] bg-white/95 backdrop-blur dark:border-gray-800 dark:bg-gray-950/95">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5">
-          <Link href="/" className="text-xl font-black tracking-tight text-[#123b2b] dark:text-white" aria-label="BarterNaija home">Barter<span className="text-[#0b9a63]">Naija</span></Link>
-          <div className="flex items-center gap-4"><a href="https://b9tech.barternaija.com.ng" target="_blank" rel="noopener noreferrer" aria-label="Visit B9TECH CONSULTS"><Image src="/b9-logo.png" alt="B9TECH CONSULTS" width={104} height={34} className="h-8 w-auto object-contain" /></a><Link href="/" className="inline-flex items-center gap-2 text-sm font-semibold text-[#52665a] hover:text-[#087a50] dark:text-gray-300"><ArrowLeft className="h-4 w-4" /> Back to BarterNaija</Link><ThemeToggle />
+          <Link href="/" className="inline-flex items-center gap-2.5" aria-label="B3: Bring Back Barter home"><Image src="/b3-logo.png" alt="B3" width={36} height={36} className="h-9 w-9 object-contain" /><span className="flex flex-col leading-tight"><strong className="text-lg font-black">B3</strong><span className="text-[9px] font-bold uppercase tracking-wider text-[#0b9a63]">Bring Back Barter</span></span></Link>
+          <div className="flex items-center gap-4"><Link href="/" className="inline-flex items-center gap-2 text-sm font-semibold text-[#52665a] hover:text-[#087a50] dark:text-gray-300"><ArrowLeft className="h-4 w-4" /> Back to B3</Link><ThemeToggle />
           </div>
         </div>
       </header>
@@ -19,14 +19,14 @@ export default function AboutPage() {
       <main className="mx-auto max-w-6xl px-5 py-14 sm:py-20">
         <section className="mx-auto max-w-3xl text-center">
           <p className="inline-flex items-center gap-2 rounded-full border border-[#cce8d7] bg-white px-4 py-2 text-xs font-bold uppercase tracking-wider text-[#087a50] dark:border-emerald-900 dark:bg-gray-900 dark:text-emerald-300"><MapPin className="h-4 w-4" /> Built for our first communities</p>
-          <h1 className="mt-6 text-4xl font-black tracking-tight text-[#123b2b] sm:text-5xl dark:text-white">About BarterNaija</h1>
+          <h1 className="mt-6 text-4xl font-black tracking-tight text-[#123b2b] sm:text-5xl dark:text-white">About B3: Bring Back Barter</h1>
           <p className="mt-5 text-lg leading-8 text-[#617267] dark:text-gray-300">A Nigerian community where people can exchange valuable things they own for valuable things they need—without turning the swap into a cash transaction.</p>
         </section>
 
         <Card className="mx-auto mt-12 max-w-4xl border-[#e4ece5] bg-white dark:border-gray-800 dark:bg-gray-900">
           <CardHeader><CardTitle className="text-2xl text-[#173d2c] dark:text-white">Why we are building it</CardTitle></CardHeader>
           <CardContent className="space-y-4 text-base leading-8 text-[#65766b] dark:text-gray-300">
-            <p>Good items can sit unused in one home while someone nearby is looking for exactly that kind of item. BarterNaija creates a place for those people to find one another and discuss a direct exchange.</p>
+            <p>Good items can sit unused in one home while someone nearby is looking for exactly that kind of item. B3: Bring Back Barter creates a place for those people to find one another and discuss a direct exchange.</p>
             <p>The idea is straightforward: list what you have, say what you would like in return, compare the items honestly and proceed only when both people agree. There are no cash top-ups or cash settlements through the platform.</p>
             <p>Our initial community focus is Lagos, Ibadan and Abeokuta. We are building around real local connections, clear listings and careful exchanges—not unsupported claims about scale or activity.</p>
           </CardContent>
@@ -42,7 +42,7 @@ export default function AboutPage() {
           <h2 className="text-2xl font-black sm:text-3xl">Have something worth exchanging?</h2>
           <p className="mx-auto mt-3 max-w-xl leading-7 text-emerald-100/80">Join the community and start by listing a valuable item you own.</p>
           <div className="mt-7 flex flex-col justify-center gap-3 sm:flex-row">
-            <Link href="/auth/signup"><Button className="bg-white text-[#075239] hover:bg-emerald-50">Join BarterNaija <ArrowRight className="ml-2 h-4 w-4" /></Button></Link>
+            <Link href="/auth/signup"><Button className="bg-white text-[#075239] hover:bg-emerald-50">Join B3: Bring Back Barter <ArrowRight className="ml-2 h-4 w-4" /></Button></Link>
             <Link href="/how-it-works"><Button variant="outline" className="border-white text-white hover:bg-white/10">See how it works</Button></Link>
           </div>
         </section>

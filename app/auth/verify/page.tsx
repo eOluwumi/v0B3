@@ -1,5 +1,7 @@
 "use client"
 
+import { useEffect, useState } from "react"
+import { useRouter } from "next/navigation"
 import { useSupabase } from "@/components/supabase-provider"
 import { Card, CardContent, CardDescription, CardHeader, CardTitle } from "@/components/ui/card"
 import { Button } from "@/components/ui/button"
@@ -7,7 +9,57 @@ import Link from "next/link"
 import { Mail, CheckCircle2, ArrowLeft, Loader2 } from "lucide-react"
 
 export default function VerifyPage() {
-  const { user, loading } = useSupabase()
+  const { supabase, user, loading } = useSupabase()
+  const router = useRouter()
+  const [callbackError, setCallbackError] = useState<string | null>(null)
+  const [processingCallback, setProcessingCallback] = useState(false)
+
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search)
+    const code = params.get("code")
+    const authError = params.get("error_description") || params.get("error")
+
+    if (authError) {
+      setCallbackError(authError.replace(/\+/g, " "))
+      return
+    }
+
+    if (!code) return
+
+    let active = true
+    setProcessingCallback(true)
+
+    // Supabase's browser client has detectSessionInUrl enabled. getSession()
+    // waits for its PKCE callback exchange to finish before returning.
+    supabase.auth.getSession().then(({ data, error }) => {
+      if (!active) return
+
+      if (error) {
+        setCallbackError(error.message)
+        setProcessingCallback(false)
+        return
+      }
+
+      if (!data.session) {
+        setCallbackError("The sign-in callback did not produce a session. Please try signing in again.")
+        setProcessingCallback(false)
+        return
+      }
+
+      const requestedNext = params.get("next")
+      const next = requestedNext?.startsWith("/") && !requestedNext.startsWith("//")
+        ? requestedNext
+        : "/dashboard"
+
+      router.replace(next)
+    })
+
+    return () => {
+      active = false
+    }
+  }, [router, supabase])
+
+  const isProcessing = loading || processingCallback
 
   return (
     <div className="flex min-h-screen items-center justify-center bg-gradient-to-br from-green-50 via-white to-green-50 p-4 dark:from-gray-950 dark:via-gray-900 dark:to-green-950">
@@ -16,24 +68,30 @@ export default function VerifyPage() {
           <CardHeader className="text-center">
             <div className="mb-4 flex justify-center">
               <div className="flex h-16 w-16 items-center justify-center rounded-full bg-emerald-600 text-white">
-                {loading ? <Loader2 className="h-8 w-8 animate-spin" /> : user ? <CheckCircle2 className="h-8 w-8" /> : <Mail className="h-8 w-8" />}
+                {isProcessing ? <Loader2 className="h-8 w-8 animate-spin" /> : user ? <CheckCircle2 className="h-8 w-8" /> : <Mail className="h-8 w-8" />}
               </div>
             </div>
-            <CardTitle className="text-2xl">{loading ? "Checking your account…" : user ? "Your email is verified" : "Check your email"}</CardTitle>
+            <CardTitle className="text-2xl">
+              {isProcessing ? "Checking your account…" : callbackError ? "Sign-in could not be completed" : user ? "Your email is verified" : "Check your email"}
+            </CardTitle>
             <CardDescription>
-              {loading
+              {isProcessing
                 ? "We are confirming your B3 session."
-                : user
-                  ? "Your B3 account is active. You can now list items and arrange cashless exchanges."
-                  : "We have sent a verification link if email confirmation is enabled. Open it on this device to activate your account."}
+                : callbackError
+                  ? callbackError
+                  : user
+                    ? "Your B3 account is active. You can now list items and arrange cashless exchanges."
+                    : "We have sent a verification link if email confirmation is enabled. Open it on this device to activate your account."}
             </CardDescription>
           </CardHeader>
           <CardContent className="space-y-4">
-            {user ? (
+            {user && !callbackError ? (
               <Link href="/dashboard" className="block"><Button className="w-full">Continue to your dashboard</Button></Link>
             ) : (
               <>
-                <p className="text-center text-sm text-muted-foreground">If the message is not in your inbox, check your spam folder. You can return to sign in after verifying.</p>
+                <p className="text-center text-sm text-muted-foreground">
+                  {callbackError ? "Please return to sign in and try again." : "If the message is not in your inbox, check your spam folder. You can return to sign in after verifying."}
+                </p>
                 <Link href="/auth/signin" className="block"><Button className="w-full">Go to sign in</Button></Link>
               </>
             )}

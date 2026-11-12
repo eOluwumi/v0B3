@@ -1,206 +1,102 @@
 "use client"
 
 import type React from "react"
-import { createContext, useContext, useEffect, useState } from "react"
+import { createContext, useContext, useEffect, useMemo, useState } from "react"
+import { createClient, type SupabaseClient, type User } from "@supabase/supabase-js"
+import type { Database } from "@/types/supabase"
 import { useToast } from "@/components/ui/use-toast"
 
-// Mock user type
-type MockUser = {
-  id: string
-  email: string
-  user_metadata: {
-    full_name: string
-  }
-}
+const supabaseUrl =
+  process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.SUPABASE_URL || "https://placeholder.supabase.co"
+const supabaseKey =
+  process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ||
+  process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ||
+  process.env.SUPABASE_PUBLISHABLE_KEY ||
+  process.env.SUPABASE_ANON_KEY ||
+  "missing-supabase-key"
 
-// Mock Supabase client
-const createMockSupabaseClient = () => ({
+export const isSupabaseConfigured =
+  Boolean(process.env.NEXT_PUBLIC_SUPABASE_URL || process.env.SUPABASE_URL) &&
+  Boolean(
+    process.env.NEXT_PUBLIC_SUPABASE_PUBLISHABLE_KEY ||
+      process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY ||
+      process.env.SUPABASE_PUBLISHABLE_KEY ||
+      process.env.SUPABASE_ANON_KEY,
+  )
+
+export const supabase: SupabaseClient<Database> = createClient<Database>(supabaseUrl, supabaseKey, {
   auth: {
-    signInWithPassword: async ({ email, password }: { email: string; password: string }) => {
-      // Simulate network delay
-      await new Promise((resolve) => setTimeout(resolve, 1000))
-
-      // Mock successful sign in
-      const mockUser: MockUser = {
-        id: "mock-user-id",
-        email,
-        user_metadata: {
-          full_name: "Mock User",
-        },
-      }
-
-      // Store in localStorage for persistence
-      localStorage.setItem("mock-user", JSON.stringify(mockUser))
-
-      return {
-        data: { user: mockUser },
-        error: null,
-      }
-    },
-
-    signUp: async ({ email, password, options }: { email: string; password: string; options?: any }) => {
-      // Simulate network delay
-      await new Promise((resolve) => setTimeout(resolve, 1000))
-
-      const mockUser: MockUser = {
-        id: "mock-user-id",
-        email,
-        user_metadata: {
-          full_name: options?.data?.full_name || "Mock User",
-        },
-      }
-
-      // Store in localStorage for persistence
-      localStorage.setItem("mock-user", JSON.stringify(mockUser))
-
-      return {
-        data: { user: mockUser },
-        error: null,
-      }
-    },
-
-    signOut: async () => {
-      // Simulate network delay
-      await new Promise((resolve) => setTimeout(resolve, 500))
-
-      // Remove from localStorage
-      localStorage.removeItem("mock-user")
-
-      return { error: null }
-    },
-
-    getSession: async () => {
-      const storedUser = localStorage.getItem("mock-user")
-      const user = storedUser ? JSON.parse(storedUser) : null
-
-      return {
-        data: {
-          session: user ? { user } : null,
-        },
-      }
-    },
-
-    onAuthStateChange: (callback: (event: string, session: any) => void) => {
-      // Mock auth state change listener
-      const checkAuth = () => {
-        const storedUser = localStorage.getItem("mock-user")
-        const user = storedUser ? JSON.parse(storedUser) : null
-        callback(user ? "SIGNED_IN" : "SIGNED_OUT", user ? { user } : null)
-      }
-
-      // Check immediately
-      setTimeout(checkAuth, 100)
-
-      // Return the correct structure that matches Supabase
-      return {
-        data: {
-          subscription: {
-            unsubscribe: () => {},
-          },
-        },
-      }
-    },
-  },
-
-  from: (table: string) => ({
-    insert: async (data: any) => {
-      // Simulate network delay
-      await new Promise((resolve) => setTimeout(resolve, 500))
-      return { data, error: null }
-    },
-
-    select: (columns?: string) => ({
-      eq: (column: string, value: any) => ({
-        order: (column: string, options?: any) => ({
-          then: async (resolve: any) => {
-            // Simulate network delay
-            await new Promise((r) => setTimeout(r, 500))
-            resolve({ data: [], error: null })
-          },
-        }),
-      }),
-    }),
-
-    delete: () => ({
-      eq: (column: string, value: any) => ({
-        then: async (resolve: any) => {
-          // Simulate network delay
-          await new Promise((r) => setTimeout(r, 500))
-          resolve({ error: null })
-        },
-      }),
-    }),
-  }),
-
-  storage: {
-    from: (bucket: string) => ({
-      upload: async (path: string, file: File) => {
-        // Simulate network delay
-        await new Promise((resolve) => setTimeout(resolve, 1000))
-        return {
-          data: { path },
-          error: null,
-        }
-      },
-
-      getPublicUrl: (path: string) => ({
-        data: {
-          publicUrl: `/placeholder.svg?height=200&width=200`,
-        },
-      }),
-    }),
+    autoRefreshToken: true,
+    persistSession: true,
+    detectSessionInUrl: true,
   },
 })
 
-export const supabase = createMockSupabaseClient()
-
 type SupabaseContextType = {
-  supabase: typeof supabase
-  user: MockUser | null
+  supabase: SupabaseClient<Database>
+  user: User | null
   loading: boolean
+  configured: boolean
 }
 
 const SupabaseContext = createContext<SupabaseContextType>({
   supabase,
   user: null,
   loading: true,
+  configured: isSupabaseConfigured,
 })
 
 export const useSupabase = () => useContext(SupabaseContext)
 
 export function SupabaseProvider({ children }: { children: React.ReactNode }) {
-  const [user, setUser] = useState<MockUser | null>(null)
+  const [user, setUser] = useState<User | null>(null)
   const [loading, setLoading] = useState(true)
   const { toast } = useToast()
 
   useEffect(() => {
-    const authListener = supabase.auth.onAuthStateChange(async (event, session) => {
+    if (!isSupabaseConfigured) {
+      setLoading(false)
+      return
+    }
+
+    let active = true
+    const {
+      data: { subscription },
+    } = supabase.auth.onAuthStateChange((event, session) => {
+      if (!active) return
       setUser(session?.user ?? null)
       setLoading(false)
 
       if (event === "SIGNED_IN") {
-        toast({
-          title: "Welcome back!",
-          description: "You've successfully signed in to the demo.",
-        })
-      }
-      if (event === "SIGNED_OUT") {
-        toast({
-          title: "Signed out",
-          description: "You've been signed out of the demo.",
-        })
+        toast({ title: "Welcome back!", description: "You're signed in to B3: Bring Back Barter." })
+      } else if (event === "SIGNED_OUT") {
+        toast({ title: "Signed out", description: "Your B3 session has ended." })
       }
     })
 
-    supabase.auth.getSession().then(({ data: { session } }) => {
-      setUser(session?.user ?? null)
+    supabase.auth.getSession().then(({ data, error }) => {
+      if (!active) return
+      if (error) {
+        toast({
+          title: "Session error",
+          description: error.message,
+          variant: "destructive",
+        })
+      }
+      setUser(data.session?.user ?? null)
       setLoading(false)
     })
 
     return () => {
-      authListener.data.subscription.unsubscribe()
+      active = false
+      subscription.unsubscribe()
     }
   }, [toast])
 
-  return <SupabaseContext.Provider value={{ supabase, user, loading }}>{children}</SupabaseContext.Provider>
+  const value = useMemo(
+    () => ({ supabase, user, loading, configured: isSupabaseConfigured }),
+    [user, loading],
+  )
+
+  return <SupabaseContext.Provider value={value}>{children}</SupabaseContext.Provider>
 }

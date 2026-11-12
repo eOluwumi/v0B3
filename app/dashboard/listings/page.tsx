@@ -59,12 +59,16 @@ export default function ListingsPage() {
   }, [refreshTrigger, user])
 
   const fetchListings = async () => {
+    if (!user) {
+      setLoading(false)
+      return
+    }
     try {
       setLoading(true)
       const { data, error } = await supabase
         .from("listings")
         .select("*")
-        .eq("user_id", user?.id)
+        .eq("user_id", user.id)
         .order("created_at", { ascending: false })
 
       if (error) {

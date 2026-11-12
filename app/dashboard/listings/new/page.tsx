@@ -254,14 +254,19 @@ export default function NewListingPage() {
 
             <div className="space-y-2">
               <Label htmlFor="location">Location</Label>
-              <Input
+              <select
                 id="location"
                 name="location"
-                placeholder="e.g., Lagos, Nigeria"
                 value={formData.location}
-                onChange={handleChange}
+                onChange={(event) => setFormData((prev) => ({ ...prev, location: event.target.value }))}
                 required
-              />
+                className="h-10 w-full rounded-md border border-input bg-background px-3 py-2 text-sm"
+              >
+                <option value="">Select your location</option>
+                <option value="Lagos">Lagos</option>
+                <option value="Ibadan">Ibadan</option>
+                <option value="Abeokuta">Abeokuta</option>
+              </select>
             </div>
 
             <div className="space-y-2">

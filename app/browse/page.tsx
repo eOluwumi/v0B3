@@ -58,7 +58,7 @@ export default function BrowsePage() {
       <header className="border-b bg-white">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-5 py-4">
           <Link href="/" className="text-xl font-extrabold text-[#123b2b]">Barter<span className="text-[#0b9a63]">Naija</span></Link>
-          <div className="flex items-center gap-2"><Link href="/auth/signin" className="text-sm font-semibold text-[#244b38]">Log in</Link><Link href="/auth/signup"><Button size="sm">Join BarterNaija</Button></Link></div>
+          <div className="flex items-center gap-2"><Link href="/auth/signin" className="text-sm font-semibold text-[#244b38]">Log in</Link><Link href="/auth/signup"><Button size="sm">Join the B3 Revolution</Button></Link></div>
         </div>
       </header>
       <section className="mx-auto max-w-7xl px-5 py-10">
@@ -94,7 +94,7 @@ export default function BrowsePage() {
                       <div className="mb-2 flex items-center justify-between gap-2"><Badge variant="outline">{item.offering_category}</Badge><span className="flex items-center gap-1 text-xs text-muted-foreground"><MapPin className="h-3 w-3" />{item.location}</span></div>
                       <h2 className="text-lg font-bold text-[#173d2c]">{item.title}</h2>
                       <p className="mt-2 line-clamp-3 min-h-[4.5rem] text-sm leading-6 text-[#64766b]">{item.description}</p>
-                      <p className="mt-2 text-xs text-muted-foreground">Listed by {item.owner?.full_name || "BarterNaija member"}</p>
+                      <p className="mt-2 text-xs text-muted-foreground">Listed by {item.owner?.full_name || "B3 member"}</p>
                       <div className="mt-4 rounded-lg bg-[#f4f8f4] p-3"><p className="text-[11px] font-bold uppercase tracking-wide text-[#738579]">Looking for</p><p className="mt-1 text-sm font-semibold text-[#214b36]">{item.seeking_category}</p></div>
                       <Link href={`/dashboard/trades/new?listing=${item.id}`} className="mt-4 inline-flex w-full items-center justify-center gap-2 rounded-full bg-[#087a50] px-4 py-3 text-sm font-bold text-white hover:bg-[#066642]">Propose an exchange <ArrowRight className="h-4 w-4" /></Link>
                     </div>

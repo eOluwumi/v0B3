@@ -68,9 +68,9 @@ export function SupabaseProvider({ children }: { children: React.ReactNode }) {
       setLoading(false)
 
       if (event === "SIGNED_IN") {
-        toast({ title: "Welcome back!", description: "You're signed in to BarterNaija." })
+        toast({ title: "Welcome back!", description: "You're signed in to B3: Bring Back Barter." })
       } else if (event === "SIGNED_OUT") {
-        toast({ title: "Signed out", description: "Your BarterNaija session has ended." })
+        toast({ title: "Signed out", description: "Your B3 session has ended." })
       }
     })
 

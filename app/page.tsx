@@ -261,15 +261,16 @@ export default function Home() {
       <footer className="border-t border-[#e5e7dc] bg-[#fffefa]">
         <div className="mx-auto grid max-w-7xl gap-10 px-5 py-12 sm:grid-cols-2 lg:grid-cols-[1.5fr_1fr_1fr_1fr] lg:px-8">
           <div>
-            <Link href="/" className="inline-flex items-center gap-2.5">
-              <span className="flex h-9 w-9 items-center justify-center rounded-xl bg-[#087a50] font-black text-white">B</span>
-              <span className="text-xl font-extrabold tracking-tight text-[#123b2b]">Barter<span className="text-[#0b9a63]">Naija</span></span>
+            <Link href="/" className="inline-flex items-center gap-3" aria-label="B3: Bring Back Barter home">
+              <Image src="/b3-logo.png" alt="B3" width={44} height={44} className="h-11 w-11 object-contain" />
+              <span className="flex flex-col leading-tight">
+                <strong className="text-xl font-black tracking-tight text-[#123b2b]">B3</strong>
+                <span className="text-[10px] font-bold uppercase tracking-[0.16em] text-[#0b9a63]">Bring Back Barter</span>
+              </span>
             </Link>
-            <p className="mt-4 max-w-xs text-sm leading-7 text-[#718176]">A community for cashless exchanges of valuable items across Lagos, Ibadan and Abeokuta.</p>
+            <p className="mt-4 max-w-xs text-sm font-semibold leading-6 text-[#315c43]">Barter is back & better. Join the B3 Revolution.</p>
+            <p className="mt-2 max-w-xs text-sm leading-7 text-[#718176]">A community for cashless exchanges of valuable items across Lagos, Ibadan and Abeokuta.</p>
             <p className="mt-5 text-xs font-semibold text-[#89968d]">Proudly built in Nigeria.</p>
-            <a href="https://b9tech.barternaija.com.ng" target="_blank" rel="noopener noreferrer" className="mt-4 inline-flex items-center rounded-lg border border-[#e7e9df] bg-white px-3 py-2">
-              <Image src="/b9-logo.png" alt="B9TECH CONSULTS" width={112} height={36} className="h-7 w-auto object-contain" />
-            </a>
           </div>
           <div>
             <h3 className="text-sm font-extrabold text-[#203e2d]">Marketplace</h3>

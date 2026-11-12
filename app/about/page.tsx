@@ -10,7 +10,7 @@ export default function AboutPage() {
     <div className="min-h-screen bg-[#fbfcfa] text-[#17251e] dark:bg-gray-950 dark:text-white">
       <header className="sticky top-0 z-50 border-b border-[#e5ece6] bg-white/95 backdrop-blur dark:border-gray-800 dark:bg-gray-950/95">
         <div className="mx-auto flex h-16 max-w-6xl items-center justify-between px-5">
-          <Link href="/" className="text-xl font-black tracking-tight text-[#123b2b] dark:text-white" aria-label="B3: Bring Back Barter home">Barter<span className="text-[#0b9a63]">Naija</span></Link>
+          <Link href="/" className="inline-flex items-center gap-2.5" aria-label="B3: Bring Back Barter home"><Image src="/b3-logo.png" alt="B3" width={36} height={36} className="h-9 w-9 object-contain" /><span className="flex flex-col leading-tight"><strong className="text-lg font-black">B3</strong><span className="text-[9px] font-bold uppercase tracking-wider text-[#0b9a63]">Bring Back Barter</span></span></Link>
           <div className="flex items-center gap-4"><Link href="/" className="inline-flex items-center gap-2 text-sm font-semibold text-[#52665a] hover:text-[#087a50] dark:text-gray-300"><ArrowLeft className="h-4 w-4" /> Back to B3</Link><ThemeToggle />
           </div>
         </div>

@@ -1,6 +1,7 @@
 import Link from "next/link"
 import Image from "next/image"
 import { ThemeToggle } from "@/components/theme-toggle"
+import { B3VideoSection } from "@/components/b3-video-section"
 import {
   ArrowRight,
   ArrowUpRight,
@@ -226,6 +227,8 @@ export default function Home() {
           </div>
         </div>
       </section>
+
+      <B3VideoSection />
 
       <section className="mx-auto grid max-w-7xl gap-6 px-5 py-20 md:grid-cols-3 lg:px-8">
         <div className="rounded-2xl border border-[#e4eadf] bg-[#eef5e9] p-7">

@@ -140,3 +140,80 @@ html.dark main input,
 html.dark main textarea {
   color-scheme: dark;
 }
+
+
+/* Global theme enforcement: keep every route and shared surface on the active theme. */
+html {
+  color-scheme: light;
+  background-color: hsl(var(--background));
+}
+html.dark {
+  color-scheme: dark;
+  background-color: hsl(var(--background));
+}
+html body {
+  min-height: 100%;
+  background-color: hsl(var(--background));
+  color: hsl(var(--foreground));
+}
+html.dark body {
+  background-color: hsl(var(--background)) !important;
+  color: hsl(var(--foreground));
+}
+
+/* Normalize common hard-coded light surfaces that bypass semantic theme tokens. */
+html.dark [class~="bg-white"],
+html.dark [class*="bg-white/"],
+html.dark [class~="bg-slate-50"],
+html.dark [class~="bg-gray-50"],
+html.dark [class~="bg-zinc-50"],
+html.dark [class~="bg-neutral-50"] {
+  background-color: hsl(var(--card)) !important;
+}
+html.dark [class~="bg-slate-100"],
+html.dark [class~="bg-gray-100"],
+html.dark [class~="bg-zinc-100"],
+html.dark [class~="bg-neutral-100"] {
+  background-color: hsl(var(--secondary)) !important;
+}
+html.dark [class~="text-slate-900"],
+html.dark [class~="text-slate-800"],
+html.dark [class~="text-gray-900"],
+html.dark [class~="text-gray-800"],
+html.dark [class~="text-zinc-900"],
+html.dark [class~="text-neutral-900"] {
+  color: hsl(var(--foreground)) !important;
+}
+html.dark [class~="text-slate-700"],
+html.dark [class~="text-gray-700"],
+html.dark [class~="text-zinc-700"],
+html.dark [class~="text-neutral-700"],
+html.dark [class~="text-slate-600"],
+html.dark [class~="text-gray-600"],
+html.dark [class~="text-zinc-600"],
+html.dark [class~="text-neutral-600"] {
+  color: hsl(var(--muted-foreground)) !important;
+}
+html.dark [class~="border-slate-200"],
+html.dark [class~="border-gray-200"],
+html.dark [class~="border-zinc-200"],
+html.dark [class~="border-neutral-200"],
+html.dark [class~="border-slate-300"],
+html.dark [class~="border-gray-300"] {
+  border-color: hsl(var(--border)) !important;
+}
+html.dark input,
+html.dark textarea,
+html.dark select {
+  color-scheme: dark;
+}
+html.dark .glass {
+  border-color: hsl(var(--border));
+  background-color: hsl(var(--card) / 0.92);
+}
+html.dark ::-webkit-scrollbar-track {
+  background-color: hsl(var(--background));
+}
+html.dark ::-webkit-scrollbar-thumb {
+  background-color: hsl(var(--primary) / 0.55);
+}

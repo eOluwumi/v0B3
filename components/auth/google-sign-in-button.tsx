@@ -18,7 +18,11 @@ export function GoogleSignInButton({ label = "Continue with Google" }: GoogleSig
     setLoading(true)
 
     try {
-      const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL || window.location.origin).replace(/\/$/, "")
+      const configuredSiteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim().replace(/\/$/, "")
+      const currentOrigin = window.location.origin
+      const isBarterNaijaApex = window.location.hostname === "barternaija.com.ng"
+      const siteUrl = configuredSiteUrl || (isBarterNaijaApex ? "https://www.barternaija.com.ng" : currentOrigin)
+
       const { error } = await supabase.auth.signInWithOAuth({
         provider: "google",
         options: {

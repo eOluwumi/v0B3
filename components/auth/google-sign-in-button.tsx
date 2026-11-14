@@ -18,15 +18,15 @@ export function GoogleSignInButton({ label = "Continue with Google" }: GoogleSig
     setLoading(true)
 
     try {
-      const configuredSiteUrl = process.env.NEXT_PUBLIC_SITE_URL?.trim().replace(/\/$/, "")
-      const currentOrigin = window.location.origin
-      const isBarterNaijaApex = window.location.hostname === "barternaija.com.ng"
-      const siteUrl = configuredSiteUrl || (isBarterNaijaApex ? "https://www.barternaija.com.ng" : currentOrigin)
+      // Supabase stores the PKCE verifier in browser storage scoped to this origin.
+      // The callback MUST return to the same host that initiated OAuth; switching
+      // apex <-> www loses access to that verifier and makes code exchange fail.
+      const redirectTo = `${window.location.origin}/auth/verify?next=/dashboard`
 
       const { error } = await supabase.auth.signInWithOAuth({
         provider: "google",
         options: {
-          redirectTo: `${siteUrl}/auth/verify?next=/dashboard`,
+          redirectTo,
           queryParams: {
             prompt: "select_account",
           },

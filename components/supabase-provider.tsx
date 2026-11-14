@@ -24,11 +24,14 @@ export const isSupabaseConfigured =
       process.env.SUPABASE_ANON_KEY,
   )
 
+// OAuth callbacks are exchanged explicitly on /auth/verify. Disabling automatic
+// URL detection prevents the client from racing that page to consume the PKCE code.
 export const supabase: SupabaseClient<Database> = createClient<Database>(supabaseUrl, supabaseKey, {
   auth: {
     autoRefreshToken: true,
     persistSession: true,
-    detectSessionInUrl: true,
+    detectSessionInUrl: false,
+    flowType: "pkce",
   },
 })
 

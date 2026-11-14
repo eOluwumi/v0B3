@@ -18,42 +18,50 @@ export default function VerifyPage() {
     const params = new URLSearchParams(window.location.search)
     const code = params.get("code")
     const authError = params.get("error_description") || params.get("error")
+    let active = true
 
     if (authError) {
       setCallbackError(authError.replace(/\+/g, " "))
       return
     }
 
-    if (!code) return
+    const requestedNext = params.get("next")
+    const next = requestedNext?.startsWith("/") && !requestedNext.startsWith("//")
+      ? requestedNext
+      : "/dashboard"
 
-    let active = true
-    setProcessingCallback(true)
+    const completeCallback = async () => {
+      if (code) {
+        setProcessingCallback(true)
+        const { data, error } = await supabase.auth.exchangeCodeForSession(code)
 
-    // Supabase's browser client has detectSessionInUrl enabled. getSession()
-    // waits for its PKCE callback exchange to finish before returning.
-    supabase.auth.getSession().then(({ data, error }) => {
+        if (!active) return
+        if (error) {
+          setCallbackError(error.message)
+          setProcessingCallback(false)
+          return
+        }
+        if (!data.session) {
+          setCallbackError("The sign-in callback did not produce a session. Please try signing in again.")
+          setProcessingCallback(false)
+          return
+        }
+
+        router.replace(next)
+        return
+      }
+
+      // A callback without a code may be a repeat visit after a successful exchange.
+      const { data, error } = await supabase.auth.getSession()
       if (!active) return
-
       if (error) {
         setCallbackError(error.message)
-        setProcessingCallback(false)
         return
       }
+      if (data.session && params.has("next")) router.replace(next)
+    }
 
-      if (!data.session) {
-        setCallbackError("The sign-in callback did not produce a session. Please try signing in again.")
-        setProcessingCallback(false)
-        return
-      }
-
-      const requestedNext = params.get("next")
-      const next = requestedNext?.startsWith("/") && !requestedNext.startsWith("//")
-        ? requestedNext
-        : "/dashboard"
-
-      router.replace(next)
-    })
-
+    void completeCallback()
     return () => {
       active = false
     }

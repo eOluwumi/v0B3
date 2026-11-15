@@ -140,3 +140,8 @@ html.dark main input,
 html.dark main textarea {
   color-scheme: dark;
 }
+
+
+/* B3 Nigerian visual identity: indigo-dyed geometry, woven bands and warm earth tones */
+.b3-adire-surface { background-color: #172b43; background-image: repeating-linear-gradient(45deg, transparent 0 10px, rgba(238, 210, 155, .16) 10px 12px, transparent 12px 22px), repeating-linear-gradient(-45deg, transparent 0 10px, rgba(238, 210, 155, .12) 10px 12px, transparent 12px 22px); }
+::selection { background: #d8b77a; color: #173b30; }

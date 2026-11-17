@@ -140,3 +140,33 @@ html.dark main input,
 html.dark main textarea {
   color-scheme: dark;
 }
+
+/* Keep the landing page's hand-picked light surfaces in step with dark mode. */
+html.dark main [class*="bg-[#fffefa"],
+html.dark main [class*="bg-[#fbfaf5"],
+html.dark main [class*="bg-[#f4f1e7"],
+html.dark main [class*="bg-[#f5f2e8"],
+html.dark main [class*="bg-[#dce8d9"],
+html.dark main [class*="bg-[#f7f0df"],
+html.dark main [class*="bg-[#ead9b6"],
+html.dark main [class*="bg-[#eef5e9"],
+html.dark main [class*="bg-[#f7f0e3"],
+html.dark main [class*="bg-[#edf2f3"],
+html.dark main [class*="bg-[#e8f1e5"],
+html.dark main [class*="bg-[#eaf6ed"],
+html.dark main [class*="bg-[#f8ece4"],
+html.dark main [class*="bg-[#f4f0df"],
+html.dark main [class*="bg-[#eaf0f2"],
+html.dark main [class*="bg-[#f0f3e9"],
+html.dark main [class*="bg-[#f4e7c6"] {
+  background-color: #17251d !important;
+}
+
+html.dark main [class*="bg-[#dce8d9"],
+html.dark main [class*="bg-[#ead9b6"] {
+  background-color: #263b2d !important;
+}
+
+html.dark {
+  color-scheme: dark;
+}

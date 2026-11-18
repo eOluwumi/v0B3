@@ -6,9 +6,9 @@ A digital marketplace concept for **cashless, peer-to-peer value exchange**, sta
 
 B3 modernises traditional barter practices with contemporary web technology while remaining grounded in the African philosophy of *Ubuntu* — “I am because we are.”
 
-> **Status**: Active early-stage prototype / interactive demo. Core UI flows for authentication, listings, trades, messaging, and dashboards are implemented. Authentication and data currently use a **mock (localStorage) layer** for demo purposes — not production Supabase. Not a production-ready product.
+> **Status**: Active early-stage prototype / interactive demo. Core UI flows for authentication, listings, trades, messaging, and dashboards are implemented. Google sign-in uses Supabase OAuth when configured. Listings, trades, and messaging are still prototype/demo flows and are not production marketplace records. Not a production-ready product.
 
-**Live demo**: [v0-vercel-serverless-architecture-sigma.vercel.app](https://v0-vercel-serverless-architecture-sigma.vercel.app)
+**Live demo**: [barternaija.com.ng](https://www.barternaija.com.ng)
 
 ---
 
@@ -25,7 +25,7 @@ B3 modernises traditional barter practices with contemporary web technology whil
 
 | Area | Status |
 |------|--------|
-| Authentication (sign-up, sign-in, verification UI) | ✅ Demo (mock auth via localStorage) |
+| Authentication (sign-in and verification) | ✅ Supabase OAuth when configured |
 | Item / listing creation & management | ✅ UI implemented |
 | Trade proposal & management flows | ✅ UI implemented |
 | User-to-user messaging | ✅ UI implemented |
@@ -42,7 +42,7 @@ Matching intelligence, real backend persistence, settlement alternatives, modera
 - **Framework**: Next.js 15 (App Router)
 - **Language**: TypeScript / TSX
 - **UI**: React 19, Tailwind CSS, Radix UI / shadcn-style components
-- **Auth & data (current)**: Mock Supabase-compatible client (localStorage) for demo
+- **Auth & data (current)**: Supabase OAuth for sign-in; listing, trade, and messaging flows remain demo/local-state
 - **Deployment**: Vercel (originated from / synced with v0.dev)
 - **Package manager**: pnpm (lockfile present)
 
@@ -85,9 +85,8 @@ pnpm dev
 Open [http://localhost:3000](http://localhost:3000).
 
 **Notes**
-- No external API keys are required for the current mock demo.
-- Auth state persists in the browser via `localStorage` (`mock-user`).
-- When real Supabase is wired in, environment variables (e.g. `NEXT_PUBLIC_SUPABASE_URL`, `NEXT_PUBLIC_SUPABASE_ANON_KEY`) will be needed.
+- Supabase URL and publishable/anon key environment variables are needed to use Google sign-in.
+- Listing, trade, and messaging flows remain local/demo state; do not use them for real exchanges.
 
 ---
 
